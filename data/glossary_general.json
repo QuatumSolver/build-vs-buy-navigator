@@ -1,0 +1,3485 @@
+[
+ {
+  "term": "ABAC",
+  "aka": [
+   "attribute-based access control",
+   "tag-based policies"
+  ],
+  "category": "Data management",
+  "technical": "An access model that grants or denies access by evaluating attributes of the user, the data (such as governed tags) and the context against central policies, which scales better than granting permissions object by object. Databricks reports support for 10,000+ such policies per metastore.",
+  "sales": "Rules like anyone in HR can see data tagged as payroll, instead of granting access table by table. It is strong for governing reads, but write permissions on plan intersections still have to be designed.",
+  "related": [
+   "RBAC",
+   "Row-level security",
+   "Column masking",
+   "Unity Catalog"
+  ],
+  "src": "https://www.databricks.com/blog/abac-row-filtering-and-column-masking-policies-governed-tags-and-data-classification-are-now"
+ },
+ {
+  "term": "Agent harness",
+  "aka": [
+   "harness",
+   "agent framework",
+   "agent runtime"
+  ],
+  "category": "Agents and AI apps",
+  "technical": "The software scaffolding around an LLM that runs the agent loop, including the system prompt, tool definitions, context management, memory, permissions and logging. Databricks describes its Omnigent project as an open-source meta-harness.",
+  "sales": "The machinery that turns a raw AI model into a dependable worker. Building and maintaining a harness is real engineering work a buyer takes on when they build their own finance agents.",
+  "related": [
+   "AI agent",
+   "Agent orchestration",
+   "Guardrails"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Agent memory",
+  "aka": [
+   "short-term memory",
+   "long-term memory",
+   "episodic memory",
+   "user memory"
+  ],
+  "category": "Agents and AI apps",
+  "technical": "Stored state an agent reuses, split into short-term memory (events from the current session or recent turns) and long-term memory (facts, preferences, summaries or episodes extracted and kept across sessions). AgentCore Memory, Memory Bank and Genie One memory are examples.",
+  "sales": "Whether an AI remembers past conversations and what it learned. Most shipped memory today is per user, such as remembering preferences, rather than shared memory of how the finance team plans.",
+  "related": [
+   "Cumulative context",
+   "AgentCore Memory",
+   "Agent Runtime and Memory Bank",
+   "Snowflake CoWork"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Agent orchestration",
+  "aka": [
+   "orchestration",
+   "orchestrator"
+  ],
+  "category": "Agents and AI apps",
+  "technical": "Coordinating the sequence of model calls, tool invocations, sub-agents, state and error handling needed to finish a task, handled either by a framework or by a supervising agent.",
+  "sales": "The traffic control that decides which AI step or tool runs next. Data platforms are strong here, but orchestrating AI steps is different from orchestrating a budget process with deadlines and sign-offs.",
+  "related": [
+   "Multi-agent system",
+   "Agent Bricks",
+   "Amazon Bedrock AgentCore",
+   "Agent Development Kit (ADK)"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Agent2Agent protocol (A2A)",
+  "aka": [
+   "A2A",
+   "Agent2Agent"
+  ],
+  "category": "Agents and AI apps",
+  "technical": "An open protocol, created by Google and donated to the Linux Foundation in June 2025, that lets agents discover each other, exchange tasks and collaborate across vendors. It complements MCP, which connects agents to tools.",
+  "sales": "A standard way for one vendor's AI agent to hand work to another's. Google, SAP and others back it, though SAP describes Joule Studio support as future.",
+  "related": [
+   "Model Context Protocol (MCP)",
+   "Multi-agent system",
+   "Agent Development Kit (ADK)"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Agentic workflow",
+  "aka": [
+   "agentic process",
+   "AI-driven workflow"
+  ],
+  "category": "Agents and AI apps",
+  "technical": "A business process in which one or more agents carry out multi-step work, such as data preparation, analysis or plan updates, with defined tools, checkpoints and human approvals.",
+  "sales": "A process where AI does much of the legwork and people review and approve. In planning it only works well if the workflow, approvals and audit trail already exist for the agent to operate inside.",
+  "related": [
+   "AI agent",
+   "Workflow and approvals",
+   "Guardrails"
+  ],
+  "src": ""
+ },
+ {
+  "term": "AI agent",
+  "aka": [
+   "agent"
+  ],
+  "category": "Agents and AI apps",
+  "technical": "Software in which an LLM plans steps, calls tools such as queries, APIs or other agents, observes the results and iterates toward a goal, rather than producing a single response.",
+  "sales": "An AI assistant that can carry out a multi-step task, such as pulling actuals, comparing them to budget and drafting commentary. In a planning deal, the key question is whether the agent can only read or can also update a plan inside governed workflow.",
+  "related": [
+   "Agentic workflow",
+   "Tool calling",
+   "Agent orchestration"
+  ],
+  "src": ""
+ },
+ {
+  "term": "AI assistant",
+  "aka": [
+   "assistant",
+   "chat assistant",
+   "chatbot"
+  ],
+  "category": "Agents and AI apps",
+  "technical": "A conversational AI application that answers questions and completes tasks at a user's request, usually one turn at a time, with the user directing each step.",
+  "sales": "An AI you chat with to get answers or drafts. Unlike an agent, it typically waits for you at each step rather than running a task end to end.",
+  "related": [
+   "AI copilot",
+   "AI agent",
+   "Large language model (LLM)"
+  ],
+  "src": ""
+ },
+ {
+  "term": "AI bias",
+  "aka": [
+   "algorithmic bias",
+   "model bias",
+   "bias"
+  ],
+  "category": "AI fundamentals",
+  "technical": "Systematic errors in AI output that unfairly favor or disadvantage groups or outcomes, often inherited from skewed training data or design choices.",
+  "sales": "When AI consistently leans one way because of the data it learned from. It matters most in people decisions such as compensation planning.",
+  "related": [
+   "Responsible AI",
+   "Training",
+   "AI governance"
+  ],
+  "src": ""
+ },
+ {
+  "term": "AI copilot",
+  "aka": [
+   "copilot pattern",
+   "embedded assistant"
+  ],
+  "category": "Agents and AI apps",
+  "technical": "An AI assistant embedded inside a specific application that helps users with in-context suggestions, drafting and actions while the human stays in control.",
+  "sales": "An AI helper built into the tool you already use, such as a planning add-in. Its value depends on how much of the app's data and logic it can actually use.",
+  "related": [
+   "AI assistant",
+   "AI agent",
+   "Microsoft Copilot",
+   "Human in the loop"
+  ],
+  "src": ""
+ },
+ {
+  "term": "AI gateway",
+  "aka": [
+   "LLM gateway",
+   "model gateway",
+   "Unity Gateway"
+  ],
+  "category": "Agents and AI apps",
+  "technical": "A proxy layer in front of model and tool endpoints that centralizes routing, authentication, rate limits, spend caps, logging and policy enforcement across providers. Databricks renamed its AI Gateway to Unity Gateway, GA August 4, 2026.",
+  "sales": "A central checkpoint for all AI traffic, used to control cost and keep a record of what was asked. It is infrastructure a build team has to set up and run.",
+  "related": [
+   "Guardrails",
+   "Tokens and token pricing",
+   "Unity Catalog"
+  ],
+  "src": "https://docs.databricks.com/aws/en/release-notes/unity-gateway/"
+ },
+ {
+  "term": "AI governance",
+  "aka": [
+   "AI policy framework",
+   "model governance"
+  ],
+  "category": "AI fundamentals",
+  "technical": "The policies, roles, controls and oversight that govern how AI systems are selected, approved, monitored and used, including risk assessment and regulatory compliance such as the EU AI Act.",
+  "sales": "The rules for which AI can be used, on what data and with what checks. Finance leaders increasingly sit on the committee that sets them.",
+  "related": [
+   "Responsible AI",
+   "Data governance",
+   "Guardrails",
+   "Human in the loop"
+  ],
+  "src": ""
+ },
+ {
+  "term": "AI safety",
+  "aka": [
+   "AI alignment",
+   "model safety"
+  ],
+  "category": "AI fundamentals",
+  "technical": "The field and practices focused on making AI systems behave as intended and avoid harmful outcomes, including alignment, robustness, misuse prevention and testing.",
+  "sales": "Making sure AI does what it is supposed to and nothing harmful. For a finance buyer, it shows up as controls on what an AI agent can see and change.",
+  "related": [
+   "Responsible AI",
+   "Guardrails",
+   "Prompt injection",
+   "Jailbreak"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Anomaly detection",
+  "aka": [
+   "outlier detection"
+  ],
+  "category": "AI fundamentals",
+  "technical": "Identifying data points or patterns that deviate significantly from expected behavior, using statistical rules or machine learning.",
+  "sales": "Automatically spotting numbers that look wrong or unusual, like a duplicated accrual. It helps reviewers focus where it matters during close and forecast reviews.",
+  "related": [
+   "Unsupervised learning",
+   "Data observability",
+   "Variance analysis"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Apache Airflow",
+  "aka": [
+   "Airflow",
+   "workflow orchestration"
+  ],
+  "category": "Data management",
+  "technical": "An open-source platform for authoring, scheduling and monitoring data workflows as code, with tasks and dependencies defined in Python.",
+  "sales": "A scheduler that runs data jobs in the right order, such as loading actuals before refreshing reports. Someone has to write and maintain those workflows in code.",
+  "related": [
+   "Data pipeline",
+   "Python",
+   "Agent orchestration"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Apache Iceberg",
+  "aka": [
+   "Iceberg tables"
+  ],
+  "category": "Data foundations",
+  "technical": "An open table format governed by the Apache Software Foundation that adds transactions, schema evolution and snapshots to files in object storage, supported by BigQuery, Snowflake, AWS and other engines.",
+  "sales": "An open format, similar to Delta Lake, that lets several platforms read the same tables without copying them. It matters because it reduces lock-in to any single data vendor.",
+  "related": [
+   "Delta Lake",
+   "Lakehouse",
+   "Parquet",
+   "Zero-copy"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Apache Kafka",
+  "aka": [
+   "Kafka",
+   "event streaming"
+  ],
+  "category": "Data management",
+  "technical": "An open-source distributed event streaming platform that publishes, stores and delivers high volumes of real-time data streams between systems.",
+  "sales": "Infrastructure for moving live event data, such as orders or payments, between systems as it happens. Powerful, but it requires engineering skill to run.",
+  "related": [
+   "Batch vs streaming",
+   "Data pipeline",
+   "Change data capture (CDC)"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Apache Spark",
+  "aka": [
+   "Spark",
+   "PySpark",
+   "Spark SQL"
+  ],
+  "category": "Data management",
+  "technical": "An open-source distributed processing engine for large-scale data transformation, SQL analytics, streaming and machine learning across clusters of machines.",
+  "sales": "The engine many data platforms use to crunch very large data sets. It is a developer tool, so using it for planning means writing and maintaining code.",
+  "related": [
+   "Query engine",
+   "Lakehouse",
+   "Python",
+   "Data pipeline"
+  ],
+  "src": ""
+ },
+ {
+  "term": "API",
+  "aka": [
+   "application programming interface",
+   "web API"
+  ],
+  "category": "Cloud and software",
+  "technical": "A defined set of rules and endpoints that lets one software system request data or actions from another in a predictable way.",
+  "sales": "The doorway that lets systems talk to each other without manual exports. A strong API means planning data can flow to and from other systems automatically.",
+  "related": [
+   "REST API",
+   "Webhook",
+   "SDK",
+   "Data integration"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Artificial general intelligence (AGI)",
+  "aka": [
+   "AGI",
+   "general AI"
+  ],
+  "category": "AI fundamentals",
+  "technical": "A hypothetical AI system that can match or exceed human ability across most cognitive tasks and transfer learning between domains. There is no agreed definition or test for it.",
+  "sales": "The idea of AI as broadly capable as a person. It makes headlines, but it has no bearing on which planning tool to buy today.",
+  "related": [
+   "Artificial superintelligence (ASI)",
+   "Narrow AI",
+   "Artificial intelligence (AI)"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Artificial intelligence (AI)",
+  "aka": [
+   "AI"
+  ],
+  "category": "AI fundamentals",
+  "technical": "The field of building computer systems that perform tasks normally requiring human intelligence, such as understanding language, recognizing patterns, making predictions and making decisions.",
+  "sales": "Software that can learn, reason or generate content rather than only follow fixed rules. In finance, it ranges from forecasting models to assistants that draft commentary.",
+  "related": [
+   "Machine learning (ML)",
+   "Generative AI",
+   "Narrow AI"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Artificial superintelligence (ASI)",
+  "aka": [
+   "ASI",
+   "superintelligence"
+  ],
+  "category": "AI fundamentals",
+  "technical": "A hypothetical AI system that would far surpass the best human abilities in virtually every domain, including science, strategy and social skills.",
+  "sales": "A speculative future beyond AGI. Useful context for news headlines, not for evaluating software.",
+  "related": [
+   "Artificial general intelligence (AGI)",
+   "AI safety"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Autonomous agent",
+  "aka": [
+   "fully autonomous agent",
+   "background agent"
+  ],
+  "category": "Agents and AI apps",
+  "technical": "An AI agent that pursues a goal over many steps with little or no human intervention, deciding its own actions, tools and when it is done.",
+  "sales": "An agent that runs a whole task on its own, like monitoring spend and flagging overruns overnight. For financial data, most firms keep a human approval before anything is written.",
+  "related": [
+   "AI agent",
+   "Human in the loop",
+   "Guardrails",
+   "Agentic workflow"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Batch vs streaming",
+  "aka": [
+   "batch processing",
+   "stream processing",
+   "real-time data"
+  ],
+  "category": "Data management",
+  "technical": "Batch processing handles data in scheduled chunks, such as a nightly load, while streaming processes each event continuously within seconds of it occurring.",
+  "sales": "Nightly updates versus live updates. Most planning runs well on batch loads, and real-time streaming adds cost that only pays off for truly time-sensitive decisions.",
+  "related": [
+   "Data pipeline",
+   "Apache Kafka",
+   "Latency",
+   "Change data capture (CDC)"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Build vs buy",
+  "aka": [
+   "make or buy",
+   "build versus buy"
+  ],
+  "category": "Cloud and software",
+  "technical": "The decision between developing a capability in-house, often on a data or AI platform, and purchasing a packaged product, weighed on cost, time, fit, risk and ongoing ownership.",
+  "sales": "Should we make it ourselves or buy something proven. For planning, the question is who owns versions, workflow, audit and upkeep once the first demo is done.",
+  "related": [
+   "Total cost of ownership (TCO)",
+   "Technical debt",
+   "Vibe coding",
+   "Vendor lock-in"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Business glossary",
+  "aka": [
+   "glossary",
+   "business terms",
+   "data dictionary"
+  ],
+  "category": "Data management",
+  "technical": "A curated set of business terms with definitions, synonyms, owners and links to the data assets they describe, maintained in a catalog and used by AI to interpret questions. Databricks listed its Glossary as preview coming soon in June 2026, while SageMaker Catalog can require glossary terms before an asset is published.",
+  "sales": "The agreed definitions of terms like ARR, opex or headcount, written down and owned. Most platforms now have one, but someone still has to write and maintain the entries.",
+  "related": [
+   "Data catalog",
+   "Semantic layer",
+   "Context layer"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Business intelligence (BI)",
+  "aka": [
+   "BI",
+   "analytics",
+   "reporting tools"
+  ],
+  "category": "Data management",
+  "technical": "Tools and practices for analyzing and visualizing historical data through reports, dashboards and ad hoc queries to support decisions.",
+  "sales": "Software that shows what happened. BI is strong for reporting actuals, while planning tools add the forward-looking side with inputs, versions and approvals.",
+  "related": [
+   "Dashboard",
+   "KPI",
+   "Semantic layer",
+   "CPM and EPM"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Chain of thought",
+  "aka": [
+   "CoT",
+   "step-by-step reasoning"
+  ],
+  "category": "AI fundamentals",
+  "technical": "A technique, and a model behavior, in which the model writes out intermediate reasoning steps before its final answer, which tends to improve accuracy on multi-step problems.",
+  "sales": "Having AI show its working. It improves answers and can make them easier to check, though the written steps are not a guaranteed record of how the model decided.",
+  "related": [
+   "Reasoning model",
+   "Prompt engineering",
+   "Explainability"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Change data capture (CDC)",
+  "aka": [
+   "CDC",
+   "log-based replication"
+  ],
+  "category": "Data management",
+  "technical": "A technique that detects inserts, updates and deletes in a source database, often by reading its transaction log, and streams only those changes to a target system.",
+  "sales": "A way to keep a copy of ERP or CRM data current without reloading everything each night. It shortens the lag between a posting in the GL and the number a planner sees.",
+  "related": [
+   "ETL and ELT",
+   "Openflow",
+   "Data sharing"
+  ],
+  "src": ""
+ },
+ {
+  "term": "ChatGPT",
+  "aka": [
+   "OpenAI ChatGPT",
+   "GPT",
+   "GPT models"
+  ],
+  "category": "AI fundamentals",
+  "technical": "OpenAI's conversational AI assistant, launched in November 2022 and built on OpenAI's GPT and reasoning model families, offered in consumer, business and enterprise editions.",
+  "sales": "The assistant that brought generative AI into the mainstream. Many finance staff already use it, which raises questions about what company data goes into it.",
+  "related": [
+   "Large language model (LLM)",
+   "Claude",
+   "Gemini",
+   "Generative AI"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Chunking",
+  "aka": [
+   "document chunking",
+   "text splitting"
+  ],
+  "category": "Agents and AI apps",
+  "technical": "Splitting documents into smaller passages before creating embeddings so retrieval can return the most relevant pieces within a model's context window.",
+  "sales": "Cutting long documents into bite-sized pieces so AI can find the right paragraph. Poor chunking is a common reason document AI misses answers.",
+  "related": [
+   "Retrieval-augmented generation (RAG)",
+   "Embeddings and vector database",
+   "Context window"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Citizen developer",
+  "aka": [
+   "business developer",
+   "power user"
+  ],
+  "category": "Cloud and software",
+  "technical": "A business user who builds applications or automations with low-code, no-code or AI tools, outside the central IT development team.",
+  "sales": "A finance analyst who builds their own tools. It unlocks speed, but without governance it can recreate spreadsheet risk in a new form.",
+  "related": [
+   "Low-code",
+   "No-code",
+   "Vibe coding",
+   "Technical debt"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Classification",
+  "aka": [
+   "classifier",
+   "categorization model"
+  ],
+  "category": "AI fundamentals",
+  "technical": "A supervised learning task that assigns inputs to predefined categories, such as approve or reject, or mapping a transaction to a GL account.",
+  "sales": "AI that sorts things into buckets. Mapping transactions to accounts or tagging expenses by category are common finance uses.",
+  "related": [
+   "Supervised learning",
+   "Regression",
+   "Machine learning (ML)"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Claude",
+  "aka": [
+   "Anthropic Claude",
+   "Claude Code"
+  ],
+  "category": "AI fundamentals",
+  "technical": "A family of large language models and AI assistant products made by Anthropic, available through a chat app, an API, cloud marketplaces and developer tools such as Claude Code. Anthropic also introduced the Model Context Protocol.",
+  "sales": "One of the leading general-purpose AI assistants. Finance teams increasingly connect it to business systems through MCP so it can work with governed data.",
+  "related": [
+   "Large language model (LLM)",
+   "Model Context Protocol (MCP)",
+   "ChatGPT",
+   "Gemini"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Closed model",
+  "aka": [
+   "proprietary model",
+   "hosted model"
+  ],
+  "category": "AI fundamentals",
+  "technical": "A model whose weights are not released and that is accessed only through the provider's API or applications.",
+  "sales": "An AI model you use as a service from its maker. It is often the most capable option, and the key questions are data handling and retention terms.",
+  "related": [
+   "Open-weight model",
+   "API",
+   "Foundation model"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Cloud computing",
+  "aka": [
+   "the cloud",
+   "public cloud"
+  ],
+  "category": "Cloud and software",
+  "technical": "On-demand delivery of computing resources, such as servers, storage, databases and software, over the internet with pay-as-you-go pricing from providers like AWS, Microsoft Azure and Google Cloud.",
+  "sales": "Renting computing power and software instead of owning hardware. Nearly every modern planning and data platform runs in the cloud.",
+  "related": [
+   "Software as a service (SaaS)",
+   "Infrastructure as a service (IaaS)",
+   "On-premises"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Column masking",
+  "aka": [
+   "column-level security",
+   "CLS",
+   "dynamic data masking"
+  ],
+  "category": "Data management",
+  "technical": "A policy that hides or obfuscates values in sensitive columns, such as salary, for users without permission while still returning the rest of the row.",
+  "sales": "Hiding sensitive fields like individual salaries from people who should not see them. It is important for workforce planning data, and data platforms enforce it when data is read.",
+  "related": [
+   "Row-level security",
+   "ABAC",
+   "Cell-level security"
+  ],
+  "src": "https://www.databricks.com/blog/abac-row-filtering-and-column-masking-policies-governed-tags-and-data-classification-are-now"
+ },
+ {
+  "term": "Compute and storage separation",
+  "aka": [
+   "decoupled storage and compute",
+   "separation of compute and storage"
+  ],
+  "category": "Data foundations",
+  "technical": "An architecture in which data sits in shared storage while processing runs on independently scaled compute clusters, so each can grow and be billed separately.",
+  "sales": "You pay for storage and for processing power separately, so you can scale up for the close and down afterward. It also means usage spikes can show up as surprise bills.",
+  "related": [
+   "Object storage",
+   "Lakehouse",
+   "Serverless",
+   "Query engine"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Computer use agent",
+  "aka": [
+   "desktop agent",
+   "browser agent",
+   "computer-using agent"
+  ],
+  "category": "Agents and AI apps",
+  "technical": "An AI agent that operates a computer's graphical interface, viewing the screen and controlling the mouse, keyboard or browser, to complete tasks in applications that lack an API.",
+  "sales": "AI that clicks through screens like a person would. Useful for legacy systems, but slower and more fragile than a proper integration or MCP connection.",
+  "related": [
+   "AI agent",
+   "Robotic process automation (RPA)",
+   "Tool calling",
+   "Model Context Protocol (MCP)"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Computer vision",
+  "aka": [
+   "CV",
+   "image recognition",
+   "OCR"
+  ],
+  "category": "AI fundamentals",
+  "technical": "The field of AI that enables systems to interpret images and video, including object detection, image classification and optical character recognition.",
+  "sales": "AI that reads images and documents. In finance it shows up in invoice capture and reading scanned statements.",
+  "related": [
+   "Multimodal model",
+   "Deep learning"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Context engineering",
+  "aka": [
+   "context curation",
+   "prompt context design"
+  ],
+  "category": "AI fundamentals",
+  "technical": "The practice of designing, curating and maintaining what information, tools, instructions and memory go into an AI model's context for each task, including retrieval, summarization and permission filtering.",
+  "sales": "The behind-the-scenes work that decides what the AI is shown before it answers. Snowflake and Databricks currently ship more automated context engineering than Vena, through usage-mined semantics and inferred ontologies.",
+  "related": [
+   "Context layer",
+   "Retrieval-augmented generation (RAG)",
+   "Semantic View Autopilot",
+   "Genie Ontology"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Context layer",
+  "aka": [
+   "data context layer",
+   "AI context layer",
+   "context engine"
+  ],
+  "category": "Agents and AI apps",
+  "technical": "The combined semantics, metadata, business definitions, rules, examples and memory that are assembled and supplied to an AI model so its answers reflect how a specific business works. a16z describes it as a superset of the traditional semantic layer.",
+  "sales": "Everything an AI assistant needs to know about the company to give a right answer, not just a plausible one. Every data platform now sells a version of this, so the real questions are what context it holds and who keeps it current.",
+  "related": [
+   "Semantic layer",
+   "Cumulative context",
+   "Context engineering",
+   "Vena Omega"
+  ],
+  "src": "https://a16z.com/your-data-agents-need-context/"
+ },
+ {
+  "term": "Context window",
+  "aka": [
+   "context length",
+   "context limit"
+  ],
+  "category": "AI fundamentals",
+  "technical": "The maximum amount of text, measured in tokens, that a model can consider at once, including instructions, conversation history, retrieved data and its own output.",
+  "sales": "How much the AI can keep in mind in one go. Bigger windows help, but you still cannot paste a whole general ledger in, which is why retrieval and semantic layers matter.",
+  "related": [
+   "Tokens and token pricing",
+   "Context engineering",
+   "Retrieval-augmented generation (RAG)"
+  ],
+  "src": ""
+ },
+ {
+  "term": "CSV",
+  "aka": [
+   "comma-separated values",
+   "flat file"
+  ],
+  "category": "Data foundations",
+  "technical": "A plain-text file format in which each line is a record and fields are separated by commas, with no built-in data types, hierarchy or validation.",
+  "sales": "The flat file every finance team knows from system exports. It is universal but fragile, since nothing stops a broken column or a stray comma from corrupting a load.",
+  "related": [
+   "JSON",
+   "ETL and ELT",
+   "Data quality"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Cumulative context",
+  "aka": [
+   "compounding context",
+   "institutional memory",
+   "planning memory"
+  ],
+  "category": "Agents and AI apps",
+  "technical": "Context that persists and grows across sessions, users and planning cycles, capturing items such as assumptions, overrides, approvals and decisions, rather than resetting with each conversation. Vena positions Vena Omega around this idea.",
+  "sales": "An AI that remembers why last quarter's forecast was overridden and who approved it, so it gets more useful every cycle. Vena has announced this through Vena Omega but not shipped it, and no competitor reviewed documents memory built from planning events.",
+  "related": [
+   "Vena Omega",
+   "Agent memory",
+   "Context layer",
+   "Variance analysis"
+  ],
+  "src": "https://www.venasolutions.com/newsroom/vena-to-acquire-morpheo-ai"
+ },
+ {
+  "term": "Dashboard",
+  "aka": [
+   "scorecard",
+   "report dashboard"
+  ],
+  "category": "Data management",
+  "technical": "A visual display of key metrics and charts, usually interactive and refreshed from underlying data, that summarizes performance at a glance.",
+  "sales": "A one-screen view of how the business is doing. The value depends entirely on whether the numbers behind it are governed and current.",
+  "related": [
+   "Business intelligence (BI)",
+   "KPI",
+   "Variance analysis"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Data catalog",
+  "aka": [
+   "metadata catalog",
+   "catalog"
+  ],
+  "category": "Data management",
+  "technical": "A metadata system that inventories data assets with descriptions, owners, classifications, glossary terms, lineage and access policies, such as Unity Catalog, Knowledge Catalog or SageMaker Catalog.",
+  "sales": "The searchable directory of what data exists, what it means and who may use it. Catalogs feed AI context, but they describe data rather than run a budget process.",
+  "related": [
+   "Business glossary",
+   "Data lineage",
+   "Unity Catalog",
+   "Knowledge Catalog"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Data contract",
+  "aka": [
+   "data agreement",
+   "data SLA"
+  ],
+  "category": "Data management",
+  "technical": "A formal agreement between a data producer and its consumers that specifies schema, meaning, quality expectations and change rules, often enforced automatically in pipelines.",
+  "sales": "A promise from the team that owns a data feed that its structure and meaning will not change without notice. It protects finance from upstream changes that silently break reports.",
+  "related": [
+   "Schema",
+   "Data product",
+   "Data quality",
+   "SLA"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Data fabric",
+  "aka": [
+   "enterprise data fabric"
+  ],
+  "category": "Data foundations",
+  "technical": "An architecture that uses metadata, integration and automation to give unified, governed access to data spread across many systems and clouds, often without moving it.",
+  "sales": "A layer that makes scattered data feel like one connected estate. It is an architecture goal, not a product you install, and it still needs business logic on top for planning.",
+  "related": [
+   "Data mesh",
+   "Data virtualization",
+   "Metadata",
+   "Data catalog"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Data federation",
+  "aka": [
+   "federated query",
+   "query federation"
+  ],
+  "category": "Data management",
+  "technical": "Running a single query across multiple independent databases or storage systems and combining the results, so each source keeps its own data.",
+  "sales": "Asking one question that pulls answers from several systems at once. Convenient for analysis, but slower and harder to govern than a curated planning model.",
+  "related": [
+   "Data virtualization",
+   "Query engine",
+   "Zero-copy"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Data governance",
+  "aka": [
+   "governance",
+   "data policy"
+  ],
+  "category": "Data management",
+  "technical": "The policies, roles, standards and controls that determine how data is defined, accessed, protected, quality-checked and used across an organization.",
+  "sales": "The rules for who owns which data, who can see or change it and how it is kept accurate. Finance leaders care because governed data is what auditors and the board can trust.",
+  "related": [
+   "Data quality",
+   "Data catalog",
+   "RBAC",
+   "AI governance"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Data hub",
+  "aka": [
+   "integration hub",
+   "hub and spoke"
+  ],
+  "category": "Data foundations",
+  "technical": "A central architecture where data from many sources is collected, harmonized and distributed to consuming systems through one point, rather than through point-to-point connections.",
+  "sales": "One central exchange point so each system connects once instead of to every other system. It cuts the integration spaghetti that slows down month-end and planning cycles.",
+  "related": [
+   "Data integration",
+   "Master data management (MDM)",
+   "Data fabric"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Data integration",
+  "aka": [
+   "integration",
+   "system integration"
+  ],
+  "category": "Data management",
+  "technical": "The practice of combining data from different sources into a consistent, usable view through pipelines, APIs, replication or virtualization.",
+  "sales": "Getting ERP, payroll, CRM and spreadsheet data to line up in one place. Integration effort is often the largest hidden cost in a build vs buy comparison.",
+  "related": [
+   "ETL and ELT",
+   "iPaaS",
+   "API",
+   "Data virtualization"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Data lake",
+  "aka": [
+   "raw data zone"
+  ],
+  "category": "Data foundations",
+  "technical": "A low-cost storage repository, usually cloud object storage, that holds raw structured and unstructured files in open formats such as Parquet without imposing a schema up front.",
+  "sales": "A large, inexpensive storage pool where data from every system lands before it is cleaned up. It is a source of actuals for planning, not a place where budgets are entered or approved.",
+  "related": [
+   "Data warehouse",
+   "Lakehouse",
+   "Parquet"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Data lineage",
+  "aka": [
+   "lineage"
+  ],
+  "category": "Data management",
+  "technical": "Metadata that traces how data flows from sources through transformations to tables, reports, models and AI outputs, usually captured automatically by the catalog down to column level.",
+  "sales": "The ability to show where a number came from and what touched it along the way. It helps with audit questions, but it tracks data pipelines, not who changed a plan and why.",
+  "related": [
+   "Audit trail",
+   "Data catalog",
+   "Unity Catalog"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Data mart",
+  "aka": [
+   "departmental data mart",
+   "finance data mart"
+  ],
+  "category": "Data foundations",
+  "technical": "A subset of a data warehouse modeled for one business area or team, such as finance or sales, often as a star schema.",
+  "sales": "A slice of the warehouse built for one department. Many companies already have a finance data mart that can feed actuals into a planning tool.",
+  "related": [
+   "Data warehouse",
+   "Star schema",
+   "Data product"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Data mesh",
+  "aka": [
+   "domain-oriented data ownership"
+  ],
+  "category": "Data foundations",
+  "technical": "An organizational approach in which business domains own and publish their data as governed products on shared self-service platform standards, instead of one central data team owning everything.",
+  "sales": "A way of organizing data so finance, sales and operations each own their own data sets. In a mesh, finance usually owns planning data, which favors tools finance can run without engineers.",
+  "related": [
+   "Data product",
+   "Data catalog"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Data model",
+  "aka": [
+   "logical data model",
+   "conceptual model"
+  ],
+  "category": "Data foundations",
+  "technical": "A representation of the entities, attributes and relationships in a domain, expressed at conceptual, logical or physical levels, that guides how data is stored and joined.",
+  "sales": "The map of how business things relate, such as accounts, departments and products. In planning, the data model decides which questions you can answer and how quickly you can add a new driver or entity.",
+  "related": [
+   "Schema",
+   "Star schema",
+   "Dimension",
+   "OLAP cube"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Data observability",
+  "aka": [
+   "data monitoring",
+   "pipeline observability"
+  ],
+  "category": "Data management",
+  "technical": "Automated monitoring of data health across pipelines, tracking freshness, volume, schema changes, distribution shifts and lineage to detect issues before users do.",
+  "sales": "An alarm system that flags when a data feed is late, missing rows or suddenly looks wrong. It helps catch a broken actuals load before it reaches a variance report.",
+  "related": [
+   "Data quality",
+   "Data pipeline",
+   "Data lineage",
+   "Anomaly detection"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Data pipeline",
+  "aka": [
+   "pipeline",
+   "data flow"
+  ],
+  "category": "Data management",
+  "technical": "An automated series of steps that moves data from sources to destinations, extracting, transforming, validating and loading it on a schedule or in real time.",
+  "sales": "The plumbing that carries actuals from the ERP into reports and plans. In a build scenario, every pipeline is something the customer owns, monitors and fixes when it breaks.",
+  "related": [
+   "ETL and ELT",
+   "Batch vs streaming",
+   "Apache Airflow",
+   "Data observability"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Data product",
+  "aka": [
+   "curated data set",
+   "certified data set"
+  ],
+  "category": "Data management",
+  "technical": "A curated, documented and governed data set with a named owner, quality checks and access rules, published for reuse by people, applications or agents. SAP Business Data Cloud and Google Knowledge Catalog use the term heavily.",
+  "sales": "A packaged, trusted data set, such as approved actuals by entity, that others can reuse. SAP and Google pitch data products as the raw material for their AI agents.",
+  "related": [
+   "Data mesh",
+   "SAP Business Data Cloud",
+   "Knowledge Catalog"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Data quality",
+  "aka": [
+   "data cleansing",
+   "data validation",
+   "DQ"
+  ],
+  "category": "Data management",
+  "technical": "The degree to which data is accurate, complete, consistent, timely and valid for its intended use, and the processes that measure and fix it.",
+  "sales": "Whether the numbers can be trusted. Poor data quality is a top reason forecasts slip, and AI makes it worse because it can turn bad inputs into confident outputs.",
+  "related": [
+   "Data observability",
+   "Data governance",
+   "Master data management (MDM)",
+   "Hallucination"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Data replication",
+  "aka": [
+   "replication",
+   "database replication"
+  ],
+  "category": "Data management",
+  "technical": "Copying data from one system to another and keeping the copies in sync, either continuously or on a schedule, for availability, performance or analytics.",
+  "sales": "Keeping a copy of data in another place so it can be analyzed or survive an outage. Copies need to be kept in sync, which is where reconciliation issues creep in.",
+  "related": [
+   "Change data capture (CDC)",
+   "Data pipeline",
+   "Zero-copy"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Data residency",
+  "aka": [
+   "data sovereignty",
+   "data localization"
+  ],
+  "category": "Data management",
+  "technical": "Requirements, set by law, contract or policy, that data be stored and processed within a specific country or region.",
+  "sales": "Rules about which country your data must live in. Buyers in Canada, Europe and regulated industries often ask where the vendor and its AI providers process data.",
+  "related": [
+   "GDPR",
+   "Encryption",
+   "Software as a service (SaaS)"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Data sharing",
+  "aka": [
+   "secure data sharing",
+   "live data sharing"
+  ],
+  "category": "Data management",
+  "technical": "Platform features that give another account, organization or tool live, governed read access to tables without exporting files, for example OpenSharing (formerly Delta Sharing), Snowflake sharing or SAP BDC Connect.",
+  "sales": "Letting another team or vendor see a live table instead of emailing extracts. Most planning vendors still use sharing only to import actuals one way, so ask how approved plans flow back.",
+  "related": [
+   "Zero-copy",
+   "OpenSharing",
+   "Data product"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Data store",
+  "aka": [
+   "data repository",
+   "storage system"
+  ],
+  "category": "Data foundations",
+  "technical": "Any system that persists data for later use, including databases, data warehouses, data lakes, object storage and even file shares or spreadsheets.",
+  "sales": "The umbrella term for anywhere data lives. In a planning discussion it helps to list every data store feeding the forecast, because each one is a potential reconciliation point.",
+  "related": [
+   "Database",
+   "Data warehouse",
+   "Data lake",
+   "Object storage"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Data virtualization",
+  "aka": [
+   "virtual data layer",
+   "logical data warehouse"
+  ],
+  "category": "Data management",
+  "technical": "An approach that presents data from multiple sources through one virtual layer that queries the sources at request time, without physically copying the data.",
+  "sales": "Seeing data from many systems in one view without moving it. It avoids copies, but performance and availability depend on every source system being up and fast.",
+  "related": [
+   "Data federation",
+   "Zero-copy",
+   "Data fabric"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Data warehouse",
+  "aka": [
+   "DW",
+   "EDW",
+   "cloud data warehouse"
+  ],
+  "category": "Data foundations",
+  "technical": "A database optimized for analytical SQL over cleaned, structured data, typically organized in star schemas and kept separate from the transactional systems that produce the data.",
+  "sales": "The governed, cleaned-up copy of company data that reporting runs on. When a prospect says their actuals already live there, that is a reason to connect planning to it, not a reason to build planning inside it.",
+  "related": [
+   "Data lake",
+   "Lakehouse",
+   "Star schema",
+   "OLTP vs OLAP"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Database",
+  "aka": [
+   "DB",
+   "DBMS",
+   "database management system"
+  ],
+  "category": "Data foundations",
+  "technical": "An organized collection of data managed by software (a DBMS) that handles storage, querying, concurrent access, security and recovery.",
+  "sales": "The engine behind almost every business application, from the ERP to the CRM. A spreadsheet stores numbers, but a database adds control over who changed what and lets many people work at once.",
+  "related": [
+   "Relational database",
+   "NoSQL database",
+   "SQL",
+   "OLTP vs OLAP"
+  ],
+  "src": ""
+ },
+ {
+  "term": "dbt",
+  "aka": [
+   "data build tool",
+   "dbt Core",
+   "analytics engineering"
+  ],
+  "category": "Data management",
+  "technical": "A transformation tool that lets analysts define data models as version-controlled SQL with tests and documentation, which it compiles and runs inside the warehouse.",
+  "sales": "A popular way for data teams to turn raw tables into clean, documented reporting tables using SQL. It handles reporting logic well, but not plan inputs, workflow or approvals.",
+  "related": [
+   "SQL",
+   "ETL and ELT",
+   "Metrics layer",
+   "Data warehouse"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Deep learning",
+  "aka": [
+   "DL",
+   "deep neural networks"
+  ],
+  "category": "AI fundamentals",
+  "technical": "A subset of machine learning that uses neural networks with many layers to learn complex patterns from large data sets, powering modern vision, speech and language models.",
+  "sales": "The technique behind today's breakthroughs in AI. It needs lots of data and computing power, which is why most companies use models built by others.",
+  "related": [
+   "Neural network",
+   "Machine learning (ML)",
+   "Transformer"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Delta Lake",
+  "aka": [
+   "Delta tables",
+   "Delta format"
+  ],
+  "category": "Data foundations",
+  "technical": "An open-source table format, originated by Databricks, that adds a transaction log over Parquet files to provide ACID transactions, schema enforcement and table history.",
+  "sales": "The file format most Databricks and Microsoft Fabric data is stored in. If a prospect's finance data sits in Delta tables, it is already in an open format that other tools can read and share.",
+  "related": [
+   "Lakehouse",
+   "Apache Iceberg",
+   "Parquet",
+   "OpenSharing"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Deterministic vs probabilistic",
+  "aka": [
+   "deterministic",
+   "probabilistic",
+   "non-deterministic"
+  ],
+  "category": "AI fundamentals",
+  "technical": "A deterministic system always gives the same output for the same input, as calculation engines do, while a probabilistic system such as a language model samples outputs that can vary between runs.",
+  "sales": "A planning calculation should give the same answer every time, while AI may phrase or even reason differently on each run. The safe design uses AI to assist and deterministic engines to calculate the numbers.",
+  "related": [
+   "Temperature",
+   "Hallucination",
+   "Explainability",
+   "OLAP cube"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Dimension",
+  "aka": [
+   "attribute",
+   "hierarchy"
+  ],
+  "category": "Data foundations",
+  "technical": "An attribute used to slice and group data, such as account, entity, department, product, time, scenario or version, often organized into hierarchies with rollup rules.",
+  "sales": "The ways finance cuts the numbers, such as by entity, department or month. Planning models add dimensions that reporting models usually lack, like version and scenario.",
+  "related": [
+   "Measure",
+   "OLAP cube",
+   "Star schema",
+   "Versions"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Distillation",
+  "aka": [
+   "knowledge distillation",
+   "model distillation"
+  ],
+  "category": "AI fundamentals",
+  "technical": "Training a smaller student model to reproduce the behavior of a larger teacher model, keeping much of its capability at lower cost and latency.",
+  "sales": "Shrinking a big AI model into a smaller, cheaper one. It is one reason AI costs keep falling.",
+  "related": [
+   "Small language model (SLM)",
+   "Quantization",
+   "Training"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Document database",
+  "aka": [
+   "document store",
+   "document-oriented database"
+  ],
+  "category": "Data foundations",
+  "technical": "A NoSQL database that stores each record as a self-contained document, usually JSON, so records can have different fields without a fixed schema. MongoDB and Couchbase are examples.",
+  "sales": "Good for app data that changes shape often, such as customer profiles or product catalogs. Finance usually meets it only as a source that has to be flattened before it can feed a plan.",
+  "related": [
+   "NoSQL database",
+   "JSON",
+   "Schema-on-read vs schema-on-write"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Embeddings and vector database",
+  "aka": [
+   "embeddings",
+   "vector database",
+   "vector search",
+   "AI Search",
+   "pgvector"
+  ],
+  "category": "Agents and AI apps",
+  "technical": "Embeddings are numeric vectors that represent the meaning of text or other content, and a vector database indexes them for similarity search. Examples include Databricks AI Search (formerly Vector Search) and pgvector in Postgres.",
+  "sales": "A way to search by meaning instead of exact words, mostly used for documents and policies. It helps AI find relevant commentary or policy text, but it is not how plan numbers should be calculated.",
+  "related": [
+   "Retrieval-augmented generation (RAG)",
+   "Cortex Search",
+   "Grounding"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Encryption",
+  "aka": [
+   "encryption at rest",
+   "encryption in transit",
+   "TLS",
+   "AES-256"
+  ],
+  "category": "Data management",
+  "technical": "Encoding data so only holders of the correct key can read it, applied to stored data (at rest, commonly AES-256) and to data moving across networks (in transit, commonly TLS).",
+  "sales": "Scrambling data so it is unreadable if intercepted or stolen. Security reviews will ask how a vendor encrypts data and who controls the keys.",
+  "related": [
+   "SOC 2",
+   "Data residency",
+   "PII"
+  ],
+  "src": ""
+ },
+ {
+  "term": "ETL and ELT",
+  "aka": [
+   "ETL",
+   "ELT",
+   "extract transform load"
+  ],
+  "category": "Data management",
+  "technical": "Extract, transform, load moves data out of source systems, reshapes it and then loads it into a target, while extract, load, transform loads raw data first and transforms it inside the warehouse with SQL.",
+  "sales": "The pipelines that move actuals from the ERP, CRM and HR systems into a data platform or a planning tool. Every build option has to fund building and maintaining these pipelines over time.",
+  "related": [
+   "Change data capture (CDC)",
+   "Zero-copy",
+   "Lakeflow",
+   "Openflow"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Evaluations and benchmarks",
+  "aka": [
+   "evals",
+   "benchmarks",
+   "LLM judges",
+   "accuracy testing"
+  ],
+  "category": "Agents and AI apps",
+  "technical": "Systematic tests that score AI outputs against expected answers or rubrics, using question sets, LLM judges or code checks, both before release and on sampled production traffic, as with MLflow scorers or Genie benchmarks.",
+  "sales": "How a team proves the AI gives right answers before trusting it. Vendor accuracy figures come from their own small tests, such as Databricks' 84.5% on 28 questions, so ask for results on the buyer's own finance questions.",
+  "related": [
+   "MLflow",
+   "Hallucination",
+   "Text-to-SQL"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Explainability",
+  "aka": [
+   "XAI",
+   "explainable AI",
+   "interpretability"
+  ],
+  "category": "AI fundamentals",
+  "technical": "The ability to describe how and why a model produced an output, through feature importance, reasoning traces, citations or transparent logic.",
+  "sales": "Being able to explain how the AI got its answer. Finance needs this because auditors and executives will ask why the number is what it is.",
+  "related": [
+   "Grounding",
+   "Audit trail",
+   "Responsible AI",
+   "Deterministic vs probabilistic"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Fact table",
+  "aka": [
+   "facts table"
+  ],
+  "category": "Data foundations",
+  "technical": "The central table in a dimensional model that holds numeric measures, such as amounts or quantities, at a defined grain, with keys pointing to dimension tables.",
+  "sales": "The table where the numbers live, like every GL transaction or every plan value. Dimensions describe the numbers and the fact table holds them.",
+  "related": [
+   "Star schema",
+   "Measure",
+   "Dimension",
+   "Granularity"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Feature store",
+  "aka": [
+   "feature platform"
+  ],
+  "category": "Agents and AI apps",
+  "technical": "A system that stores, versions and serves curated input variables (features) for machine learning so training and production use the same definitions.",
+  "sales": "A shared library of prepared model inputs, like trailing 90-day sales. It keeps data science teams consistent, but it is infrastructure to build and run.",
+  "related": [
+   "MLOps",
+   "Machine learning (ML)",
+   "Data product"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Fine-tuning",
+  "aka": [
+   "model tuning",
+   "custom model training"
+  ],
+  "category": "AI fundamentals",
+  "technical": "Further training a pre-trained model on a smaller, task-specific data set to change its behavior or style, which is different from supplying context at question time through retrieval or a semantic layer.",
+  "sales": "Teaching an AI model with extra examples so it behaves a certain way. The products in these deals mostly rely on supplying context instead, since charts of accounts and plans change every cycle and a tuned model would go stale.",
+  "related": [
+   "Large language model (LLM)",
+   "Context layer",
+   "Retrieval-augmented generation (RAG)"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Forecast accuracy",
+  "aka": [
+   "MAPE",
+   "forecast error",
+   "bias and accuracy"
+  ],
+  "category": "AI fundamentals",
+  "technical": "The measured difference between forecast and actual results, commonly expressed as mean absolute percentage error (MAPE), weighted MAPE or forecast bias.",
+  "sales": "How close the forecast came to what actually happened. Tracking it by line item shows whether an ML baseline or the planners' judgment is adding value.",
+  "related": [
+   "Time series forecasting",
+   "Variance analysis",
+   "Rolling forecast",
+   "Model drift"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Foundation model",
+  "aka": [
+   "base model",
+   "general-purpose model"
+  ],
+  "category": "AI fundamentals",
+  "technical": "A large model pre-trained on broad data that can be adapted to many tasks through prompting, retrieval or fine-tuning. Large language models are the best-known type.",
+  "sales": "A general-purpose AI model that many products build on. Most software vendors build on foundation models from a few large labs rather than training their own.",
+  "related": [
+   "Large language model (LLM)",
+   "Pre-training",
+   "Fine-tuning"
+  ],
+  "src": ""
+ },
+ {
+  "term": "GDPR",
+  "aka": [
+   "General Data Protection Regulation",
+   "EU GDPR"
+  ],
+  "category": "Data management",
+  "technical": "The European Union regulation, in force since May 2018, governing how personal data of people in the EU is collected, processed, stored and transferred, with fines of up to 4 percent of global annual turnover.",
+  "sales": "Europe's privacy law, which applies to any company handling data about people in the EU. It shapes where data can be stored and what an AI tool is allowed to do with employee data.",
+  "related": [
+   "PII",
+   "Data residency",
+   "Data governance"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Gemini",
+  "aka": [
+   "Google Gemini",
+   "Bard"
+  ],
+  "category": "AI fundamentals",
+  "technical": "Google's family of multimodal AI models and the assistant app of the same name, which replaced Bard, also built into Google Workspace and Google Cloud.",
+  "sales": "Google's AI assistant and models. Companies on Google Workspace often meet it first inside Docs, Sheets and Gmail.",
+  "related": [
+   "Large language model (LLM)",
+   "Claude",
+   "ChatGPT",
+   "Multimodal model"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Generative AI",
+  "aka": [
+   "GenAI",
+   "gen AI"
+  ],
+  "category": "AI fundamentals",
+  "technical": "AI that creates new content, such as text, images, code or audio, by learning patterns from training data and producing statistically likely outputs.",
+  "sales": "AI that writes, summarizes and creates rather than only classifies. In finance it can draft variance commentary and board narratives, but the numbers underneath must come from a governed model.",
+  "related": [
+   "Large language model (LLM)",
+   "Foundation model",
+   "Hallucination"
+  ],
+  "src": ""
+ },
+ {
+  "term": "GPU",
+  "aka": [
+   "graphics processing unit",
+   "AI accelerator",
+   "TPU"
+  ],
+  "category": "AI fundamentals",
+  "technical": "A processor with thousands of parallel cores, originally for graphics, that is the main hardware for training and running AI models. TPUs and other accelerators serve the same role.",
+  "sales": "The specialized chips that power AI. GPU scarcity and cost are why AI usage is often priced by consumption.",
+  "related": [
+   "Inference",
+   "Training",
+   "Tokens and token pricing"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Granularity",
+  "aka": [
+   "grain",
+   "level of detail"
+  ],
+  "category": "Data foundations",
+  "technical": "The level of detail at which data is stored, such as daily transactions by SKU versus monthly totals by product line, which determines what can be analyzed without re-sourcing data.",
+  "sales": "How detailed the numbers are. Planning usually happens at a coarser grain than actuals, so mapping detail up to plan level is a core design decision.",
+  "related": [
+   "Fact table",
+   "Dimension",
+   "Driver-based planning"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Graph database",
+  "aka": [
+   "graph DB",
+   "property graph"
+  ],
+  "category": "Data foundations",
+  "technical": "A database that stores entities as nodes and relationships as edges so connected data can be traversed efficiently. Neo4j and Amazon Neptune are examples.",
+  "sales": "A database designed around relationships, such as which entities own which subsidiaries or which suppliers feed which products. It often powers knowledge graphs used to give AI business context.",
+  "related": [
+   "Knowledge graph",
+   "Ontology",
+   "NoSQL database"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Grounding",
+  "aka": [
+   "grounded answers",
+   "citations"
+  ],
+  "category": "Agents and AI apps",
+  "technical": "Constraining an AI model's response to specific, retrievable sources such as governed tables, semantic definitions or documents, often with citations, so outputs can be traced back to data.",
+  "sales": "Making the AI answer from the company's actual numbers and show its sources. In finance, grounding in governed planning data is what makes an answer usable in a review meeting.",
+  "related": [
+   "Retrieval-augmented generation (RAG)",
+   "Hallucination",
+   "Semantic layer"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Guardrails",
+  "aka": [
+   "AI policy",
+   "prompt injection defense"
+  ],
+  "category": "Agents and AI apps",
+  "technical": "Controls that limit what an AI system can see, say or do, such as permission inheritance, content filters, prompt-injection defenses, spending limits and policies that block actions above a threshold. AgentCore Policy is one example.",
+  "sales": "Safety rails that stop an AI from showing the wrong data or making a change it should not. For plan updates, the strongest guardrail is routing AI changes through the same approvals and audit trail people use.",
+  "related": [
+   "AI gateway",
+   "Workflow and approvals",
+   "Amazon Bedrock AgentCore",
+   "Audit trail"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Hallucination",
+  "aka": [
+   "confabulation",
+   "made-up answer"
+  ],
+  "category": "Agents and AI apps",
+  "technical": "Output from a language model that is fluent but factually wrong or unsupported by its sources, such as an invented number, field name or policy.",
+  "sales": "When an AI confidently states something untrue. BARC puts the finance stakes well, noting that finance teams need explainable recommendations tied to planning logic and governed data, not confident guesses.",
+  "related": [
+   "Grounding",
+   "Evaluations and benchmarks",
+   "Retrieval-augmented generation (RAG)"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Human in the loop",
+  "aka": [
+   "HITL",
+   "human approval",
+   "human review"
+  ],
+  "category": "Agents and AI apps",
+  "technical": "A design in which a person reviews, approves or corrects AI outputs or actions at defined checkpoints before they take effect.",
+  "sales": "A person signs off before the AI changes anything that matters. In planning, it means AI can propose a forecast change but a planner approves it through workflow.",
+  "related": [
+   "Guardrails",
+   "Workflow and approvals",
+   "Autonomous agent",
+   "AI governance"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Indexing",
+  "aka": [
+   "index",
+   "database index"
+  ],
+  "category": "Data foundations",
+  "technical": "A data structure that speeds up lookups on chosen columns by letting the database find matching rows without scanning the whole table, at the cost of extra storage and slower writes.",
+  "sales": "Like the index at the back of a book. Good indexing is one reason a report returns in seconds instead of minutes.",
+  "related": [
+   "Partitioning",
+   "Database",
+   "Query engine"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Inference",
+  "aka": [
+   "model inference",
+   "serving"
+  ],
+  "category": "AI fundamentals",
+  "technical": "Running a trained model on new input to produce an output, such as a prediction or generated text. This is the stage users pay for per request or per token.",
+  "sales": "The moment the AI actually answers a question. Inference costs grow with usage, which matters when budgeting for AI across many users.",
+  "related": [
+   "Training",
+   "Tokens and token pricing",
+   "Latency",
+   "GPU"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Infrastructure as a service (IaaS)",
+  "aka": [
+   "IaaS",
+   "cloud infrastructure"
+  ],
+  "category": "Cloud and software",
+  "technical": "A cloud service that rents raw computing resources, such as virtual machines, storage and networking, which the customer configures and manages.",
+  "sales": "Renting servers in the cloud. It is the most flexible option and also the one where the customer does the most work.",
+  "related": [
+   "Platform as a service (PaaS)",
+   "Cloud computing",
+   "On-premises"
+  ],
+  "src": ""
+ },
+ {
+  "term": "iPaaS",
+  "aka": [
+   "integration platform as a service",
+   "integration platform"
+  ],
+  "category": "Data management",
+  "technical": "A cloud service for building and running integrations between applications and data sources using prebuilt connectors, mapping tools and workflow automation.",
+  "sales": "A subscription tool for connecting business apps without custom code for each link. It is often the fastest way to connect an ERP, HRIS and CRM to a planning platform.",
+  "related": [
+   "Data integration",
+   "API",
+   "Platform as a service (PaaS)",
+   "Low-code"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Jailbreak",
+  "aka": [
+   "jailbreaking",
+   "safety bypass"
+  ],
+  "category": "Agents and AI apps",
+  "technical": "A prompt technique that attempts to get a model to bypass its safety policies or built-in restrictions, usually by a user interacting with it directly.",
+  "sales": "Trying to talk an AI out of its rules. Vendors defend against it, but real protection for financial data comes from permissions outside the model.",
+  "related": [
+   "Prompt injection",
+   "Guardrails",
+   "AI safety"
+  ],
+  "src": ""
+ },
+ {
+  "term": "JSON",
+  "aka": [
+   "JavaScript Object Notation"
+  ],
+  "category": "Data foundations",
+  "technical": "A lightweight text format that represents data as nested key and value pairs and arrays. It is the default format for web APIs and many AI structured outputs.",
+  "sales": "The common language that apps and APIs use to pass data back and forth. Rarely seen by finance users, but it is how most systems talk to each other behind the scenes.",
+  "related": [
+   "API",
+   "CSV",
+   "Structured output",
+   "Document database"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Key-value store",
+  "aka": [
+   "key-value database",
+   "KV store"
+  ],
+  "category": "Data foundations",
+  "technical": "A NoSQL database that stores each value under a unique key and retrieves it by that key, optimized for very fast simple lookups. Redis and DynamoDB are examples.",
+  "sales": "A very fast lookup table used behind the scenes in apps, often for caching. It matters to finance only as part of the technical stack a build option would need to run.",
+  "related": [
+   "NoSQL database",
+   "Latency"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Knowledge cutoff",
+  "aka": [
+   "training cutoff",
+   "training data cutoff"
+  ],
+  "category": "AI fundamentals",
+  "technical": "The date after which a model has no information from its training data, so it cannot know later events unless given them at query time.",
+  "sales": "AI models do not know anything after a certain date. For current numbers, the AI must be connected to live, governed data.",
+  "related": [
+   "Pre-training",
+   "Grounding",
+   "Retrieval-augmented generation (RAG)"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Knowledge graph",
+  "aka": [
+   "graph",
+   "semantic graph"
+  ],
+  "category": "Data foundations",
+  "technical": "A graph data structure of entities as nodes and relationships as edges, with attached metadata, that supports traversal queries and gives AI structured context. SAP Knowledge Graph and BigQuery Graph are examples.",
+  "sales": "A connected web of business facts, like which entities roll up to which region and which contracts drive which revenue. SAP now positions its Knowledge Graph as the foundation for its AI agents.",
+  "related": [
+   "Ontology",
+   "SAP Knowledge Graph",
+   "Context layer"
+  ],
+  "src": ""
+ },
+ {
+  "term": "KPI",
+  "aka": [
+   "key performance indicator",
+   "key metric"
+  ],
+  "category": "Data management",
+  "technical": "A measure selected to track progress toward a strategic or operational goal, usually with a defined formula, target, owner and frequency.",
+  "sales": "The handful of numbers leadership actually watches, like gross margin or ARR. A key planning question is whether KPIs are defined once and used the same way everywhere.",
+  "related": [
+   "Measure",
+   "Metrics layer",
+   "Dashboard",
+   "Driver-based planning"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Lakehouse",
+  "aka": [
+   "data lakehouse"
+  ],
+  "category": "Data foundations",
+  "technical": "An architecture that adds warehouse features such as ACID transactions, schemas and governance on top of data lake storage, using open table formats like Delta Lake or Apache Iceberg.",
+  "sales": "The modern blend of a data lake and a warehouse, popularized by Databricks and now offered by most platforms. It is a strong foundation for data, but budgets, approvals and versions still have to come from a planning application on top.",
+  "related": [
+   "Data lake",
+   "Data warehouse",
+   "Delta Lake",
+   "Apache Iceberg"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Large language model (LLM)",
+  "aka": [
+   "LLM"
+  ],
+  "category": "AI fundamentals",
+  "technical": "A neural network trained on very large text collections to predict tokens, which can follow instructions, summarize, reason and generate code or SQL. Examples include OpenAI GPT, Anthropic Claude and Google Gemini models.",
+  "sales": "The general-purpose AI engine behind chat assistants. On its own it knows nothing about a company's chart of accounts, which is why context and semantics matter so much.",
+  "related": [
+   "Tokens and token pricing",
+   "Fine-tuning",
+   "Grounding"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Latency",
+  "aka": [
+   "response time",
+   "lag"
+  ],
+  "category": "Cloud and software",
+  "technical": "The delay between a request and its response, or between an event and when its data becomes available, usually measured in milliseconds or seconds.",
+  "sales": "How long you wait for an answer. For planners, it is the difference between a what-if that recalculates instantly and one that takes minutes.",
+  "related": [
+   "Throughput",
+   "Batch vs streaming",
+   "SLA"
+  ],
+  "src": ""
+ },
+ {
+  "term": "LLM application framework",
+  "aka": [
+   "LLM framework",
+   "LangChain",
+   "LlamaIndex",
+   "AI framework"
+  ],
+  "category": "Agents and AI apps",
+  "technical": "Open-source developer libraries, such as LangChain and LlamaIndex, that provide building blocks for language model apps, including prompt templates, retrieval, tool integration, memory and agent loops.",
+  "sales": "Developer toolkits for building custom AI apps. They speed up a build, but the customer still owns the code, testing, security and maintenance.",
+  "related": [
+   "Agent harness",
+   "Retrieval-augmented generation (RAG)",
+   "SDK",
+   "Build vs buy"
+  ],
+  "src": ""
+ },
+ {
+  "term": "LLMOps",
+  "aka": [
+   "GenAIOps",
+   "AgentOps"
+  ],
+  "category": "Agents and AI apps",
+  "technical": "Operational practices for language model applications, including prompt and version management, evaluation, cost and latency monitoring, tracing and safety controls.",
+  "sales": "Keeping AI assistants and agents reliable, safe and affordable after launch. It is a new discipline most finance teams would rather buy than staff.",
+  "related": [
+   "MLOps",
+   "Evaluations and benchmarks",
+   "AI gateway",
+   "Guardrails"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Low-code",
+  "aka": [
+   "low-code platform",
+   "LCAP"
+  ],
+  "category": "Cloud and software",
+  "technical": "A development approach that uses visual designers, prebuilt components and limited scripting to build applications faster than traditional coding.",
+  "sales": "Building apps mostly by dragging and configuring rather than writing code. It speeds delivery, but complex finance logic often still needs real developers.",
+  "related": [
+   "No-code",
+   "Citizen developer",
+   "Build vs buy",
+   "Technical debt"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Machine learning (ML)",
+  "aka": [
+   "ML",
+   "statistical learning"
+  ],
+  "category": "AI fundamentals",
+  "technical": "A branch of AI in which systems learn patterns from data to make predictions or decisions, rather than being explicitly programmed with rules.",
+  "sales": "Software that learns from history to predict what comes next. ML forecasting can add a useful baseline next to a driver-based plan.",
+  "related": [
+   "Supervised learning",
+   "Time series forecasting",
+   "Deep learning",
+   "Training"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Master data management (MDM)",
+  "aka": [
+   "MDM",
+   "golden record"
+  ],
+  "category": "Data management",
+  "technical": "The discipline and tooling for creating and maintaining a single authoritative version of core shared entities, such as customers, products, accounts and cost centers, across systems.",
+  "sales": "Making sure every system agrees on the chart of accounts, entity list and cost centers. Without it, the forecast spends half the cycle reconciling mismatched codes.",
+  "related": [
+   "Data governance",
+   "Dimension",
+   "Data hub",
+   "Data quality"
+  ],
+  "src": ""
+ },
+ {
+  "term": "MCP client",
+  "aka": [
+   "MCP host",
+   "MCP-enabled app"
+  ],
+  "category": "Agents and AI apps",
+  "technical": "An application, such as an AI assistant or IDE, that connects to MCP servers to discover and call their tools, read resources and use prompts on the model's behalf.",
+  "sales": "The AI app that plugs into MCP connectors. Any MCP client, such as a desktop assistant, can then use a vendor's MCP server to reach governed data.",
+  "related": [
+   "Model Context Protocol (MCP)",
+   "MCP server",
+   "Tool calling"
+  ],
+  "src": ""
+ },
+ {
+  "term": "MCP server",
+  "aka": [
+   "managed MCP server",
+   "remote MCP server"
+  ],
+  "category": "Agents and AI apps",
+  "technical": "A service that exposes a system's capabilities as MCP tools and resources and handles authentication and permissions, so external AI clients can query or act on that system. Servers can be vendor-managed remote endpoints or self-hosted.",
+  "sales": "The specific connector a vendor publishes so AI assistants can reach its data. Check the tool list, since many are read-only, including Microsoft's Fabric IQ MCP server, and Vena's developer docs currently list read tools only.",
+  "related": [
+   "Model Context Protocol (MCP)",
+   "Vena MCP server",
+   "MCP Toolbox for Databases"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Measure",
+  "aka": [
+   "metric",
+   "fact"
+  ],
+  "category": "Data foundations",
+  "technical": "A numeric value or aggregation defined over facts, such as revenue, headcount or margin percent, calculated by summing or applying a formula across the selected dimension members.",
+  "sales": "The actual number being reported or planned, like revenue or headcount. Defining each measure once, in one place, is the main promise of a semantic layer.",
+  "related": [
+   "Dimension",
+   "Metrics layer",
+   "Semantic layer"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Medallion architecture",
+  "aka": [
+   "bronze silver gold",
+   "multi-hop architecture"
+  ],
+  "category": "Data foundations",
+  "technical": "A lakehouse design pattern that refines data in layers, with raw data in bronze, cleaned and conformed data in silver and business-ready aggregates in gold.",
+  "sales": "Raw data gets cleaned in stages until it is ready for reporting. Planning tools typically connect to the gold layer, so the question is who builds and maintains that layer.",
+  "related": [
+   "Lakehouse",
+   "Data pipeline",
+   "Data quality"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Metadata",
+  "aka": [
+   "data about data",
+   "technical metadata",
+   "business metadata"
+  ],
+  "category": "Data management",
+  "technical": "Information that describes data, such as its definition, owner, source, format, freshness, lineage and access rules.",
+  "sales": "The labels that explain what a number is, where it came from and who owns it. AI relies heavily on metadata to pick the right data and explain its answers.",
+  "related": [
+   "Data catalog",
+   "Data lineage",
+   "Business glossary",
+   "Context layer"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Metrics layer",
+  "aka": [
+   "metric layer",
+   "metrics store",
+   "MetricFlow",
+   "BigQuery measures"
+  ],
+  "category": "Data foundations",
+  "technical": "A semantic layer component focused on defining business metrics as reusable calculations that tools request by name instead of writing SQL, such as dbt MetricFlow, Databricks metric views or BigQuery measures (preview).",
+  "sales": "One place where KPIs are defined so the board deck and the AI assistant agree. It covers reporting definitions, not plan inputs, versions or approvals.",
+  "related": [
+   "Semantic layer",
+   "Metric views",
+   "Semantic views",
+   "Open Semantic Interchange (OSI)"
+  ],
+  "src": ""
+ },
+ {
+  "term": "MLOps",
+  "aka": [
+   "machine learning operations",
+   "ML operations"
+  ],
+  "category": "Agents and AI apps",
+  "technical": "Practices and tools for deploying, monitoring, versioning, retraining and governing machine learning models in production reliably.",
+  "sales": "The operational work of keeping AI models accurate and running. A homegrown forecasting model needs MLOps, which is ongoing cost in a build decision.",
+  "related": [
+   "LLMOps",
+   "Model registry",
+   "Model drift",
+   "MLflow"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Model Context Protocol (MCP)",
+  "aka": [
+   "MCP"
+  ],
+  "category": "Agents and AI apps",
+  "technical": "An open protocol, introduced by Anthropic, that standardizes how AI applications discover and call external tools, data and prompts through MCP servers, so one integration works across clients such as Claude, ChatGPT and Microsoft Copilot.",
+  "sales": "A universal plug that lets any AI assistant connect to a business system. Almost every vendor in these deals now has one, so the useful questions are what it can read, whether it can write, and whose permissions it uses.",
+  "related": [
+   "MCP server",
+   "Tool calling",
+   "Vena MCP server",
+   "Agent2Agent protocol (A2A)"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Model drift",
+  "aka": [
+   "data drift",
+   "concept drift"
+  ],
+  "category": "AI fundamentals",
+  "technical": "Decline in a model's accuracy over time because the data or the relationships it learned have changed since training.",
+  "sales": "When an AI model slowly gets worse because the business changed. A forecast model trained before a price increase can drift badly without monitoring.",
+  "related": [
+   "MLOps",
+   "Forecast accuracy",
+   "Evaluations and benchmarks"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Model registry",
+  "aka": [
+   "model catalog",
+   "model repository"
+  ],
+  "category": "Agents and AI apps",
+  "technical": "A central system for storing, versioning, documenting and controlling the promotion of trained models from development to production.",
+  "sales": "A controlled library of AI models with version history. It is the model equivalent of a change log, which auditors appreciate.",
+  "related": [
+   "MLOps",
+   "Audit trail",
+   "MLflow"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Multi-agent system",
+  "aka": [
+   "multi-agent",
+   "supervisor agent",
+   "sub-agents"
+  ],
+  "category": "Agents and AI apps",
+  "technical": "An architecture in which specialized agents handle sub-tasks while a supervisor or router agent delegates work and combines results. Databricks' Supervisor Agent, GA February 10, 2026, is one example.",
+  "sales": "A team of specialist AI helpers with a coordinator, for example one for actuals, one for documents and one for forecasting. It is powerful, but each specialist still needs a reliable data and planning foundation.",
+  "related": [
+   "Agent orchestration",
+   "Agent Bricks",
+   "Agent2Agent protocol (A2A)"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Multi-tenant",
+  "aka": [
+   "multi-tenancy",
+   "shared infrastructure"
+  ],
+  "category": "Cloud and software",
+  "technical": "An architecture in which one instance of an application serves many customers, with each customer's data logically isolated and everyone on the same version.",
+  "sales": "Many customers share the same platform while keeping their data separate. It is why SaaS vendors can ship improvements to everyone at once.",
+  "related": [
+   "Single-tenant",
+   "Software as a service (SaaS)",
+   "Row-level security"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Multimodal model",
+  "aka": [
+   "multimodal AI",
+   "vision-language model"
+  ],
+  "category": "AI fundamentals",
+  "technical": "A model that can take in or produce more than one type of data, such as text, images, audio and video, within one system.",
+  "sales": "AI that can read a chart or a scanned invoice as well as text. It helps when source information arrives as PDFs or screenshots.",
+  "related": [
+   "Large language model (LLM)",
+   "Computer vision",
+   "Foundation model"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Narrow AI",
+  "aka": [
+   "weak AI",
+   "task-specific AI"
+  ],
+  "category": "AI fundamentals",
+  "technical": "AI designed for a specific task or domain, such as fraud detection, image recognition or demand forecasting, without general reasoning beyond it.",
+  "sales": "AI that is very good at one job. Most AI in finance today, including forecasting and anomaly detection, is narrow AI.",
+  "related": [
+   "Artificial intelligence (AI)",
+   "Machine learning (ML)",
+   "Artificial general intelligence (AGI)"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Natural language processing (NLP)",
+  "aka": [
+   "NLP",
+   "text analytics"
+  ],
+  "category": "AI fundamentals",
+  "technical": "The field of AI concerned with understanding, interpreting and generating human language, including tasks like classification, extraction, translation and summarization.",
+  "sales": "AI that understands everyday language. It is what lets someone ask a question in plain words instead of building a report.",
+  "related": [
+   "Large language model (LLM)",
+   "Natural language query (NLQ)",
+   "Generative AI"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Natural language query (NLQ)",
+  "aka": [
+   "NLQ",
+   "natural language query",
+   "ask your data",
+   "conversational analytics"
+  ],
+  "category": "AI fundamentals",
+  "technical": "Asking a data system a question in everyday language and having it interpret the request, translate it into a query and return the answer.",
+  "sales": "Typing a question like what was Q3 opex by region and getting the answer. Accuracy depends on a well-defined semantic layer underneath.",
+  "related": [
+   "Text-to-SQL",
+   "Semantic layer",
+   "Verified queries"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Neural network",
+  "aka": [
+   "artificial neural network",
+   "ANN"
+  ],
+  "category": "AI fundamentals",
+  "technical": "A model made of layers of connected nodes whose weighted connections are adjusted during training to map inputs to outputs.",
+  "sales": "A mathematical system loosely inspired by the brain that learns by adjusting millions or billions of settings. It is the building block of modern AI.",
+  "related": [
+   "Deep learning",
+   "Parameters",
+   "Transformer"
+  ],
+  "src": ""
+ },
+ {
+  "term": "No-code",
+  "aka": [
+   "no-code platform"
+  ],
+  "category": "Cloud and software",
+  "technical": "A development approach that lets users build applications and automations entirely through visual configuration, with no programming.",
+  "sales": "Building tools with no coding at all. Fine for simple workflows, but planning with versions, allocations and approvals quickly hits the limits.",
+  "related": [
+   "Low-code",
+   "Citizen developer",
+   "Vibe coding"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Normalization",
+  "aka": [
+   "denormalization",
+   "normal forms"
+  ],
+  "category": "Data foundations",
+  "technical": "Normalization organizes relational data into separate related tables to remove redundancy and update anomalies, while denormalization deliberately combines them to speed up reads for analytics.",
+  "sales": "A trade-off between storing each fact once and making reports fast. Transaction systems normalize, while reporting and planning models often denormalize for speed.",
+  "related": [
+   "Relational database",
+   "Star schema",
+   "Schema"
+  ],
+  "src": ""
+ },
+ {
+  "term": "NoSQL database",
+  "aka": [
+   "NoSQL",
+   "non-relational database"
+  ],
+  "category": "Data foundations",
+  "technical": "A family of databases that do not use the relational table model, trading strict schemas and joins for flexibility or scale. Types include document, key-value, graph and wide-column stores.",
+  "sales": "Databases built for web-scale apps and flexible data rather than accounting-style tables. They are rarely the system of record for financial numbers.",
+  "related": [
+   "Document database",
+   "Key-value store",
+   "Graph database",
+   "Relational database"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Notebook",
+  "aka": [
+   "Jupyter notebook",
+   "data notebook"
+  ],
+  "category": "Cloud and software",
+  "technical": "An interactive document that mixes live code, results, charts and narrative text in cells, commonly used for data exploration and machine learning.",
+  "sales": "A data scientist's working file, like a spreadsheet for code. Notebooks are great for experiments but are hard to audit and share as a system of record.",
+  "related": [
+   "Python",
+   "Machine learning (ML)",
+   "Technical debt"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Object storage",
+  "aka": [
+   "blob storage",
+   "cloud object storage",
+   "S3",
+   "ADLS",
+   "GCS"
+  ],
+  "category": "Data foundations",
+  "technical": "Cloud storage that keeps files as objects in flat buckets with metadata, scaling cheaply to massive volumes. Amazon S3, Azure Data Lake Storage and Google Cloud Storage are the main services.",
+  "sales": "Cheap, nearly unlimited cloud storage for files of any kind. It is the foundation under most data lakes and lakehouses, but on its own it has no business logic or controls.",
+  "related": [
+   "Data lake",
+   "Lakehouse",
+   "Compute and storage separation",
+   "Parquet"
+  ],
+  "src": ""
+ },
+ {
+  "term": "OLAP cube",
+  "aka": [
+   "cube",
+   "multidimensional model",
+   "planning cube"
+  ],
+  "category": "Data foundations",
+  "technical": "A multidimensional data structure that stores measures at the intersections of dimensions such as account, entity, time and version, with hierarchies that roll values up for fast slicing and aggregation.",
+  "sales": "The engine behind most planning tools, where every number sits at a point like Revenue, Ontario, March, Budget. Vena's CubeFLEX is a cube, while data platform semantic layers are mostly read-only views over tables.",
+  "related": [
+   "Dimension",
+   "Measure",
+   "CubeFLEX",
+   "Star schema"
+  ],
+  "src": ""
+ },
+ {
+  "term": "OLTP vs OLAP",
+  "aka": [
+   "OLTP",
+   "OLAP",
+   "transactional vs analytical"
+  ],
+  "category": "Data foundations",
+  "technical": "Online transaction processing systems handle many small concurrent reads and writes such as order entry, while online analytical processing systems handle large aggregations across dimensions. Planning needs both, fast cell-level writes and fast rollups.",
+  "sales": "One kind of database is built for recording transactions, the other for summarizing them. Planning is unusual because users type numbers and expect instant totals, which is why platforms bolt on Postgres or hybrid tables when teams try to build it.",
+  "related": [
+   "OLAP cube",
+   "Hybrid Tables",
+   "Lakebase",
+   "Snowflake Postgres"
+  ],
+  "src": ""
+ },
+ {
+  "term": "On-premises",
+  "aka": [
+   "on-prem",
+   "self-hosted"
+  ],
+  "category": "Cloud and software",
+  "technical": "Software and infrastructure installed and run in a company's own data centers, with the company responsible for hardware, upgrades and security.",
+  "sales": "Software running on the company's own servers. Many legacy planning tools were on-premises, which is why upgrades took months.",
+  "related": [
+   "Cloud computing",
+   "Software as a service (SaaS)",
+   "Total cost of ownership (TCO)"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Ontology",
+  "aka": [
+   "business ontology",
+   "entity model"
+  ],
+  "category": "Data foundations",
+  "technical": "A formal model of business entities, their properties, relationships and rules, such as customer, contract or cost center, that people and agents can reason over. Palantir, Microsoft Fabric IQ and Databricks Genie Ontology each use the word differently.",
+  "sales": "A map of the business that explains how things relate, not just what columns mean. Ask whether a vendor's ontology is hand-built by engineers or learned from use, and whether it can change data or only describe it.",
+  "related": [
+   "Knowledge graph",
+   "Palantir Ontology",
+   "Genie Ontology",
+   "Fabric IQ",
+   "Semantic layer"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Open source",
+  "aka": [
+   "open-source software",
+   "OSS"
+  ],
+  "category": "Cloud and software",
+  "technical": "Software whose source code is published under a license that allows anyone to use, study, modify and distribute it, often maintained by a community or sponsoring company.",
+  "sales": "Free-to-use software anyone can inspect. The license may be free, but running, securing and supporting it is not.",
+  "related": [
+   "Build vs buy",
+   "Open-weight model",
+   "Total cost of ownership (TCO)"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Open table format",
+  "aka": [
+   "table format",
+   "OTF"
+  ],
+  "category": "Data foundations",
+  "technical": "A specification that adds table features such as transactions, schema evolution and time travel on top of open files like Parquet in object storage. Apache Iceberg, Delta Lake and Apache Hudi are the main ones.",
+  "sales": "An open standard that lets different tools read and write the same tables without copying data. It reduces lock-in at the data layer, though planning logic still has to live somewhere.",
+  "related": [
+   "Apache Iceberg",
+   "Delta Lake",
+   "Parquet",
+   "Lakehouse"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Open-weight model",
+  "aka": [
+   "open model",
+   "open-source model"
+  ],
+  "category": "AI fundamentals",
+  "technical": "A model whose trained weights are publicly released so anyone can download, run and fine-tune it on their own infrastructure, under the terms of its license.",
+  "sales": "An AI model you can download and run yourself. It gives control over where data goes, but hosting, securing and updating it becomes your job.",
+  "related": [
+   "Closed model",
+   "Open source",
+   "Fine-tuning"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Operational data store (ODS)",
+  "aka": [
+   "ODS"
+  ],
+  "category": "Data foundations",
+  "technical": "A database that integrates current data from several operational systems for near real-time reporting and lookups, usually holding little history compared with a warehouse.",
+  "sales": "A staging area with today's operational data from several systems. It answers what is happening now, while the warehouse answers how things have trended.",
+  "related": [
+   "Data warehouse",
+   "Data integration",
+   "OLTP vs OLAP"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Parameters",
+  "aka": [
+   "weights",
+   "model size"
+  ],
+  "category": "AI fundamentals",
+  "technical": "The numeric values inside a model, chiefly connection weights, that are learned during training. Model size is often quoted as a parameter count, such as 7 billion.",
+  "sales": "The internal settings an AI model learns. More parameters usually means more capability and more cost, but size alone does not predict business accuracy.",
+  "related": [
+   "Neural network",
+   "Training",
+   "Small language model (SLM)"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Parquet",
+  "aka": [
+   "Apache Parquet",
+   "columnar file format"
+  ],
+  "category": "Data foundations",
+  "technical": "An open-source columnar file format that compresses well and lets query engines read only the columns they need, used as the storage layer under Delta Lake and Iceberg.",
+  "sales": "The standard file type behind most modern data platforms. Buyers rarely need to think about it, but it is why large data sets can be queried quickly and cheaply.",
+  "related": [
+   "Delta Lake",
+   "Apache Iceberg",
+   "Data lake"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Partitioning",
+  "aka": [
+   "table partitioning",
+   "data partitioning"
+  ],
+  "category": "Data foundations",
+  "technical": "Splitting a large table into segments based on a column such as date or region so queries scan only the relevant partitions and maintenance is easier.",
+  "sales": "Filing data in drawers by period or region so the system opens only the drawer it needs. It keeps large historical data sets fast and cheap to query.",
+  "related": [
+   "Indexing",
+   "Query engine",
+   "Data warehouse"
+  ],
+  "src": ""
+ },
+ {
+  "term": "PII",
+  "aka": [
+   "personally identifiable information",
+   "personal data"
+  ],
+  "category": "Data management",
+  "technical": "Any information that can identify a specific person, directly or in combination, such as names, addresses, ID numbers, salaries or email addresses.",
+  "sales": "Data that points to a specific person. Workforce planning is full of it, which is why salary access, masking and AI data handling get close scrutiny.",
+  "related": [
+   "GDPR",
+   "Column masking",
+   "Row-level security",
+   "Encryption"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Platform as a service (PaaS)",
+  "aka": [
+   "PaaS",
+   "application platform"
+  ],
+  "category": "Cloud and software",
+  "technical": "A cloud service that provides managed runtime, databases and development tools so customers can build and run their own applications without managing servers.",
+  "sales": "A cloud toolkit for building your own apps. It removes server work, but the customer still owns the application, its logic and its maintenance.",
+  "related": [
+   "Software as a service (SaaS)",
+   "Infrastructure as a service (IaaS)",
+   "Build vs buy"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Pre-training",
+  "aka": [
+   "pretraining"
+  ],
+  "category": "AI fundamentals",
+  "technical": "The initial, most compute-intensive training stage in which a foundation model learns general patterns from very large data sets before any task-specific tuning.",
+  "sales": "The expensive first phase where an AI model learns language and general knowledge. Only a handful of companies do this, and everyone else builds on top.",
+  "related": [
+   "Training",
+   "Foundation model",
+   "Knowledge cutoff"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Predictive analytics",
+  "aka": [
+   "predictive modeling"
+  ],
+  "category": "AI fundamentals",
+  "technical": "Using historical data, statistics and machine learning to estimate future outcomes or the likelihood of events, such as churn, demand or late payment.",
+  "sales": "Using past patterns to predict what is likely next. It complements a plan by showing where the data says the business is heading.",
+  "related": [
+   "Time series forecasting",
+   "Machine learning (ML)",
+   "Regression",
+   "Rolling forecast"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Private link",
+  "aka": [
+   "PrivateLink",
+   "private endpoint",
+   "private connectivity"
+  ],
+  "category": "Cloud and software",
+  "technical": "A cloud networking feature that connects a customer's private network to a service over the provider's backbone, so traffic never crosses the public internet.",
+  "sales": "A private connection between your network and a vendor's service. Security-conscious finance and IT teams often require it for systems holding financial data.",
+  "related": [
+   "Virtual private cloud (VPC)",
+   "Encryption"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Prompt",
+  "aka": [
+   "user prompt",
+   "instruction"
+  ],
+  "category": "AI fundamentals",
+  "technical": "The input given to a generative AI model, such as a question, instruction, example or data, that guides what it produces.",
+  "sales": "What you type or send to the AI. Clear prompts with the right context get much better answers.",
+  "related": [
+   "System prompt",
+   "Prompt engineering",
+   "Context engineering"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Prompt engineering",
+  "aka": [
+   "prompt design",
+   "prompting"
+  ],
+  "category": "AI fundamentals",
+  "technical": "The practice of crafting and testing prompts, including instructions, examples and formats, to get reliable, accurate output from a model.",
+  "sales": "The skill of asking AI the right way. Packaged products do much of this for users, while a build leaves it to the customer's team.",
+  "related": [
+   "Prompt",
+   "Context engineering",
+   "Chain of thought"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Prompt injection",
+  "aka": [
+   "indirect prompt injection",
+   "injection attack"
+  ],
+  "category": "Agents and AI apps",
+  "technical": "An attack in which malicious instructions hidden in user input or in content the model reads, such as a document, email or web page, cause it to ignore its rules or take unintended actions.",
+  "sales": "Tricking an AI by hiding instructions in the material it reads. It is the main reason agents with write access to financial data need strict permissions and approvals.",
+  "related": [
+   "Guardrails",
+   "Jailbreak",
+   "AI safety",
+   "Human in the loop"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Python",
+  "aka": [
+   "Python programming language"
+  ],
+  "category": "Cloud and software",
+  "technical": "A general-purpose programming language widely used for data analysis, automation, machine learning and AI, with libraries such as pandas and scikit-learn.",
+  "sales": "The most common language for data science and AI work. Python models can be powerful, but they live outside finance's control unless someone governs them.",
+  "related": [
+   "Notebook",
+   "Apache Spark",
+   "Machine learning (ML)",
+   "SDK"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Quantization",
+  "aka": [
+   "model quantization",
+   "low-precision inference"
+  ],
+  "category": "AI fundamentals",
+  "technical": "Reducing the numeric precision of a model's weights, for example from 16-bit to 4-bit, to cut memory use and speed up inference with some loss of accuracy.",
+  "sales": "Compressing an AI model so it runs faster on cheaper hardware. It is a technical trade-off buyers rarely need to manage directly.",
+  "related": [
+   "Distillation",
+   "Small language model (SLM)",
+   "GPU"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Query engine",
+  "aka": [
+   "SQL engine",
+   "query processor"
+  ],
+  "category": "Data foundations",
+  "technical": "Software that parses, optimizes and executes queries against stored data. Some engines, such as Trino or Spark SQL, are separate from storage and can query many sources.",
+  "sales": "The part of a data platform that actually answers questions. Separating the engine from storage lets companies pick tools freely, but someone still has to tune performance and cost.",
+  "related": [
+   "SQL",
+   "Compute and storage separation",
+   "Data federation",
+   "Apache Spark"
+  ],
+  "src": ""
+ },
+ {
+  "term": "RBAC",
+  "aka": [
+   "role-based access control",
+   "roles"
+  ],
+  "category": "Data management",
+  "technical": "An access model that assigns permissions to roles and roles to users, so access follows job function. Snowflake and most SaaS applications are built around it.",
+  "sales": "Access based on job role, such as planner, reviewer or admin. Planning tools combine roles with workflow so the right people submit and approve, which data platforms leave to the builder.",
+  "related": [
+   "ABAC",
+   "Workflow and approvals",
+   "Cell-level security"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Reasoning model",
+  "aka": [
+   "thinking model",
+   "extended thinking"
+  ],
+  "category": "AI fundamentals",
+  "technical": "A language model trained to work through problems step by step before answering, spending more computation at inference time to improve accuracy on complex tasks.",
+  "sales": "AI that thinks before it answers. It is better at multi-step analysis like tracing a variance, but answers take longer and cost more.",
+  "related": [
+   "Chain of thought",
+   "Large language model (LLM)",
+   "Inference"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Regression",
+  "aka": [
+   "regression analysis",
+   "linear regression"
+  ],
+  "category": "AI fundamentals",
+  "technical": "A statistical and supervised learning technique that models the relationship between input variables and a continuous numeric outcome.",
+  "sales": "Estimating a number from its drivers, such as sales from price and headcount. It is the statistical cousin of driver-based planning.",
+  "related": [
+   "Supervised learning",
+   "Classification",
+   "Driver-based planning",
+   "Predictive analytics"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Reinforcement learning",
+  "aka": [
+   "RL",
+   "RLHF",
+   "reinforcement learning from human feedback"
+  ],
+  "category": "AI fundamentals",
+  "technical": "A machine learning approach in which an agent learns by taking actions and receiving rewards or penalties. Reinforcement learning from human feedback (RLHF) uses human ratings to tune language models.",
+  "sales": "Learning by trial, error and feedback. It is a key reason modern AI assistants follow instructions and reason through multi-step problems.",
+  "related": [
+   "Machine learning (ML)",
+   "Training",
+   "Reasoning model"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Relational database",
+  "aka": [
+   "RDBMS",
+   "SQL database",
+   "relational DB"
+  ],
+  "category": "Data foundations",
+  "technical": "A database that stores data in tables of rows and columns linked by keys and queried with SQL, enforcing rules such as data types and referential integrity. PostgreSQL, SQL Server, Oracle and MySQL are common examples.",
+  "sales": "The classic table-based database that sits under most ERP and accounting systems. When finance exports a trial balance, it usually comes out of a relational database.",
+  "related": [
+   "Database",
+   "SQL",
+   "Schema",
+   "Normalization"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Reranking",
+  "aka": [
+   "reranker",
+   "cross-encoder reranking"
+  ],
+  "category": "Agents and AI apps",
+  "technical": "A second retrieval step that rescores an initial set of search results with a more precise model so the most relevant ones are passed to the language model.",
+  "sales": "A quality check that reorders search results before the AI reads them. It improves answer accuracy at a small cost in speed.",
+  "related": [
+   "Semantic search",
+   "Retrieval-augmented generation (RAG)",
+   "Chunking"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Responsible AI",
+  "aka": [
+   "trustworthy AI",
+   "ethical AI"
+  ],
+  "category": "AI fundamentals",
+  "technical": "A set of principles and practices for developing and using AI that is fair, transparent, accountable, secure, private and safe.",
+  "sales": "Using AI in a way you can defend to customers, regulators and the board. Buyers ask vendors for their responsible AI policy during security reviews.",
+  "related": [
+   "AI governance",
+   "AI bias",
+   "Explainability",
+   "AI safety"
+  ],
+  "src": ""
+ },
+ {
+  "term": "REST API",
+  "aka": [
+   "RESTful API",
+   "REST"
+  ],
+  "category": "Cloud and software",
+  "technical": "An API style that uses standard web methods, such as GET, POST, PUT and DELETE, on resource URLs, typically exchanging JSON.",
+  "sales": "The most common style of API on the web. If a vendor offers a documented REST API, IT can connect it to almost anything.",
+  "related": [
+   "API",
+   "JSON",
+   "Webhook"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Retrieval-augmented generation (RAG)",
+  "aka": [
+   "RAG",
+   "retrieval"
+  ],
+  "category": "Agents and AI apps",
+  "technical": "A pattern in which a system retrieves relevant documents or records at question time and passes them to an LLM as context, so answers draw on the organization's data rather than the model's training alone.",
+  "sales": "Looking things up before answering, the way an analyst checks the source file. It reduces made-up answers, but quality still depends on what gets retrieved and whether it is current.",
+  "related": [
+   "Grounding",
+   "Embeddings and vector database",
+   "Hallucination"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Reverse ETL",
+  "aka": [
+   "data activation",
+   "operational analytics"
+  ],
+  "category": "Data management",
+  "technical": "The process of syncing modeled data from a warehouse back into operational tools such as CRM, ERP or planning systems so business users act on it.",
+  "sales": "Sending clean warehouse data back out to the apps people use every day. For finance, it can push governed actuals into a planning tool instead of uploading spreadsheets.",
+  "related": [
+   "ETL and ELT",
+   "Data warehouse",
+   "Data integration",
+   "iPaaS"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Robotic process automation (RPA)",
+  "aka": [
+   "RPA",
+   "software bots"
+  ],
+  "category": "Agents and AI apps",
+  "technical": "Software bots that follow scripted rules to mimic human actions in applications, such as copying data between screens or downloading reports.",
+  "sales": "Rule-based bots that automate repetitive clicks. They break when screens change, and AI agents are starting to take over tasks that need judgment.",
+  "related": [
+   "Computer use agent",
+   "Agentic workflow",
+   "Low-code"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Row-level security",
+  "aka": [
+   "RLS",
+   "row access policy",
+   "row filter"
+  ],
+  "category": "Data management",
+  "technical": "A policy that filters which rows a user can see based on identity or attributes, enforced by the database or semantic model at query time. AI agents on most platforms inherit these filters.",
+  "sales": "Making sure a regional manager only sees their own region's data. On data platforms it mainly controls what people read, not which plan numbers they are allowed to change.",
+  "related": [
+   "Column masking",
+   "Cell-level security",
+   "ABAC"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Schema",
+  "aka": [
+   "data schema",
+   "table structure"
+  ],
+  "category": "Data foundations",
+  "technical": "The defined structure of data, including tables, columns, data types and relationships, that tells systems how data is organized and validated.",
+  "sales": "The blueprint for how data is laid out. When a source system changes its schema, downstream reports and plan loads can break without warning.",
+  "related": [
+   "Data model",
+   "Schema-on-read vs schema-on-write",
+   "Data contract"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Schema-on-read vs schema-on-write",
+  "aka": [
+   "schema on read",
+   "schema on write"
+  ],
+  "category": "Data foundations",
+  "technical": "Schema-on-write validates and structures data before it is stored, as in a warehouse, while schema-on-read stores raw data and applies structure only when it is queried, as in a data lake.",
+  "sales": "Either you clean data on the way in or you sort it out when you use it. For financial numbers, structuring up front usually wins because it catches problems before they reach a forecast.",
+  "related": [
+   "Schema",
+   "Data lake",
+   "Data warehouse"
+  ],
+  "src": ""
+ },
+ {
+  "term": "SDK",
+  "aka": [
+   "software development kit",
+   "client library"
+  ],
+  "category": "Cloud and software",
+  "technical": "A packaged set of libraries, documentation and tools that makes it easier for developers to build against a specific platform or API in a given language.",
+  "sales": "A toolkit that saves developers time when building on a platform. It speeds up a build, but the resulting code still needs owners.",
+  "related": [
+   "API",
+   "Python",
+   "LLM application framework"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Semantic layer",
+  "aka": [
+   "semantic model",
+   "business layer",
+   "universal semantic layer"
+  ],
+  "category": "Data foundations",
+  "technical": "A governed model that maps physical tables to business concepts, defining measures, dimensions, relationships, hierarchies and synonyms once so BI tools and AI agents generate consistent queries.",
+  "sales": "A shared dictionary that tells every report and AI assistant what revenue or gross margin actually means. Every major data platform now ships one, so a semantic layer alone no longer sets a planning vendor apart.",
+  "related": [
+   "Metrics layer",
+   "Semantic views",
+   "Metric views",
+   "LookML",
+   "Power BI semantic model"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Semantic search",
+  "aka": [
+   "meaning-based search",
+   "neural search"
+  ],
+  "category": "Agents and AI apps",
+  "technical": "Search that matches on meaning rather than exact keywords, typically by comparing embeddings of the query and documents, often combined with keyword search.",
+  "sales": "Search that understands what you mean, so travel policy finds the expense guidelines document. It is good for documents, not for calculating numbers.",
+  "related": [
+   "Embeddings and vector database",
+   "Retrieval-augmented generation (RAG)",
+   "Reranking"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Serverless",
+  "aka": [
+   "serverless computing",
+   "functions as a service",
+   "FaaS"
+  ],
+  "category": "Cloud and software",
+  "technical": "A cloud model in which the provider automatically provisions and scales compute for each request or job and bills only for actual usage, with no servers for the customer to manage.",
+  "sales": "Computing that switches on only when needed and is billed by use. It lowers admin work, but usage-based bills can be hard to predict.",
+  "related": [
+   "Compute and storage separation",
+   "Platform as a service (PaaS)",
+   "Cloud computing"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Service principal",
+  "aka": [
+   "service account",
+   "machine identity",
+   "app identity"
+  ],
+  "category": "Data management",
+  "technical": "A non-human identity, such as an application or automation account, that authenticates with its own credentials and permissions rather than acting on behalf of a signed-in user.",
+  "sales": "A system account that software uses to log in. It matters for cost and governance, for example Databricks bills Genie usage by service principals while usage by people is free through January 31, 2027.",
+  "related": [
+   "Single sign-on (SSO)",
+   "RBAC",
+   "Genie"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Single sign-on (SSO)",
+  "aka": [
+   "SSO",
+   "SAML",
+   "OpenID Connect",
+   "Entra ID",
+   "Okta"
+  ],
+  "category": "Data management",
+  "technical": "An authentication setup in which users sign in once with a central identity provider such as Microsoft Entra ID or Okta, and applications trust that identity through standards like SAML or OpenID Connect.",
+  "sales": "One company login for every tool. Buyers expect it from any vendor, and it also decides whether AI assistants act as the individual user with that user's permissions.",
+  "related": [
+   "Service principal",
+   "RBAC"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Single-tenant",
+  "aka": [
+   "dedicated tenancy",
+   "dedicated instance"
+  ],
+  "category": "Cloud and software",
+  "technical": "An architecture in which each customer gets its own instance of the application and often its own infrastructure, giving stronger isolation and customization at higher cost.",
+  "sales": "Your own dedicated copy of the software. Some regulated buyers ask for it, but it usually costs more and can lag on upgrades.",
+  "related": [
+   "Multi-tenant",
+   "Virtual private cloud (VPC)"
+  ],
+  "src": ""
+ },
+ {
+  "term": "SLA",
+  "aka": [
+   "service level agreement",
+   "uptime guarantee"
+  ],
+  "category": "Cloud and software",
+  "technical": "A contractual commitment from a provider on measurable service levels, such as uptime percentage, support response times and remedies if targets are missed.",
+  "sales": "The vendor's written promise about availability and support. In a build scenario, there is no SLA unless the internal team commits to one.",
+  "related": [
+   "Latency",
+   "Software as a service (SaaS)",
+   "Data contract"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Slowly changing dimension (SCD)",
+  "aka": [
+   "SCD",
+   "SCD Type 2",
+   "type 2 dimension"
+  ],
+  "category": "Data foundations",
+  "technical": "A technique for tracking changes to dimension attributes over time. Type 1 overwrites the old value, while Type 2 keeps history by adding a new row with effective dates.",
+  "sales": "How a system remembers that a cost center moved to a new department last quarter. It decides whether last year's report still shows the old structure or restates history.",
+  "related": [
+   "Dimension",
+   "Star schema",
+   "Audit trail"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Small language model (SLM)",
+  "aka": [
+   "SLM",
+   "compact model"
+  ],
+  "category": "AI fundamentals",
+  "technical": "A language model with relatively few parameters, typically a few billion or less, designed to run cheaply and quickly, sometimes on a laptop or phone.",
+  "sales": "A smaller, cheaper AI model for focused tasks. It can cut cost and latency, though it usually reasons less well than the largest models.",
+  "related": [
+   "Large language model (LLM)",
+   "Distillation",
+   "Quantization"
+  ],
+  "src": ""
+ },
+ {
+  "term": "SOC 2",
+  "aka": [
+   "SOC 2 Type II",
+   "SOC2"
+  ],
+  "category": "Data management",
+  "technical": "An AICPA attestation framework in which an independent auditor reports on a service provider's controls for security, availability, processing integrity, confidentiality and privacy. A Type II report covers how those controls operated over a period.",
+  "sales": "The security audit report enterprise buyers request from every SaaS vendor, and a homegrown build needs its own controls and evidence. Buyers will also ask which attestation covers Vena Omega, so confirm internally before answering, since Morpheo listed SOC2 as initiated before the acquisition.",
+  "related": [
+   "Morpheo",
+   "Audit trail"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Software as a service (SaaS)",
+  "aka": [
+   "SaaS",
+   "cloud application"
+  ],
+  "category": "Cloud and software",
+  "technical": "Software delivered over the internet on a subscription, where the vendor hosts, operates, secures and updates the application for all customers.",
+  "sales": "You subscribe instead of installing and maintaining it yourself. In build vs buy terms, SaaS shifts upgrades, uptime and security work to the vendor.",
+  "related": [
+   "Platform as a service (PaaS)",
+   "Multi-tenant",
+   "Build vs buy",
+   "Total cost of ownership (TCO)"
+  ],
+  "src": ""
+ },
+ {
+  "term": "SOX",
+  "aka": [
+   "Sarbanes-Oxley",
+   "SOX 404",
+   "ITGC",
+   "internal controls over financial reporting"
+  ],
+  "category": "Data management",
+  "technical": "The US Sarbanes-Oxley Act of 2002, whose Section 404 requires public companies to maintain and test internal controls over financial reporting, including IT general controls over the systems involved.",
+  "sales": "The law that makes public companies prove their financial numbers are controlled. Any tool or homegrown build that touches reported numbers needs access controls, change logs and evidence for auditors.",
+  "related": [
+   "Audit trail",
+   "SOC 2",
+   "Data governance",
+   "Period locking"
+  ],
+  "src": ""
+ },
+ {
+  "term": "SQL",
+  "aka": [
+   "Structured Query Language"
+  ],
+  "category": "Data foundations",
+  "technical": "The standard language for defining, querying and changing data in relational databases and most data warehouses, using statements such as SELECT, INSERT and UPDATE.",
+  "sales": "The language analysts use to pull data out of databases. Many AI tools now write SQL for you, which is powerful but needs checking before results go into a forecast.",
+  "related": [
+   "Relational database",
+   "Text-to-SQL",
+   "Query engine",
+   "dbt"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Star schema",
+  "aka": [
+   "fact and dimension tables",
+   "snowflake schema"
+  ],
+  "category": "Data foundations",
+  "technical": "A relational modeling pattern with a central fact table of numeric events joined to surrounding dimension tables, used by warehouses and by semantic layers such as semantic views and metric views.",
+  "sales": "The standard layout for reporting data, with transactions in the middle and lookups like account and department around them. It works well for reporting actuals but does not handle versions, input or sign logic on its own.",
+  "related": [
+   "Dimension",
+   "Measure",
+   "Semantic layer",
+   "OLAP cube"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Structured and unstructured data",
+  "aka": [
+   "structured data",
+   "unstructured data",
+   "semi-structured data"
+  ],
+  "category": "Data foundations",
+  "technical": "Structured data fits fixed rows and columns, semi-structured data such as JSON carries its own tags, and unstructured data such as documents, emails and images has no predefined model.",
+  "sales": "Numbers in the GL are structured, while contracts, board decks and commentary are unstructured. AI is opening up unstructured data, but plan numbers still need structured, governed models.",
+  "related": [
+   "JSON",
+   "Retrieval-augmented generation (RAG)",
+   "Data lake"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Structured output",
+  "aka": [
+   "JSON mode",
+   "constrained decoding",
+   "schema-constrained output"
+  ],
+  "category": "AI fundamentals",
+  "technical": "A model capability that forces responses to follow a defined format, such as a JSON schema, so software can reliably parse and use them.",
+  "sales": "Making the AI answer in a fixed format a system can read, rather than free text. It is essential when AI output has to feed a plan or report automatically.",
+  "related": [
+   "JSON",
+   "Tool calling",
+   "Large language model (LLM)"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Supervised learning",
+  "aka": [
+   "labeled learning"
+  ],
+  "category": "AI fundamentals",
+  "technical": "A machine learning approach that trains a model on labeled examples, with inputs paired to known outcomes, so it can predict outcomes for new inputs.",
+  "sales": "Teaching a model with examples where the answer is known, such as past invoices tagged as paid late. Most business prediction models work this way.",
+  "related": [
+   "Machine learning (ML)",
+   "Classification",
+   "Regression",
+   "Unsupervised learning"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Synthetic data",
+  "aka": [
+   "simulated data",
+   "generated data"
+  ],
+  "category": "AI fundamentals",
+  "technical": "Artificially generated data that mimics the statistical properties of real data, used for testing, training or privacy protection.",
+  "sales": "Realistic fake data. It lets teams test models or demos without exposing real salaries or customer details.",
+  "related": [
+   "Training",
+   "PII",
+   "Generative AI"
+  ],
+  "src": ""
+ },
+ {
+  "term": "System prompt",
+  "aka": [
+   "system message",
+   "system instructions"
+  ],
+  "category": "AI fundamentals",
+  "technical": "Instructions set by the application developer that the model receives before user input, defining its role, rules, tone and available tools.",
+  "sales": "The standing instructions a vendor gives its AI behind the scenes, such as always cite the source data. It shapes behavior, but it is not a security control on its own.",
+  "related": [
+   "Prompt",
+   "Guardrails",
+   "Prompt injection"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Technical debt",
+  "aka": [
+   "tech debt"
+  ],
+  "category": "Cloud and software",
+  "technical": "The accumulated future cost of rework caused by shortcuts, outdated components or poorly documented code that must eventually be fixed or maintained.",
+  "sales": "The hidden bill for building fast. Homegrown planning tools and complex spreadsheets build up technical debt that lands on whoever inherits them.",
+  "related": [
+   "Build vs buy",
+   "Vibe coding",
+   "Total cost of ownership (TCO)"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Temperature",
+  "aka": [
+   "sampling temperature",
+   "randomness setting"
+  ],
+  "category": "AI fundamentals",
+  "technical": "A generation setting that controls how random a model's word choices are. Lower values make output more focused and repeatable, and higher values make it more varied.",
+  "sales": "A dial for how creative versus consistent the AI is. Finance tasks usually want it low, though even then AI is not fully deterministic.",
+  "related": [
+   "Deterministic vs probabilistic",
+   "Inference",
+   "Large language model (LLM)"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Text-to-SQL",
+  "aka": [
+   "NL2SQL",
+   "NL to MQL"
+  ],
+  "category": "Agents and AI apps",
+  "technical": "Translating a natural-language question into a SQL query, usually guided by a semantic layer and verified examples, then running it and summarizing the result. Vena's Query Agent does the equivalent for Vena's MQL.",
+  "sales": "Asking a question in plain English and getting the answer from the database. Accuracy figures come from vendors' own tests, such as Snowflake's 90%+ from 2024, so ask how it holds up on a full finance model with versions and hierarchies.",
+  "related": [
+   "Cortex Analyst",
+   "Genie",
+   "Verified queries",
+   "Semantic layer",
+   "Vena Planning, Query and Reporting agents"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Throughput",
+  "aka": [
+   "capacity",
+   "transactions per second"
+  ],
+  "category": "Cloud and software",
+  "technical": "The amount of work a system completes per unit of time, such as queries, records or tokens processed per second.",
+  "sales": "How much a system can handle at once. It matters most at budget deadlines, when hundreds of contributors submit at the same time.",
+  "related": [
+   "Latency",
+   "SLA"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Time series database",
+  "aka": [
+   "TSDB",
+   "time-series DB"
+  ],
+  "category": "Data foundations",
+  "technical": "A database optimized for data points indexed by time, such as sensor readings or prices, with fast ingestion, time-window queries and compression.",
+  "sales": "Built for data that arrives as a steady stream of timestamped readings. Finance plans are also time-based, but monthly plan data with versions and approvals is better served by a planning model than a raw time series store.",
+  "related": [
+   "Time series forecasting",
+   "Database",
+   "OLAP cube"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Time series forecasting",
+  "aka": [
+   "statistical forecasting",
+   "ML forecasting"
+  ],
+  "category": "AI fundamentals",
+  "technical": "Predicting future values of a series from its own history and related signals, using methods such as ARIMA, exponential smoothing or machine learning models.",
+  "sales": "Projecting revenue or volume from historical trends and seasonality. It works well as a baseline, while planners layer on known events and drivers.",
+  "related": [
+   "Predictive analytics",
+   "Forecast accuracy",
+   "Rolling forecast",
+   "Driver-based planning"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Tokens and token pricing",
+  "aka": [
+   "tokens",
+   "per-token pricing",
+   "consumption pricing"
+  ],
+  "category": "AI fundamentals",
+  "technical": "Tokens are the chunks of text that models read and write, and many AI services bill per million input and output tokens. For example, Google's data agents cost $3 per million input and $20 per million output tokens once a free trial ends on December 31, 2026.",
+  "sales": "The meter AI usage is billed on, similar to a utility bill. Pilot costs can look small, especially during free promotions, so model the run-rate cost of a full finance team using it every day.",
+  "related": [
+   "AI Credits",
+   "Databricks Unit (DBU)",
+   "Fabric capacity units",
+   "Large language model (LLM)"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Tool calling",
+  "aka": [
+   "function calling",
+   "tool use"
+  ],
+  "category": "Agents and AI apps",
+  "technical": "The ability of an LLM to output a structured request to invoke a defined function, API or query with arguments, receive the result and continue reasoning.",
+  "sales": "How an AI assistant takes action, such as running a report or saving a number, instead of only talking. The tools that are exposed define what the AI can and cannot change.",
+  "related": [
+   "Model Context Protocol (MCP)",
+   "AI agent",
+   "Guardrails"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Total cost of ownership (TCO)",
+  "aka": [
+   "TCO",
+   "lifetime cost"
+  ],
+  "category": "Cloud and software",
+  "technical": "The full cost of a system over its lifetime, including licenses or cloud usage, implementation, integration, staffing, maintenance, upgrades, support and risk.",
+  "sales": "The real price tag beyond the subscription or the first build. A fair build vs buy comparison counts the people who maintain the build for years, not just the first version.",
+  "related": [
+   "Build vs buy",
+   "Technical debt",
+   "Software as a service (SaaS)"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Training",
+  "aka": [
+   "model training",
+   "training data"
+  ],
+  "category": "AI fundamentals",
+  "technical": "The process of adjusting a model's parameters by exposing it to data and minimizing errors on its predictions, using large amounts of computation.",
+  "sales": "How an AI model learns from data. Buyers should ask whether their own data is ever used to train a vendor's or provider's models.",
+  "related": [
+   "Pre-training",
+   "Fine-tuning",
+   "Inference",
+   "Parameters"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Transformer",
+  "aka": [
+   "transformer architecture",
+   "attention mechanism"
+  ],
+  "category": "AI fundamentals",
+  "technical": "A neural network architecture, introduced in 2017, that uses attention to weigh relationships among all parts of an input at once. It underpins nearly all modern large language models.",
+  "sales": "The design that made today's AI models possible. Buyers do not need the details, only that it is why AI can now read and write fluently.",
+  "related": [
+   "Large language model (LLM)",
+   "Neural network",
+   "Deep learning"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Unsupervised learning",
+  "aka": [
+   "clustering",
+   "unlabeled learning"
+  ],
+  "category": "AI fundamentals",
+  "technical": "A machine learning approach that finds structure in unlabeled data, such as clusters, associations or outliers, without predefined answers.",
+  "sales": "Letting a model find patterns on its own, like grouping customers by behavior. It is often used to spot unusual transactions.",
+  "related": [
+   "Supervised learning",
+   "Anomaly detection",
+   "Machine learning (ML)"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Vendor lock-in",
+  "aka": [
+   "lock-in",
+   "switching costs"
+  ],
+  "category": "Cloud and software",
+  "technical": "Dependence on a provider's proprietary formats, interfaces or services that makes switching costly or difficult.",
+  "sales": "How hard it would be to leave a vendor later. Buyers increasingly ask for open formats, exportable data and standard interfaces such as APIs and MCP.",
+  "related": [
+   "Open table format",
+   "Model Context Protocol (MCP)",
+   "Build vs buy"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Verified queries",
+  "aka": [
+   "golden queries",
+   "verified answers",
+   "example queries"
+  ],
+  "category": "Agents and AI apps",
+  "technical": "Human-approved question and SQL pairs stored with a semantic model and reused when a matching question arrives, either executed directly or supplied to the model as examples. Snowflake and BigQuery call them verified queries, Looker calls them golden queries.",
+  "sales": "Pre-approved answers to common questions, like EBITDA by quarter, that the AI reuses instead of improvising. They raise trust, but someone has to review and maintain them.",
+  "related": [
+   "Text-to-SQL",
+   "Cortex Analyst",
+   "Conversational Analytics API",
+   "Grounding"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Vibe coding",
+  "aka": [
+   "AI-assisted coding",
+   "prompt-to-app"
+  ],
+  "category": "Cloud and software",
+  "technical": "Building software by describing what you want in natural language and letting an AI model generate, run and revise the code, often with little line-by-line review.",
+  "sales": "Asking AI to build an app from a description. It makes a prototype planning tool look easy in a demo, but security, controls, testing and ongoing upkeep remain the customer's job.",
+  "related": [
+   "Build vs buy",
+   "Technical debt",
+   "Citizen developer",
+   "Generative AI"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Virtual private cloud (VPC)",
+  "aka": [
+   "VPC",
+   "VNet",
+   "virtual network"
+  ],
+  "category": "Cloud and software",
+  "technical": "A logically isolated private network within a public cloud where an organization controls IP ranges, subnets, routing and firewall rules.",
+  "sales": "A walled-off section of the public cloud reserved for one company. Security teams use it to keep sensitive systems off the open internet.",
+  "related": [
+   "Private link",
+   "Single-tenant",
+   "Cloud computing"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Webhook",
+  "aka": [
+   "callback URL",
+   "event notification"
+  ],
+  "category": "Cloud and software",
+  "technical": "A mechanism where a system automatically sends an HTTP request to a configured URL when an event occurs, instead of others repeatedly asking for updates.",
+  "sales": "An automatic tap on the shoulder when something happens, like a budget being approved. It lets other systems react right away without polling.",
+  "related": [
+   "API",
+   "REST API",
+   "Agentic workflow"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Zero-copy",
+  "aka": [
+   "zero-copy integration",
+   "data in place",
+   "no-copy access"
+  ],
+  "category": "Data management",
+  "technical": "An integration approach where a consuming system queries data in place through sharing protocols, shortcuts or federation instead of physically replicating it, so one governed copy remains. Some features sold as zero-copy, such as Fabric mirroring, still maintain a managed replica.",
+  "sales": "Using data where it already lives instead of copying it into another system. Vendors use the term loosely, so ask whether a tool truly reads in place or quietly copies data behind the scenes.",
+  "related": [
+   "Data sharing",
+   "OpenSharing",
+   "OneLake",
+   "SAP Business Data Cloud"
+  ],
+  "src": "https://www.snowflake.com/en/product/features/zero-copy-integrations/"
+ }
+]

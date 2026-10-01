@@ -151,7 +151,8 @@ __EXTRA_CSS__
       <button role="tab" aria-selected="true" data-view="guide" id="tab-guide">Guided funnel</button>
       <button role="tab" aria-selected="false" data-view="ref" id="tab-ref">Full reference</button>
       <button role="tab" aria-selected="false" data-view="compare" id="tab-compare">Compare platforms</button>
-      <button role="tab" aria-selected="false" data-view="glossary" id="tab-glossary">Glossary</button>
+      <button role="tab" aria-selected="false" data-view="glossary" id="tab-glossary">Platform glossary</button>
+      <button role="tab" aria-selected="false" data-view="aiglossary" id="tab-aiglossary">AI and data glossary</button>
     </div>
   </header>
 
@@ -163,10 +164,12 @@ __EXTRA_CSS__
   <div id="view-ref" class="ref" hidden></div>
   <div id="view-compare" hidden></div>
   <div id="view-glossary" hidden></div>
+  <div id="view-aiglossary" hidden></div>
 </div>
 
 <script type="application/json" id="compare-json">__COMPARE_JSON__</script>
 <script type="application/json" id="glossary-json">__GLOSSARY_JSON__</script>
+<script type="application/json" id="glossary-general-json">__GLOSSARY_GENERAL_JSON__</script>
 <script>
 const ICONS={
   fin:'<svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6"/></svg>',
@@ -201,7 +204,13 @@ const STEPS=[
    {v:'lowcode',ic:'flow',b:'Low-code flows',s:'Power Query, Power Automate. A pipeline with no planning layer'},
    {v:'vibe',ic:'code',b:'Vibe-coded app',s:'Lovable, Replit, Claude Code. A real prototype with one owner'},
    {v:'pbi',ic:'bi',b:'Power BI with write-back',s:'Reporting first, planning bolted on. Usually a BI team'},
-   {v:'lake',ic:'lake',b:'Databricks, Snowflake, BigQuery, Fabric',s:'Serious data team. They can build the plumbing'},
+   {v:'snowflake',ic:'lake',b:'Snowflake',s:'Cortex Analyst, Cortex Agents, CoWork, semantic views'},
+   {v:'databricks',ic:'lake',b:'Databricks',s:'Unity Catalog metric views, Genie, Agent Bricks, Lakebase'},
+   {v:'fabric',ic:'lake',b:'Microsoft Fabric',s:'Fabric IQ, data agents, and now Fabric Planning'},
+   {v:'google',ic:'lake',b:'Google BigQuery or Looker',s:'LookML, Conversational Analytics, Gemini agents'},
+   {v:'sap',ic:'lake',b:'SAP Business Data Cloud',s:'Datasphere, SAP Analytics Cloud planning, Joule'},
+   {v:'aws',ic:'lake',b:'AWS',s:'SageMaker, Amazon Quick, Bedrock AgentCore'},
+   {v:'palantir',ic:'lake',b:'Palantir Foundry',s:'Ontology, actions and AIP agents'},
   ]},
  {id:'stage',q:'How far along are they?',why:'Stage sets the tone and the timing of your follow-up.',
   opts:[
@@ -235,7 +244,8 @@ const STEPS=[
    {v:'excel',ic:'fin',b:'Finance wants Excel back',s:'Planning and reporting in the tools they know'},
    {v:'teams',ic:'users',b:'Teams beyond finance',s:'Sales, HR, ops or supply chain planning came up'},
    {v:'mandate',ic:'flag',b:'AI mandate from the top',s:'Board or CEO told them to use AI'},
-   {v:'dbx',ic:'lake',b:'"Databricks already does this"',s:'Or Snowflake, Fabric. Platform-as-competitor objection'},
+   {v:'dbx',ic:'lake',b:'"Our platform already does this"',s:'Genie, Cortex, Fabric data agents, Looker. Platform-as-competitor objection'},
+   {v:'platplan',ic:'broken',b:'Looking at a platform planning product',s:'Microsoft Fabric Planning or SAP Analytics Cloud came up'},
   ]},
 ];
 
@@ -248,18 +258,21 @@ const RUNGS={r1:['Data','"Is the data already in a lake or warehouse? All of it,
  r7:['Interfaces','"Once it works, how does finance use it? Excel? Power BI? A chat window?"','Vena for Excel, PowerPoint and Power BI already sit on Omega.']};
 const GAPS={g1:['Budget owners','"How do budget owners enter their numbers?"'],g2:['Versions','"What happens when two people change the same driver?" "How do you lock a version?"'],g3:['Audit','"How would your auditor see who changed what?"'],g4:['Key person','"What\'s the plan if that person leaves?"'],g5:['Meaning','"How will the model know what gross margin means at your company?" "Where does that knowledge live today?"'],g6:['Memory','"Does it get smarter as people use it, or start over each time?"']};
 
+const BUILD_PLAT={pbi:'fabric',snowflake:'snowflake',databricks:'databricks',fabric:'fabric',google:'google',sap:'sap',aws:'aws',palantir:'palantir'};
+const RUNG_CRIT={r1:'ingestion',r2:'semantic_model',r3:'write_back',r4:'cumulative_memory',r5:'agent_orchestration',r6:'planning_event_context',r7:'excel'};
 const PKG={
- core:{n:'Omega Core',d:'The context layer, hosted by Vena or on their platform. MCP and API access. They build their own apps and agents on it.'},
+ core:{n:'Omega Core',d:'The context layer, hosted by Vena and connected to their lakehouse through Morpheo connectors. MCP and API access. They build their own apps and agents on it.'},
  fin:{n:'Omega for Finance',d:'Core plus Vena for Excel, PowerPoint and Vena AI. Finance gets a full planning and reporting tool with the context layer under it.'},
- ent:{n:'Omega Enterprise',d:'Every interface, deployment on their platform, and a dedicated FDE pod. Planning and AI across more than one business domain.'},
+ ent:{n:'Omega Enterprise',d:'Every interface, connected to their platform, and a dedicated FDE pod. Planning and AI across more than one business domain.'},
  wait:{n:'Wait and see',d:'They want to try. Leave the door open, set a dated check-in, and send one useful thing rather than a pitch.'}};
 
 function evaluate(s){
+  const platId=BUILD_PLAT[s.build]||null, isPlat=!!platId&&s.build!=='pbi';
   const fin=s.owner==='fin';
   const sig=s.signals||[], gaps=s.gaps||[], lad=s.ladder||[];
   let persona,believe,truth,play,tone;
   if(fin){
-    persona=s.build==='lake'?'Finance with a data ally':'Finance DIY';
+    persona=isPlat?'Finance with a data ally':'Finance DIY';
     believe='"We can set this up ourselves with the AI tools we already use."';
     truth='Works for one model with one owner. Breaks when a second person enters numbers, the auditor asks who changed what, or the builder leaves. AI speeds the build but gives the model no memory of the business.';
     play='Gentle challenge, then wait and see. Ask the questions that let them find the gaps. Never say it won\'t work.';
@@ -268,7 +281,7 @@ function evaluate(s){
     persona=sig.includes('mandate')?'IT with an AI mandate':'IT platform builder';
     believe='"EPM is a boxed app. We can build this on the platform we already run."';
     truth='They can build the data layer. They underestimate planning semantics, write-back, security by intersection, and the ongoing work of keeping context current. They think of AI as a model to call, not a layer that learns the business.';
-    play='Partner, don\'t compete. Walk them up the build ladder one rung at a time. By the top they are describing Omega. Then say so and show it on their platform.';
+    play='Partner, don\'t compete. Walk them up the build ladder one rung at a time. By the top they are describing Omega. Then say so and show Omega connected to their data.';
     tone='Respectful of the builder';
   }
   // package
@@ -283,16 +296,16 @@ function evaluate(s){
   } else {
     if(sig.includes('mandate')||sig.includes('teams')){pkg='ent';pkgWhy='An AI mandate or several teams planning. This is a program, not a tool. Planning is the first use case.';}
     else if(sig.includes('own')&&!sig.includes('excel')){pkg='core';pkgWhy='They want to own the data layer and build on it. Give them the context layer with MCP and API access.';}
-    else if(sig.includes('excel')){pkg='ent';pkgWhy='IT builds the platform, finance wants Excel on top. Omega on their platform with the finance interfaces.';}
+    else if(sig.includes('excel')){pkg='ent';pkgWhy='IT builds the platform, finance wants Excel on top. Omega connected to their platform with the finance interfaces.';}
     else if(lad.length>=5&&unfinished){pkg='wait';pkgWhy='They have thought through most of the ladder and are still building. Offer an architecture review and check in when the semantic model is done.';}
-    else {pkg='core';pkgWhy='Lead with Omega running on their platform. The unticked rungs are your conversation.';}
+    else {pkg='core';pkgWhy='Lead with Omega connected to their platform. The unticked rungs are your conversation.';}
   }
   // people
   const people=[];
   if(fin){ people.push(['PS','Standard presales','A planning demo on their own data. Presales does this every day.']);
     if(s.build!=='chat'||gaps.includes('g5')||gaps.includes('g6')) people.push(['SA','Solution Architecture, one call','The AI questions need someone who has built with these tools.']); }
   else { people.push(['SA','Solution Architecture','They need the ladder from someone who can go deep on semantic models, context and orchestration.']);
-    if(s.build==='lake'||sig.includes('dbx')) people.push(['MO','Morpheo team','Deployment on their platform is a technical conversation. Morpheo speaks it.']); }
+    if(isPlat||sig.includes('dbx')) people.push(['MO','Morpheo team','Connecting Omega to their platform is a technical conversation. Morpheo speaks it.']); }
   if(pkg==='ent') people.push(['AD','Advisory team','This is a program. Advisory frames the roadmap and the FDE model.']);
   if(s.stage==='failed') people.push(['RE','Whoever they spoke to before','Continuity matters. They already trust that person.']);
   // funnel
@@ -308,8 +321,8 @@ function evaluate(s){
    ['Build ladder','Ask the unticked rungs, in order',Object.keys(RUNGS).filter(r=>!lad.includes(r)).map(r=>RUNGS[r][1]),'They find the gaps themselves'],
    ['Cost of the build','A timeline and a payroll',['"How many engineers, for how long?"','"What\'s their opportunity cost?"','"When does finance actually get to use it?"'],'The build has a price'],
    ['Outcome','Bigger than a planning tool',['"What does the business get in year two that it didn\'t get in year one?"','"Which teams beyond finance would use this?"'],'Ambition beyond finance'],
-   ['The turn','Name it',['"Everything you just described is what Omega is. It sits on your platform, builds the semantic model, keeps the context, and finance gets it in Excel and Power BI."'],'Recognition, not defeat'],
-   ['Commit','A shortcut, not a pitch',['"Would it be a bad idea to see Omega on your lakehouse before you commit the engineering time?"'],'In control, with a shortcut'],
+   ['The turn','Name it',['"Everything you just described is what Omega is. It connects to your platform, builds the semantic model, keeps the context, including how your team plans and approves, and finance gets it in Excel and Power BI."'],'Recognition, not defeat'],
+   ['Commit','A shortcut, not a pitch',['"Would it be a bad idea to see Omega on your own data before you commit the engineering time?"'],'In control, with a shortcut'],
   ];
   if(s.stage==='failed'){ funnel.splice(1,fin?3:2,['What broke','Lead with the fix',['"What broke, and who felt it?"','"What did the auditor or the CFO ask that you couldn\'t answer?"','"What would need to be true for the team to trust it again?"'],'Relief that someone gets it']); }
   // actions
@@ -318,13 +331,14 @@ function evaluate(s){
   else if(pkg==='wait') actions.push(['Today','Ask to check in when the semantic model is done. Offer a free architecture review from Solution Architecture.'],['Salesforce','Stage: Nurture. Log the platform and the rungs they have built.']);
   else if(s.stage==='failed') actions.push(['Today','Ask for a 30-minute call on what broke. Lead with the fix, skip the build questions.'],['Salesforce','Reopen the opp. Log what broke and who felt it.']);
   else if(pkg==='fin') actions.push(['This week','Book a demo on their own data within two weeks.'],['Today','Send a two-line recap of the gaps they named, in their words.'],['Salesforce','Stage: Discovery to Demo. Log the build tool and the gaps.']);
-  else if(pkg==='core') actions.push(['This week','Offer an architecture session with Solution Architecture. Show Omega running on their platform.'],['Salesforce','Stage: Technical validation. Log the platform and which rungs they have built.']);
+  else if(pkg==='core') actions.push(['This week','Offer an architecture session with Solution Architecture. Show Omega connected to their platform.'],['Salesforce','Stage: Technical validation. Log the platform and which rungs they have built.']);
   else if(pkg==='ent') actions.push(['This week','Ask for a joint call with finance leadership and the data lead. Bring Advisory.'],['Salesforce','Stage: Executive alignment. Log the sponsor and the mandate.']);
-  if(sig.includes('dbx')) actions.push(['Objection','Send the one-page Omega on Databricks positioning. Book Morpheo for the next call. Re-ask rungs 3, 4 and 6 about the platform specifically, then position Omega as the planning and context layer on top.']);
+  if(sig.includes('dbx')) actions.push(['Objection','Open the head to head for their platform on the Compare tab and use its talk track. Book Morpheo for the next call. Re-ask rungs 3, 4 and 6 about the platform specifically, then position Omega as the planning and context layer on top.']);
+  if(sig.includes('platplan')) actions.push(['Competitor','A platform planning product is in play. Against Fabric Planning lead with consolidation, allocations, Excel and the GA Planning Agent. Against SAP lead with speed to value and non-SAP data. Open the matching head to head before the next call.']);
   if(sig.includes('teams')&&pkg!=='ent') actions.push(['Expansion','They mentioned teams beyond finance. Log Enterprise as the expansion path.']);
   const words=fin?[['"Have you thought about how the model learns what a driver means at your company?"','"AI can\'t do planning"'],['"You keep Excel. The context layer sits under it"','"You\'d replace your spreadsheets"'],['"What happens when that person leaves?"','"That\'s not sustainable"'],['"Would it be a bad idea to see it on your data first?"','"Can I book a demo?"']]
-   :[['"Everything you described is what Omega is"','"You\'d be rebuilding Vena"'],['"It runs on your Databricks. The data doesn\'t move"','"You\'d move your data to us"'],['"What does the second year look like?"','"What\'s your budget?"'],['"Would it be a bad idea to see it on your data first?"','"Can I book a demo?"']];
-  return {persona,believe,truth,play,tone,pkg,pkgWhy,people,funnel,actions,words};
+   :[['"Everything you described is what Omega is"','"You\'d be rebuilding Vena"'],['"Omega connects to the platform you already run and adds the planning memory it does not keep"','"You\'d move everything to us"'],['"What does the second year look like?"','"What\'s your budget?"'],['"Would it be a bad idea to see it on your data first?"','"Can I book a demo?"']];
+  return {persona,believe,truth,play,tone,pkg,pkgWhy,people,funnel,actions,words,platId,fin};
 }
 
 // ---------- state & render ----------
@@ -365,9 +379,26 @@ function render(){
   host.querySelector('#next').addEventListener('click',()=>{idx++;save();render()});
 }
 const label=(id,v)=>{const st=STEPS.find(s=>s.id===id);const o=st&&st.opts.find(o=>o.v===v);return o?o.b:''};
+function platIntel(r){
+  const p=r.platId&&typeof PROV!=='undefined'?PROV[r.platId]:null; if(!p)return '';
+  const tools=p.tools.filter(t=>['context','ai','planning'].includes(capOf(t))).slice(0,6);
+  const terms=GLO.filter(g=>g.category===({fabric:'Microsoft',google:'Google',aws:'AWS',sap:'SAP',palantir:'Palantir',snowflake:'Snowflake',databricks:'Databricks'})[p.id]).slice(0,10);
+  const rungs=!r.fin?Object.keys(RUNGS).map(k=>{const c=p.ratings[RUNG_CRIT[k]]||{r:'nd'},v=VENA.ratings[RUNG_CRIT[k]]||{r:'nd'};return `<div class="row"><b>${esc(RUNGS[k][0])}</b><span>${rt(c.r)} ${esc(c.note)} <span class="muted">Vena</span> ${rt(v.r)}</span></div>`}).join(''):'';
+  return `<div class="card pintel" style="--pc:${PCOLOR[p.id]}">
+    <div style="display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap"><div style="display:flex;gap:12px;align-items:center">${avatar(p,40)}<div><div class="eyebrow">Platform intel</div><h2 style="margin:2px 0 0">What ${esc(p.short)} will put in front of them</h2></div></div>
+    <button class="btn ghost" data-openh2h="${p.id}">Open Vena vs ${esc(p.short)}</button></div>
+    <div class="tgrid" style="margin-top:14px">${tools.map(t=>toolCard({...t,p,cap:capOf(t),sg:statusGroup(t.status)},false)).join('')}</div>
+    ${rungs?`<h3 style="margin:18px 0 6px">Their platform, rung by rung</h3><div class="list">${rungs}</div>`:''}
+    <div class="grid2" style="margin-top:16px">
+      <div><h3 style="margin-bottom:6px">What they still have to build</h3><ul class="plain checks">${p.build.slice(0,6).map(b=>`<li>${esc(b)}</li>`).join('')}</ul></div>
+      <div><h3 style="margin-bottom:6px">Talk track for ${esc(p.short)}</h3><div class="talk">${p.talkTrack.map(t=>`<div>${esc(t)}</div>`).join('')}</div></div>
+    </div>
+    ${terms.length?`<h3 style="margin:16px 0 6px">Terms you will hear</h3><div class="term"><div class="rel">${terms.map(g=>`<button data-gterm="${esc(g.term)}">${esc(g.term)}</button>`).join('')}</div></div>`:''}
+  </div>`;
+}
 function renderResult(){
   const r=evaluate(state), pk=PKG[r.pkg];
-  const summary=[`Build vs Buy summary`,`Decision maker: ${label('owner',state.owner)}`,`Building on: ${label('build',state.build)}`,`Stage: ${label('stage',state.stage)}`,`Persona: ${r.persona}`,`Recommended path: ${pk.n}`,`Why: ${r.pkgWhy}`,`Bring in: ${r.people.map(p=>p[1]).join('; ')}`,`Next actions:`,...r.actions.map(a=>`- ${a[0]}: ${a[1]}`),`Questions still to ask:`,...r.funnel.flatMap(f=>f[2].map(q=>`- ${q}`))].join('\n');
+  const summary=[`Build vs Buy summary`,`Decision maker: ${label('owner',state.owner)}`,`Building on: ${label('build',state.build)}`,`Stage: ${label('stage',state.stage)}`,...(r.platId&&typeof PROV!=='undefined'&&PROV[r.platId]?[`Compare: Vena ${PROV[r.platId].headline}`]:[]),`Persona: ${r.persona}`,`Recommended path: ${pk.n}`,`Why: ${r.pkgWhy}`,`Bring in: ${r.people.map(p=>p[1]).join('; ')}`,`Next actions:`,...r.actions.map(a=>`- ${a[0]}: ${a[1]}`),`Questions still to ask:`,...r.funnel.flatMap(f=>f[2].map(q=>`- ${q}`))].join('\n');
   host.innerHTML=`<div class="result">
    <div class="hero">
     <div class="card accent">
@@ -401,12 +432,15 @@ function renderResult(){
     <div class="card actions"><div class="eyebrow">Deal actions</div><h2 style="margin:4px 0 8px">Do these today</h2>
      <div class="list">${r.actions.map(a=>`<div class="row"><b>${a[0]}</b><span>${a[1]}</span></div>`).join('')}</div></div>
    </div>
+   ${platIntel(r)}
    <div class="card"><div class="eyebrow">Language</div><h2 style="margin:4px 0 8px">Say this, not that</h2>
      <div class="list">${r.words.map(w=>`<div class="row"><b style="color:var(--accent-deep)">${w[0]}</b><span class="muted">not ${w[1]}</span></div>`).join('')}</div></div>
    <div class="card"><div class="eyebrow">Summary for Salesforce or Slack</div>
      <textarea id="summary" readonly>${summary.replace(/</g,'&lt;')}</textarea>
      <div class="copybar" style="margin-top:10px"><button class="btn" id="copy">Copy summary</button><button class="btn ghost" id="restart">Start another deal</button><button class="btn ghost" id="edit">Change answers</button><span class="hint" id="copied"></span></div></div>
   </div>`;
+  host.querySelectorAll('[data-openh2h]').forEach(b=>b.onclick=()=>openCompare('h2h',b.dataset.openh2h));
+  host.querySelectorAll('[data-gterm]').forEach(b=>b.onclick=()=>jumpTo(b.dataset.gterm));
   host.querySelector('#copy').addEventListener('click',()=>{const ta=host.querySelector('#summary');const done=()=>host.querySelector('#copied').textContent='Copied';
     if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(ta.value).then(done).catch(()=>{ta.select();done()})}else{ta.select();done()}});
   host.querySelector('#restart').addEventListener('click',()=>{state={};idx=0;save();render();window.scrollTo({top:0})});
@@ -436,7 +470,9 @@ document.getElementById('view-ref').innerHTML=`
   ['Power Query, Power Automate, low-code flows','A pipeline with no planning layer. No write-back, no workflow','Ask about the last mile'],
   ['A vibe-coded app (Lovable, Replit, Claude Code)','A real prototype with an owner who may leave. No governance','Respect the effort, ask who maintains it'],
   ['Power BI with a write-back add-in','Reporting first, planning bolted on. Usually a BI team','Lead with Vena for Power BI'],
-  ['Databricks, Snowflake, BigQuery, Fabric','Serious data team. They can build the plumbing','Partner. Lead with Omega on their platform']])}
+  ['Snowflake, Databricks, BigQuery, AWS','Serious data team. Strong semantic and agent tools, no planning application','Partner. Lead with Omega connected to their platform and open the head to head on the Compare tab'],
+  ['Microsoft Fabric','Fabric IQ plus Fabric Planning, a first-party planning product GA in 2026','Compete on consolidation, allocations, Excel and the GA Planning Agent'],
+  ['SAP Business Data Cloud','SAP Analytics Cloud is a real planning tool with Joule agents arriving','Lead with speed to value, Excel and non-SAP data']])}
  <div style="height:14px"></div>
  ${tbl(['Stage','Signals','Your posture'],[
   ['Idea','"We think we can do this ourselves"','Shape the build with questions. Most open to Omega now'],
@@ -459,13 +495,13 @@ document.getElementById('view-ref').innerHTML=`
   ['"IT is actually building this"','Switch to Flow B. Ask to bring the data lead in']])}</section>
 <section><div class="eyebrow">Flow B</div><h2>IT-led</h2><p class="sub">A CIO, CTO, VP Data or innovation lead with a lakehouse and engineers. Partner, don't compete. Never say "you can't build it." Walk them up the ladder one rung at a time. By the top, they are describing Omega.</p>
  <div class="ladder">${Object.keys(RUNGS).map((k,i)=>`<div class="l"><div class="n">${i+1}</div><div><b>${RUNGS[k][0]}</b> <span class="muted">${RUNGS[k][1]}</span><small>${RUNGS[k][2]}</small></div></div>`).join('')}</div>
- <p style="margin-top:14px;font-size:14px"><b>The turn.</b> "Everything you just described is what Omega is. It sits on your Databricks, builds the semantic model, keeps the context, and finance gets it in Excel and Power BI. Would it be worth seeing it running on your data?"</p>
+ <p style="margin-top:14px;font-size:14px"><b>The turn.</b> "Everything you just described is what Omega is. It connects to your Databricks, builds the semantic model, keeps the context including how your team plans and approves, and finance gets it in Excel and Power BI. Would it be worth seeing it running on your data?"</p>
  <div style="height:14px"></div>
  ${tbl(['If they say','Do this'],[
-  ['"We want to own the data layer and build our own apps"','Omega Core on their platform. MCP and API access. Solution Architecture'],
-  ['"Finance needs a real planning tool on top of what we have"','Omega Enterprise or Omega for Finance on their platform. Bring finance leadership'],
+  ['"We want to own the data layer and build our own apps"','Omega Core connected to their platform. MCP and API access. Solution Architecture'],
+  ['"Finance needs a real planning tool on top of what we have"','Omega Enterprise or Omega for Finance connected to their platform. Bring finance leadership'],
   ['"We\'ve been told to use AI across the business"','Omega Enterprise with an FDE pod. Planning as the first use case'],
-  ['"Databricks already does this"','Re-ask rungs 3, 4 and 6 about Databricks specifically. Position Omega as the planning and context layer on top, not a replacement'],
+  ['"Our platform already does this"','Re-ask rungs 3, 4 and 6 about their platform specifically, using the head to head on the Compare tab. Position Omega as the planning and context layer on top, not a replacement'],
   ['"We\'ll build it anyway"','Wait and see. Check in when the semantic model is done. Offer an architecture review. Don\'t disappear']])}</section>
 <section><div class="eyebrow">Step 3</div><h2>Pick the path</h2><p class="sub">Three packages. Every deal lands on one.</p>
  <div class="pkgs">
@@ -488,31 +524,31 @@ document.getElementById('view-ref').innerHTML=`
   ['Finance, Omega for Finance','Idea or prototype','Book a demo on their data within two weeks. Send a two-line recap of the gaps in their words','Discovery to Demo. Log the build tool and the gaps'],
   ['Finance, wait and see','Any','Calendar a check-in the week after their next cycle. Send one useful thing','Nurture. Check-in date as next step'],
   ['Finance, re-entry','Failed','30-minute call on what broke. Lead with the fix','Reopen. Log what broke'],
-  ['IT, Omega Core','Idea or prototype','Architecture session with Solution Architecture. Omega on their platform','Technical validation. Log platform and rungs'],
+  ['IT, Omega Core','Idea or prototype','Architecture session with Solution Architecture. Omega connected to their platform','Technical validation. Log platform and rungs'],
   ['IT, Omega Enterprise','Any','Joint call with finance leadership and the data lead. Bring Advisory','Executive alignment. Log sponsor and mandate'],
   ['IT, wait and see','Prototype','Check in when the semantic model is done. Free architecture review','Nurture. Log the rung'],
-  ['Any','"Databricks already does this"','Send the Omega on Databricks one-pager. Book Morpheo','Log the objection']])}</section>
+  ['Any','"Our platform already does this"','Use the platform head to head and talk track. Book Morpheo','Log the objection and the platform']])}</section>
 <section><div class="eyebrow">Language</div><h2>Words that work, words to avoid</h2>
  ${tbl(['Say this','Not this','Why'],[
   ['"Have you thought about how the model learns what a driver means at your company?"','"AI can\'t do planning"','It can do a lot. The gap is context'],
   ['"Everything you described is what Omega is"','"You\'d be rebuilding Vena"','A compliment, not a put-down'],
-  ['"It runs on your Databricks. The data doesn\'t move"','"You\'d move your data to us"','Data movement kills IT deals'],
+  ['"Omega connects to the platform you already run"','"You\'d move everything to us"','Data movement kills IT deals'],
   ['"You keep Excel. The context layer sits under it"','"You\'d replace your spreadsheets"','Finance wants to keep Excel'],
   ['"What does the second year look like?"','"What\'s your budget?"','Second-year value sells context'],
   ['"Would it be a bad idea to see it on your data first?"','"Can I book a demo?"','A no-oriented question feels safe'],
   ['"What happens when that person leaves?"','"That\'s not sustainable"','Same point, but they say it']])}</section>`;
 
 // tabs
-const VIEWS=['guide','ref','compare','glossary'];
+const VIEWS=['guide','ref','compare','glossary','aiglossary'];
 function showView(v){
   document.querySelectorAll('.tabs button').forEach(x=>x.setAttribute('aria-selected',x.dataset.view===v));
   VIEWS.forEach(k=>document.getElementById('view-'+k).hidden=k!==v);
-  if(v==='compare')renderCompare(); if(v==='glossary')renderGlossary();
+  if(v==='compare')renderCompare(); if(v==='glossary')renderGlossary(); if(v==='aiglossary')renderAiGlossary();
 }
 document.querySelectorAll('.tabs button').forEach(b=>b.addEventListener('click',()=>showView(b.dataset.view)));
-render();
 __EXTRA_JS__
-const HASHMAP={'#reference':'ref','#compare':'compare','#glossary':'glossary'};
+render();
+const HASHMAP={'#reference':'ref','#compare':'compare','#glossary':'glossary','#ai-glossary':'aiglossary'};
 if(HASHMAP[location.hash])showView(HASHMAP[location.hash]);
 </script>
 </body>

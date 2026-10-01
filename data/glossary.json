@@ -1,2483 +1,1530 @@
 [
-  {
-    "term": "ABAC",
-    "aka": [
-      "attribute-based access control",
-      "tag-based policies"
-    ],
-    "category": "General data",
-    "technical": "An access model that grants or denies access by evaluating attributes of the user, the data (such as governed tags) and the context against central policies, which scales better than granting permissions object by object. Databricks reports support for 10,000+ such policies per metastore.",
-    "sales": "Rules like anyone in HR can see data tagged as payroll, instead of granting access table by table. It is strong for governing reads, but write permissions on plan intersections still have to be designed.",
-    "related": [
-      "RBAC",
-      "Row-level security",
-      "Column masking",
-      "Unity Catalog"
-    ],
-    "src": "https://www.databricks.com/blog/abac-row-filtering-and-column-masking-policies-governed-tags-and-data-classification-are-now"
-  },
-  {
-    "term": "Acterys",
-    "aka": [
-      "Acterys planning",
-      "Managility"
-    ],
-    "category": "Vena",
-    "technical": "A Power BI and Fabric planning, analytics and app-building platform with proprietary write-back and multidimensional modeling, acquired by Vena (closed March 26, 2026) and still branded Acterys.",
-    "sales": "Vena's planning option for teams that work in Power BI rather than Excel. It overlaps directly with Microsoft's Fabric Planning, so be ready to position the two.",
-    "related": [
-      "Planning in Fabric",
-      "Translytical task flows",
-      "Write-back"
-    ],
-    "src": "https://www.venasolutions.com/newsroom/vena-completes-acterys-acquisition"
-  },
-  {
-    "term": "Agent Bricks",
-    "aka": [
-      "Supervisor Agent",
-      "Knowledge Assistant",
-      "Databricks agents"
-    ],
-    "category": "Databricks",
-    "technical": "Databricks' governed platform for building and running enterprise agents, which now includes the former Mosaic AI Agent Framework, with components such as Supervisor Agent (GA February 10, 2026), Knowledge Assistant and Document Intelligence.",
-    "sales": "Databricks' toolkit for building AI agents and multi-agent teams. It suits custom agents, which is the point, since a buyer would be building the finance agents themselves.",
-    "related": [
-      "Mosaic AI",
-      "Multi-agent system",
-      "MLflow",
-      "Agent orchestration"
-    ],
-    "src": "https://www.databricks.com/blog/agent-bricks-governed-enterprise-agent-platform"
-  },
-  {
-    "term": "Agent Development Kit (ADK)",
-    "aka": [
-      "ADK",
-      "Google ADK"
-    ],
-    "category": "Google",
-    "technical": "Google's open-source framework for building single and multi-agent systems as graphs of sub-agents, with MCP and A2A support and deployment to Agent Runtime.",
-    "sales": "Google's developer toolkit for coding AI agents. It is a building block for teams who plan to write their own finance agents.",
-    "related": [
-      "Agent Runtime and Memory Bank",
-      "Agent2Agent protocol (A2A)",
-      "MCP Toolbox for Databases"
-    ],
-    "src": "https://cloud.google.com/blog/topics/google-cloud-next/google-cloud-next-2026-wrap-up"
-  },
-  {
-    "term": "Agent harness",
-    "aka": [
-      "harness",
-      "agent framework",
-      "agent runtime"
-    ],
-    "category": "AI and agents",
-    "technical": "The software scaffolding around an LLM that runs the agent loop, including the system prompt, tool definitions, context management, memory, permissions and logging. Databricks describes its Omnigent project as an open-source meta-harness.",
-    "sales": "The machinery that turns a raw AI model into a dependable worker. Building and maintaining a harness is real engineering work a buyer takes on when they build their own finance agents.",
-    "related": [
-      "AI agent",
-      "Agent orchestration",
-      "Guardrails"
-    ],
-    "src": ""
-  },
-  {
-    "term": "Agent memory",
-    "aka": [
-      "short-term memory",
-      "long-term memory",
-      "episodic memory",
-      "user memory"
-    ],
-    "category": "AI and agents",
-    "technical": "Stored state an agent reuses, split into short-term memory (events from the current session or recent turns) and long-term memory (facts, preferences, summaries or episodes extracted and kept across sessions). AgentCore Memory, Memory Bank and Genie One memory are examples.",
-    "sales": "Whether an AI remembers past conversations and what it learned. Most shipped memory today is per user, such as remembering preferences, rather than shared memory of how the finance team plans.",
-    "related": [
-      "Cumulative context",
-      "AgentCore Memory",
-      "Agent Runtime and Memory Bank",
-      "Snowflake CoWork"
-    ],
-    "src": ""
-  },
-  {
-    "term": "Agent orchestration",
-    "aka": [
-      "orchestration",
-      "orchestrator"
-    ],
-    "category": "AI and agents",
-    "technical": "Coordinating the sequence of model calls, tool invocations, sub-agents, state and error handling needed to finish a task, handled either by a framework or by a supervising agent.",
-    "sales": "The traffic control that decides which AI step or tool runs next. Data platforms are strong here, but orchestrating AI steps is different from orchestrating a budget process with deadlines and sign-offs.",
-    "related": [
-      "Multi-agent system",
-      "Agent Bricks",
-      "Amazon Bedrock AgentCore",
-      "Agent Development Kit (ADK)"
-    ],
-    "src": ""
-  },
-  {
-    "term": "Agent Runtime and Memory Bank",
-    "aka": [
-      "Agent Engine",
-      "Vertex AI Agent Engine",
-      "Memory Bank",
-      "Gemini Enterprise Agent Platform"
-    ],
-    "category": "Google",
-    "technical": "Agent Runtime, formerly Vertex AI Agent Engine, hosts agents on Gemini Enterprise Agent Platform, and Memory Bank stores long-term user preferences and facts across sessions with revision tracking and IAM-based access control. Sessions and Memory Bank billing began September 1, 2026.",
-    "sales": "Google's hosting and memory service for custom agents. Its memory is scoped to individual users rather than shared knowledge of how finance plans.",
-    "related": [
-      "Agent memory",
-      "Agent Development Kit (ADK)",
-      "AgentCore Memory"
-    ],
-    "src": "https://docs.cloud.google.com/agent-builder/agent-engine/memory-bank/overview?hl=en"
-  },
-  {
-    "term": "Agent2Agent protocol (A2A)",
-    "aka": [
-      "A2A",
-      "Agent2Agent"
-    ],
-    "category": "AI and agents",
-    "technical": "An open protocol, created by Google and donated to the Linux Foundation in June 2025, that lets agents discover each other, exchange tasks and collaborate across vendors. It complements MCP, which connects agents to tools.",
-    "sales": "A standard way for one vendor's AI agent to hand work to another's. Google, SAP and others back it, though SAP describes Joule Studio support as future.",
-    "related": [
-      "Model Context Protocol (MCP)",
-      "Multi-agent system",
-      "Agent Development Kit (ADK)"
-    ],
-    "src": ""
-  },
-  {
-    "term": "AgentCore Memory",
-    "aka": [
-      "Amazon Bedrock AgentCore Memory"
-    ],
-    "category": "AWS",
-    "technical": "The AgentCore memory service that keeps short-term session events for up to 365 days and extracts long-term semantic, summary, preference and episodic memories, with namespaces that scope memories by organization, team or user. Episodic memory went GA December 2, 2025.",
-    "sales": "Amazon's well-engineered memory store for AI agents. It knows nothing about finance, so someone has to decide what an assumption or planning decision memory looks like.",
-    "related": [
-      "Agent memory",
-      "Amazon Bedrock AgentCore",
-      "Cumulative context"
-    ],
-    "src": "https://aws.amazon.com/blogs/machine-learning/amazon-bedrock-agentcore-memory-building-context-aware-agents/"
-  },
-  {
-    "term": "Agentic workflow",
-    "aka": [
-      "agentic process",
-      "AI-driven workflow"
-    ],
-    "category": "AI and agents",
-    "technical": "A business process in which one or more agents carry out multi-step work, such as data preparation, analysis or plan updates, with defined tools, checkpoints and human approvals.",
-    "sales": "A process where AI does much of the legwork and people review and approve. In planning it only works well if the workflow, approvals and audit trail already exist for the agent to operate inside.",
-    "related": [
-      "AI agent",
-      "Workflow and approvals",
-      "Guardrails"
-    ],
-    "src": ""
-  },
-  {
-    "term": "AI agent",
-    "aka": [
-      "agent",
-      "AI assistant"
-    ],
-    "category": "AI and agents",
-    "technical": "Software in which an LLM plans steps, calls tools such as queries, APIs or other agents, observes the results and iterates toward a goal, rather than producing a single response.",
-    "sales": "An AI assistant that can carry out a multi-step task, such as pulling actuals, comparing them to budget and drafting commentary. In a planning deal, the key question is whether the agent can only read or can also update a plan inside governed workflow.",
-    "related": [
-      "Agentic workflow",
-      "Tool calling",
-      "Agent orchestration"
-    ],
-    "src": ""
-  },
-  {
-    "term": "AI Credits",
-    "aka": [
-      "Snowflake AI Credits"
-    ],
-    "category": "Snowflake",
-    "technical": "Snowflake's separate billing currency for AI services such as Cortex Agents, CoWork and AI Functions, priced at $2.00 with global cross-region routing or $2.20 with regional routing, separate from platform credits, with costs adding up across every service an agent calls.",
-    "sales": "The meter Snowflake uses to bill AI usage, on top of normal compute. Because an agent's costs stack across several services, the monthly bill is harder to predict than a subscription.",
-    "related": [
-      "Tokens and token pricing",
-      "Cortex Agents",
-      "Snowflake CoWork"
-    ],
-    "src": "https://docs.snowflake.com/en/user-guide/snowflake-cortex/pricing"
-  },
-  {
-    "term": "AI gateway",
-    "aka": [
-      "LLM gateway",
-      "model gateway",
-      "Unity Gateway"
-    ],
-    "category": "AI and agents",
-    "technical": "A proxy layer in front of model and tool endpoints that centralizes routing, authentication, rate limits, spend caps, logging and policy enforcement across providers. Databricks renamed its AI Gateway to Unity Gateway, GA August 4, 2026.",
-    "sales": "A central checkpoint for all AI traffic, used to control cost and keep a record of what was asked. It is infrastructure a build team has to set up and run.",
-    "related": [
-      "Guardrails",
-      "Tokens and token pricing",
-      "Unity Catalog"
-    ],
-    "src": "https://docs.databricks.com/aws/en/release-notes/unity-gateway/"
-  },
-  {
-    "term": "AI.FORECAST and TimesFM",
-    "aka": [
-      "AI.FORECAST",
-      "TimesFM",
-      "AI.KEY_DRIVERS"
-    ],
-    "category": "Google",
-    "technical": "AI.FORECAST is a BigQuery SQL function that produces time-series forecasts using Google's pretrained TimesFM model, GA since September 30, 2025, and TimesFM in Connected Sheets went GA July 1, 2026. AI.KEY_DRIVERS for contribution analysis went GA September 29, 2026.",
-    "sales": "Google's built-in forecasting that works without training a model. It produces a useful statistical baseline, but turning a baseline into an approved plan still needs a planning process.",
-    "related": [
-      "BigQuery",
-      "Connected Sheets",
-      "Rolling forecast",
-      "Driver-based planning"
-    ],
-    "src": "https://cloud.google.com/blog/products/data-analytics/ai-based-forecasting-and-analytics-in-bigquery-via-mcp-and-adk"
-  },
-  {
-    "term": "AIP Logic",
-    "aka": [
-      "Palantir AIP Logic"
-    ],
-    "category": "Palantir",
-    "technical": "A no-code environment in Palantir AIP for creating, testing and deploying AI-powered functions that read and act on Ontology data and can be triggered from applications or automations.",
-    "sales": "Palantir's point-and-click builder for AI steps. Planning calculations like allocations or spreading would still need to be engineered in it or in code.",
-    "related": [
-      "Palantir AIP",
-      "Ontology actions"
-    ],
-    "src": "https://www.palantir.com/docs/foundry/aip/aip-features"
-  },
-  {
-    "term": "Allocations",
-    "aka": [
-      "cost allocation",
-      "allocation rules",
-      "chargebacks"
-    ],
-    "category": "Planning and FP&A",
-    "technical": "Rules that distribute amounts, such as shared costs or targets, from a source across entities, departments or products using bases like headcount, revenue or square footage.",
-    "sales": "Spreading shared costs like IT or rent across departments fairly. Ask every vendor to show this live, since it is complex to build and not consistently documented in public material.",
-    "related": [
-      "Spreading and breakback",
-      "Driver-based planning",
-      "SAP Analytics Cloud planning"
-    ],
-    "src": ""
-  },
-  {
-    "term": "Amazon Bedrock AgentCore",
-    "aka": [
-      "AgentCore",
-      "Bedrock AgentCore",
-      "AgentCore Policy",
-      "AgentCore Gateway"
-    ],
-    "category": "AWS",
-    "technical": "AWS's managed services for running agents at scale, GA October 13, 2025, including Runtime, Memory, Gateway (which connects to MCP servers), Identity, Observability, Policy guardrails and Evaluations, billed on consumption.",
-    "sales": "Amazon's industrial-strength plumbing for building AI agents. It is a platform for builders, so every finance-specific piece would be custom.",
-    "related": [
-      "AgentCore Memory",
-      "Agent orchestration",
-      "Guardrails"
-    ],
-    "src": "https://aws.amazon.com/about-aws/whats-new/2025/10/amazon-bedrock-agentcore-available"
-  },
-  {
-    "term": "Amazon Quick",
-    "aka": [
-      "Amazon Quick Suite",
-      "QuickSight",
-      "Quick Sight",
-      "Quick Flows"
-    ],
-    "category": "AWS",
-    "technical": "AWS's agentic business suite, launched as Amazon Quick Suite in October 2025 and later shortened to Amazon Quick, bundling chat, research, automation flows and BI, with semantic datasets added July 7, 2026. It documents no write-back or planning, and it replaces Amazon Q Business, which is closed to new customers.",
-    "sales": "Amazon's AI assistant and reporting suite, with enterprise plans at $20 or $40 per user plus $250 per account per month. The realistic overlap with Vena is reporting and Q&A, not planning.",
-    "related": [
-      "Amazon Bedrock AgentCore",
-      "Semantic layer",
-      "Amazon Redshift"
-    ],
-    "src": "https://aws.amazon.com/blogs/machine-learning/your-complete-guide-to-amazon-quick-suite-at-aws-reinvent-2025/"
-  },
-  {
-    "term": "Amazon Redshift",
-    "aka": [
-      "Redshift"
-    ],
-    "category": "AWS",
-    "technical": "AWS's managed cloud data warehouse for SQL analytics, accessible through SageMaker Unified Studio and SageMaker Catalog. Its AI features were not separately researched for this comparison.",
-    "sales": "Amazon's data warehouse, often where AWS customers keep actuals. Like other warehouses, it stores data for reporting but does not include planning workflow, versions or input.",
-    "related": [
-      "Data warehouse",
-      "SageMaker Unified Studio",
-      "Amazon Quick"
-    ],
-    "src": "https://aws.amazon.com/about-aws/whats-new/2025/03/amazon-sagemaker-unified-studio-generally-available/"
-  },
-  {
-    "term": "Apache Iceberg",
-    "aka": [
-      "Iceberg tables"
-    ],
-    "category": "General data",
-    "technical": "An open table format governed by the Apache Software Foundation that adds transactions, schema evolution and snapshots to files in object storage, supported by BigQuery, Snowflake, AWS and other engines.",
-    "sales": "An open format, similar to Delta Lake, that lets several platforms read the same tables without copying them. It matters because it reduces lock-in to any single data vendor.",
-    "related": [
-      "Delta Lake",
-      "Lakehouse",
-      "Parquet",
-      "Zero-copy"
-    ],
-    "src": ""
-  },
-  {
-    "term": "Audit trail",
-    "aka": [
-      "change history",
-      "audit log",
-      "provenance"
-    ],
-    "category": "Planning and FP&A",
-    "technical": "An immutable log recording who changed which value or object, when, from what to what, and ideally why through comments, covering user, system and AI-initiated changes.",
-    "sales": "The record auditors and controllers use to answer who changed this number and why. Platform logs track queries and agent actions, but plan-level change history with comments usually has to be built.",
-    "related": [
-      "Data lineage",
-      "Period locking",
-      "Ontology actions"
-    ],
-    "src": ""
-  },
-  {
-    "term": "BigQuery",
-    "aka": [
-      "Google BigQuery",
-      "BigQuery conversational analytics",
-      "BigQuery data agents"
-    ],
-    "category": "Google",
-    "technical": "Google Cloud's serverless data warehouse, now with conversational analytics (GA June 23, 2026), built-in AI functions such as AI.FORECAST and AI.KEY_DRIVERS, a managed MCP server (GA April 20, 2026) and Iceberg table support.",
-    "sales": "Google's main data warehouse. It is strong for analysis and forecasting, but its data agents are read-only and there is no native planning application.",
-    "related": [
-      "Looker",
-      "AI.FORECAST and TimesFM",
-      "Knowledge Catalog",
-      "Data warehouse"
-    ],
-    "src": "https://docs.cloud.google.com/bigquery/docs/release-notes"
-  },
-  {
-    "term": "Business glossary",
-    "aka": [
-      "glossary",
-      "business terms",
-      "data dictionary"
-    ],
-    "category": "Data and AI",
-    "technical": "A curated set of business terms with definitions, synonyms, owners and links to the data assets they describe, maintained in a catalog and used by AI to interpret questions. Databricks listed its Glossary as preview coming soon in June 2026, while SageMaker Catalog can require glossary terms before an asset is published.",
-    "sales": "The agreed definitions of terms like ARR, opex or headcount, written down and owned. Most platforms now have one, but someone still has to write and maintain the entries.",
-    "related": [
-      "Data catalog",
-      "Semantic layer",
-      "Context layer"
-    ],
-    "src": ""
-  },
-  {
-    "term": "Cell-level security",
-    "aka": [
-      "intersection-level security",
-      "entity-level security",
-      "write security"
-    ],
-    "category": "Planning and FP&A",
-    "technical": "Permissions that control read or write access at the level of individual intersections of dimensions, such as letting a manager edit only their own cost center's opex in the current forecast. Vena publicly documents entity-level security, so confirm cell-level detail internally.",
-    "sales": "Controlling exactly which numbers each person can see and edit in the plan. Data platform row and column policies mainly govern reading, so write permissions by intersection are custom work.",
-    "related": [
-      "Row-level security",
-      "Write-back",
-      "ABAC"
-    ],
-    "src": ""
-  },
-  {
-    "term": "Change data capture (CDC)",
-    "aka": [
-      "CDC",
-      "log-based replication"
-    ],
-    "category": "General data",
-    "technical": "A technique that detects inserts, updates and deletes in a source database, often by reading its transaction log, and streams only those changes to a target system.",
-    "sales": "A way to keep a copy of ERP or CRM data current without reloading everything each night. It shortens the lag between a posting in the GL and the number a planner sees.",
-    "related": [
-      "ETL and ELT",
-      "Openflow",
-      "Data sharing"
-    ],
-    "src": ""
-  },
-  {
-    "term": "Column masking",
-    "aka": [
-      "column-level security",
-      "CLS",
-      "dynamic data masking"
-    ],
-    "category": "General data",
-    "technical": "A policy that hides or obfuscates values in sensitive columns, such as salary, for users without permission while still returning the rest of the row.",
-    "sales": "Hiding sensitive fields like individual salaries from people who should not see them. It is important for workforce planning data, and data platforms enforce it when data is read.",
-    "related": [
-      "Row-level security",
-      "ABAC",
-      "Cell-level security"
-    ],
-    "src": "https://www.databricks.com/blog/abac-row-filtering-and-column-masking-policies-governed-tags-and-data-classification-are-now"
-  },
-  {
-    "term": "Connected Sheets",
-    "aka": [
-      "Google Connected Sheets"
-    ],
-    "category": "Google",
-    "technical": "A Google Sheets feature for analyzing BigQuery data through pivots, charts, extracts and scheduled refresh without moving the data into the sheet. Its documentation describes analysis and refresh but not write-back.",
-    "sales": "Google Sheets connected live to BigQuery for analysis. It does not save planning inputs back to the warehouse, unlike Excel-native planning in Vena.",
-    "related": [
-      "BigQuery",
-      "AI.FORECAST and TimesFM",
-      "Write-back"
-    ],
-    "src": "https://support.google.com/docs/answer/9703214?hl=en"
-  },
-  {
-    "term": "Context engineering",
-    "aka": [
-      "context curation",
-      "prompt context design"
-    ],
-    "category": "Data and AI",
-    "technical": "The practice of designing, curating and maintaining what information, tools, instructions and memory go into an AI model's context for each task, including retrieval, summarization and permission filtering.",
-    "sales": "The behind-the-scenes work that decides what the AI is shown before it answers. Snowflake and Databricks currently ship more automated context engineering than Vena, through usage-mined semantics and inferred ontologies.",
-    "related": [
-      "Context layer",
-      "Retrieval-augmented generation (RAG)",
-      "Semantic View Autopilot",
-      "Genie Ontology"
-    ],
-    "src": ""
-  },
-  {
-    "term": "Context layer",
-    "aka": [
-      "data context layer",
-      "AI context layer",
-      "context engine"
-    ],
-    "category": "Data and AI",
-    "technical": "The combined semantics, metadata, business definitions, rules, examples and memory that are assembled and supplied to an AI model so its answers reflect how a specific business works. a16z describes it as a superset of the traditional semantic layer.",
-    "sales": "Everything an AI assistant needs to know about the company to give a right answer, not just a plausible one. Every data platform now sells a version of this, so the real questions are what context it holds and who keeps it current.",
-    "related": [
-      "Semantic layer",
-      "Cumulative context",
-      "Context engineering",
-      "Vena Omega"
-    ],
-    "src": "https://a16z.com/your-data-agents-need-context/"
-  },
-  {
-    "term": "Conversational Analytics API",
-    "aka": [
-      "CA API",
-      "Data Agent API"
-    ],
-    "category": "Google",
-    "technical": "Google's API for building data agents over BigQuery and Looker, offering text-to-SQL, Looker query generation, a Python code interpreter, context retrieval and charts through stateful and stateless chat. GA June 23, 2026 per its release notes, though one Google blog says August 2026.",
-    "sales": "Google's developer service for embedding ask-your-data assistants into apps. Like Google's other data agents, it reads data and does not update plans.",
-    "related": [
-      "BigQuery",
-      "Looker",
-      "Verified queries",
-      "Text-to-SQL"
-    ],
-    "src": "https://docs.cloud.google.com/gemini/data-agents/conversational-analytics-api/release-notes"
-  },
-  {
-    "term": "Copilot Studio",
-    "aka": [
-      "Microsoft Copilot Studio"
-    ],
-    "category": "Microsoft",
-    "technical": "Microsoft's low-code platform for building custom agents that publish to Teams and Microsoft 365 Copilot. Fabric data agents now plug in as a tool through the Fabric IQ Data MCP, an integration Microsoft announced as GA around September 2026.",
-    "sales": "Microsoft's builder for custom AI assistants. It is where a Microsoft shop might assemble its own planning agent, which would still need a planning backend to write to.",
-    "related": [
-      "Fabric data agents",
-      "Microsoft Copilot",
-      "Agent orchestration"
-    ],
-    "src": "https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/fabric-data-agents-in-microsoft-copilot-studio-generally-available/5362882"
-  },
-  {
-    "term": "Cortex Agents",
-    "aka": [
-      "Snowflake Cortex Agents"
-    ],
-    "category": "Snowflake",
-    "technical": "Snowflake's fully managed agent platform (GA) that runs a plan, tool-use and reflect loop over tools such as Cortex Analyst, Cortex Search, stored procedures, sandboxed code and MCP connectors, with persisted threads and feedback capture.",
-    "sales": "Snowflake's toolkit for building AI agents on Snowflake data. Agents can only change data through procedures a developer writes, so plan updates are a custom build.",
-    "related": [
-      "Cortex Analyst",
-      "Cortex Search",
-      "Snowflake CoWork",
-      "AI Credits"
-    ],
-    "src": "https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents"
-  },
-  {
-    "term": "Cortex Analyst",
-    "aka": [
-      "Snowflake Cortex Analyst"
-    ],
-    "category": "Snowflake",
-    "technical": "Snowflake's text-to-SQL service that answers natural-language questions over semantic views or legacy YAML semantic models, billed per 1,000 messages through its API or by tokens when called from Cortex Agents.",
-    "sales": "Snowflake's ask-a-question feature for data in Snowflake. Its 90%+ accuracy claim comes from Snowflake's own 2024 test on simple pre-joined data, and it reads data rather than updating plans.",
-    "related": [
-      "Semantic views",
-      "Verified queries",
-      "Text-to-SQL",
-      "Cortex Agents"
-    ],
-    "src": "https://www.snowflake.com/en/engineering-blog/cortex-analyst-text-to-sql-accuracy-bi/"
-  },
-  {
-    "term": "Cortex Search",
-    "aka": [
-      "Snowflake Cortex Search"
-    ],
-    "category": "Snowflake",
-    "technical": "Snowflake's managed search service over text and unstructured data, used as a retrieval tool by Cortex Agents and billed on serving compute per GB per month plus embedding tokens.",
-    "sales": "Snowflake's search engine that lets AI agents find relevant documents and text. It supports the document side of an AI assistant rather than planning calculations.",
-    "related": [
-      "Cortex Agents",
-      "Embeddings and vector database",
-      "Retrieval-augmented generation (RAG)"
-    ],
-    "src": "https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents"
-  },
-  {
-    "term": "Cortex Sense",
-    "aka": [
-      "Snowflake Cortex Sense"
-    ],
-    "category": "Snowflake",
-    "technical": "A Snowflake runtime context layer that assembles context from query history, object metadata, BI definitions and semantic views, with self-correcting evaluation loops. Snowflake's June 30, 2026 blog says private preview from mid-July 2026, while other sources say GA soon or GA, so status is disputed.",
-    "sales": "Snowflake's newest attempt at an AI layer that learns the business from signals it already has. Treat it as preview, and note that it learns from data usage rather than from budget approvals or overrides.",
-    "related": [
-      "Context layer",
-      "Semantic View Autopilot",
-      "Snowflake Horizon",
-      "Cumulative context"
-    ],
-    "src": "https://www.snowflake.com/en/blog/enterprise-ai-agents-grounded-context/"
-  },
-  {
-    "term": "CPM and EPM",
-    "aka": [
-      "CPM",
-      "EPM",
-      "corporate performance management",
-      "enterprise performance management",
-      "FP&A software"
-    ],
-    "category": "Planning and FP&A",
-    "technical": "Corporate and enterprise performance management are software categories covering budgeting, planning, forecasting, consolidation, close, reporting and analytics with finance-owned models, workflow and controls.",
-    "sales": "The category of software Vena, Anaplan, OneStream and others sell for running planning and close. The real build versus buy question is whether to configure one of these products or build one from data platform parts.",
-    "related": [
-      "Financial consolidation",
-      "Workflow and approvals",
-      "Planning in Fabric",
-      "SAP Analytics Cloud planning"
-    ],
-    "src": ""
-  },
-  {
-    "term": "CubeFLEX",
-    "aka": [
-      "Vena cube",
-      "CubeFLEX engine"
-    ],
-    "category": "Vena",
-    "technical": "Vena's in-memory multidimensional engine of dimensions, hierarchies and members, paired with relational storage for high transaction volumes, which serves as the governed model Vena AI operates on.",
-    "sales": "The finance cube at the heart of Vena where plans, actuals and versions live. It plays the role a semantic layer plays on data platforms, and it also supports input, versions and workflow.",
-    "related": [
-      "OLAP cube",
-      "Semantic layer",
-      "Vena Copilot"
-    ],
-    "src": "https://www.venasolutions.com/vena-ai"
-  },
-  {
-    "term": "Cumulative context",
-    "aka": [
-      "compounding context",
-      "institutional memory",
-      "planning memory"
-    ],
-    "category": "Data and AI",
-    "technical": "Context that persists and grows across sessions, users and planning cycles, capturing items such as assumptions, overrides, approvals and decisions, rather than resetting with each conversation. Vena positions Vena Omega around this idea.",
-    "sales": "An AI that remembers why last quarter's forecast was overridden and who approved it, so it gets more useful every cycle. Vena has announced this through Vena Omega but not shipped it, and no competitor reviewed documents memory built from planning events.",
-    "related": [
-      "Vena Omega",
-      "Agent memory",
-      "Context layer",
-      "Variance analysis"
-    ],
-    "src": "https://www.venasolutions.com/newsroom/vena-to-acquire-morpheo-ai"
-  },
-  {
-    "term": "Currency translation",
-    "aka": [
-      "FX translation",
-      "multi-currency",
-      "foreign exchange"
-    ],
-    "category": "Planning and FP&A",
-    "technical": "Converting entity results from their functional currency into the reporting currency using rules such as average rates for income statement items, closing rates for balance sheet items and historical rates for equity, with differences booked to a translation reserve.",
-    "sales": "Turning results in euros or pesos into the group's reporting currency at the right rates. Getting the rate rules right is accounting logic that a homegrown build must design, test and maintain.",
-    "related": [
-      "Financial consolidation",
-      "Intercompany eliminations"
-    ],
-    "src": ""
-  },
-  {
-    "term": "Data catalog",
-    "aka": [
-      "metadata catalog",
-      "catalog"
-    ],
-    "category": "General data",
-    "technical": "A metadata system that inventories data assets with descriptions, owners, classifications, glossary terms, lineage and access policies, such as Unity Catalog, Knowledge Catalog or SageMaker Catalog.",
-    "sales": "The searchable directory of what data exists, what it means and who may use it. Catalogs feed AI context, but they describe data rather than run a budget process.",
-    "related": [
-      "Business glossary",
-      "Data lineage",
-      "Unity Catalog",
-      "Knowledge Catalog"
-    ],
-    "src": ""
-  },
-  {
-    "term": "Data lake",
-    "aka": [
-      "object storage",
-      "raw data zone"
-    ],
-    "category": "General data",
-    "technical": "A low-cost storage repository, usually cloud object storage, that holds raw structured and unstructured files in open formats such as Parquet without imposing a schema up front.",
-    "sales": "A large, inexpensive storage pool where data from every system lands before it is cleaned up. It is a source of actuals for planning, not a place where budgets are entered or approved.",
-    "related": [
-      "Data warehouse",
-      "Lakehouse",
-      "Parquet"
-    ],
-    "src": ""
-  },
-  {
-    "term": "Data lineage",
-    "aka": [
-      "lineage"
-    ],
-    "category": "General data",
-    "technical": "Metadata that traces how data flows from sources through transformations to tables, reports, models and AI outputs, usually captured automatically by the catalog down to column level.",
-    "sales": "The ability to show where a number came from and what touched it along the way. It helps with audit questions, but it tracks data pipelines, not who changed a plan and why.",
-    "related": [
-      "Audit trail",
-      "Data catalog",
-      "Unity Catalog"
-    ],
-    "src": ""
-  },
-  {
-    "term": "Data mesh",
-    "aka": [
-      "domain-oriented data ownership"
-    ],
-    "category": "General data",
-    "technical": "An organizational approach in which business domains own and publish their data as governed products on shared self-service platform standards, instead of one central data team owning everything.",
-    "sales": "A way of organizing data so finance, sales and operations each own their own data sets. In a mesh, finance usually owns planning data, which favors tools finance can run without engineers.",
-    "related": [
-      "Data product",
-      "Data catalog"
-    ],
-    "src": ""
-  },
-  {
-    "term": "Data product",
-    "aka": [
-      "curated data set",
-      "certified data set"
-    ],
-    "category": "General data",
-    "technical": "A curated, documented and governed data set with a named owner, quality checks and access rules, published for reuse by people, applications or agents. SAP Business Data Cloud and Google Knowledge Catalog use the term heavily.",
-    "sales": "A packaged, trusted data set, such as approved actuals by entity, that others can reuse. SAP and Google pitch data products as the raw material for their AI agents.",
-    "related": [
-      "Data mesh",
-      "SAP Business Data Cloud",
-      "Knowledge Catalog"
-    ],
-    "src": ""
-  },
-  {
-    "term": "Data sharing",
-    "aka": [
-      "secure data sharing",
-      "live data sharing"
-    ],
-    "category": "General data",
-    "technical": "Platform features that give another account, organization or tool live, governed read access to tables without exporting files, for example OpenSharing (formerly Delta Sharing), Snowflake sharing or SAP BDC Connect.",
-    "sales": "Letting another team or vendor see a live table instead of emailing extracts. Most planning vendors still use sharing only to import actuals one way, so ask how approved plans flow back.",
-    "related": [
-      "Zero-copy",
-      "OpenSharing",
-      "Data product"
-    ],
-    "src": ""
-  },
-  {
-    "term": "Data warehouse",
-    "aka": [
-      "DW",
-      "EDW",
-      "cloud data warehouse"
-    ],
-    "category": "General data",
-    "technical": "A database optimized for analytical SQL over cleaned, structured data, typically organized in star schemas and kept separate from the transactional systems that produce the data.",
-    "sales": "The governed, cleaned-up copy of company data that reporting runs on. When a prospect says their actuals already live there, that is a reason to connect planning to it, not a reason to build planning inside it.",
-    "related": [
-      "Data lake",
-      "Lakehouse",
-      "Star schema",
-      "OLTP vs OLAP"
-    ],
-    "src": ""
-  },
-  {
-    "term": "Databricks Apps",
-    "aka": [
-      "Apps on Databricks"
-    ],
-    "category": "Databricks",
-    "technical": "A Databricks service for hosting custom web applications built with frameworks such as Dash, Flask and Streamlit, with a managed service principal and native Lakebase connection, billed in DBUs per hour by compute size.",
-    "sales": "A place to run custom-built apps on Databricks. Databricks documents its write-back pattern with a simple to-do app template, which shows that a planning interface would be custom development.",
-    "related": [
-      "Lakebase",
-      "Streamlit in Snowflake",
-      "Databricks Unit (DBU)"
-    ],
-    "src": "https://docs.databricks.com/gcp/en/oltp/projects/databricks-apps"
-  },
-  {
-    "term": "Databricks Unit (DBU)",
-    "aka": [
-      "DBU",
-      "DBUs"
-    ],
-    "category": "Databricks",
-    "technical": "The Databricks Unit, a normalized unit of compute consumption billed at rates that vary by product, tier and cloud. Genie, Databricks Apps and model serving are billed in DBUs.",
-    "sales": "The meter Databricks bills on. Genie is free for people using it through January 31, 2027, so pilot costs understate long-run cost.",
-    "related": [
-      "Tokens and token pricing",
-      "Genie",
-      "Databricks Apps"
-    ],
-    "src": "https://learn.microsoft.com/en-us/azure/databricks/genie/monitor-cost"
-  },
-  {
-    "term": "Delta Lake",
-    "aka": [
-      "Delta tables",
-      "Delta format"
-    ],
-    "category": "General data",
-    "technical": "An open-source table format, originated by Databricks, that adds a transaction log over Parquet files to provide ACID transactions, schema enforcement and table history.",
-    "sales": "The file format most Databricks and Microsoft Fabric data is stored in. If a prospect's finance data sits in Delta tables, it is already in an open format that other tools can read and share.",
-    "related": [
-      "Lakehouse",
-      "Apache Iceberg",
-      "Parquet",
-      "OpenSharing"
-    ],
-    "src": ""
-  },
-  {
-    "term": "Dimension",
-    "aka": [
-      "attribute",
-      "hierarchy"
-    ],
-    "category": "General data",
-    "technical": "An attribute used to slice and group data, such as account, entity, department, product, time, scenario or version, often organized into hierarchies with rollup rules.",
-    "sales": "The ways finance cuts the numbers, such as by entity, department or month. Planning models add dimensions that reporting models usually lack, like version and scenario.",
-    "related": [
-      "Measure",
-      "OLAP cube",
-      "Star schema",
-      "Versions"
-    ],
-    "src": ""
-  },
-  {
-    "term": "Direct Lake",
-    "aka": [
-      "Direct Lake on OneLake"
-    ],
-    "category": "Microsoft",
-    "technical": "A Power BI storage mode that reads Delta tables directly from OneLake into memory without import, announced GA on OneLake at FabCon 2026.",
-    "sales": "A way for Power BI reports to read Fabric data live without copying it in. Note that Fabric Planning needs a gateway with fixed credentials, not single sign-on, when connected to these models.",
-    "related": [
-      "OneLake",
-      "Power BI semantic model",
-      "Zero-copy"
-    ],
-    "src": "https://azure.microsoft.com/en-us/blog/fabcon-and-sqlcon-2026-unifying-databases-and-fabric-on-a-single-data-platform/"
-  },
-  {
-    "term": "Driver-based planning",
-    "aka": [
-      "driver-based models",
-      "value driver trees",
-      "measure trees"
-    ],
-    "category": "Planning and FP&A",
-    "technical": "A modeling approach in which plan values are calculated from operational drivers, such as headcount times salary rate or units times price, with dependent values recalculated when a driver changes.",
-    "sales": "Planning from the business levers people understand, like volume and price, instead of typing every line. It needs a calculation engine that recalculates on save, which data platforms do not provide out of the box.",
-    "related": [
-      "Scenarios",
-      "Spreading and breakback",
-      "Rolling forecast"
-    ],
-    "src": ""
-  },
-  {
-    "term": "Embeddings and vector database",
-    "aka": [
-      "embeddings",
-      "vector database",
-      "vector search",
-      "AI Search",
-      "pgvector"
-    ],
-    "category": "Data and AI",
-    "technical": "Embeddings are numeric vectors that represent the meaning of text or other content, and a vector database indexes them for similarity search. Examples include Databricks AI Search (formerly Vector Search) and pgvector in Postgres.",
-    "sales": "A way to search by meaning instead of exact words, mostly used for documents and policies. It helps AI find relevant commentary or policy text, but it is not how plan numbers should be calculated.",
-    "related": [
-      "Retrieval-augmented generation (RAG)",
-      "Cortex Search",
-      "Grounding"
-    ],
-    "src": ""
-  },
-  {
-    "term": "ETL and ELT",
-    "aka": [
-      "ETL",
-      "ELT",
-      "extract transform load",
-      "data pipeline"
-    ],
-    "category": "General data",
-    "technical": "Extract, transform, load moves data out of source systems, reshapes it and then loads it into a target, while extract, load, transform loads raw data first and transforms it inside the warehouse with SQL.",
-    "sales": "The pipelines that move actuals from the ERP, CRM and HR systems into a data platform or a planning tool. Every build option has to fund building and maintaining these pipelines over time.",
-    "related": [
-      "Change data capture (CDC)",
-      "Zero-copy",
-      "Lakeflow",
-      "Openflow"
-    ],
-    "src": ""
-  },
-  {
-    "term": "Evaluations and benchmarks",
-    "aka": [
-      "evals",
-      "benchmarks",
-      "LLM judges",
-      "accuracy testing"
-    ],
-    "category": "AI and agents",
-    "technical": "Systematic tests that score AI outputs against expected answers or rubrics, using question sets, LLM judges or code checks, both before release and on sampled production traffic, as with MLflow scorers or Genie benchmarks.",
-    "sales": "How a team proves the AI gives right answers before trusting it. Vendor accuracy figures come from their own small tests, such as Databricks' 84.5% on 28 questions, so ask for results on the buyer's own finance questions.",
-    "related": [
-      "MLflow",
-      "Hallucination",
-      "Text-to-SQL"
-    ],
-    "src": ""
-  },
-  {
-    "term": "Fabric capacity units",
-    "aka": [
-      "CU",
-      "capacity units",
-      "F SKU",
-      "Fabric capacity"
-    ],
-    "category": "Microsoft",
-    "technical": "The unit of shared compute in Microsoft Fabric, sold as F SKUs from F2 to F8192, with one or three year reservations saving about 41% over pay-as-you-go, and consumed by workloads including Copilot, data agents and Planning.",
-    "sales": "The prepaid pool of computing power a company buys for Fabric. Because Planning and AI draw from the same pool, Microsoft can position them as already paid for, so ask about real consumption at full use.",
-    "related": [
-      "Planning in Fabric",
-      "Tokens and token pricing",
-      "Microsoft Copilot"
-    ],
-    "src": "https://azure.microsoft.com/en-us/pricing/details/microsoft-fabric/"
-  },
-  {
-    "term": "Fabric data agents",
-    "aka": [
-      "data agents",
-      "AI skills"
-    ],
-    "category": "Microsoft",
-    "technical": "Conversational agents in Fabric, GA since FabCon in March 2026, that generate read-only SQL, DAX and KQL over up to five sources such as lakehouses, warehouses and semantic models, with answers capped at 25 rows by 25 columns and English-only support.",
-    "sales": "Microsoft's ask-your-data assistants on Fabric. They cannot change data and only work in English, which matters for bilingual Canadian finance teams.",
-    "related": [
-      "Fabric IQ",
-      "Copilot Studio",
-      "Text-to-SQL"
-    ],
-    "src": "https://learn.microsoft.com/en-us/fabric/data-science/concept-data-agent"
-  },
-  {
-    "term": "Fabric IQ",
-    "aka": [
-      "Microsoft Fabric IQ",
-      "Microsoft IQ",
-      "Fabric IQ Ontology"
-    ],
-    "category": "Microsoft",
-    "technical": "Microsoft's enterprise intelligence layer in Fabric that grounds data in business language for people and agents, with Power BI semantic models (GA) and Ontology (preview) as core items and Graph (preview), data agents, operations agents and Planning (GA) as supporting items.",
-    "sales": "Microsoft's umbrella for business context, AI and planning on Fabric. It is the closest platform match to a context layer with planning, and it bills on capacity many prospects already own.",
-    "related": [
-      "Planning in Fabric",
-      "Fabric data agents",
-      "Power BI semantic model",
-      "Ontology"
-    ],
-    "src": "https://learn.microsoft.com/en-us/fabric/iq/overview"
-  },
-  {
-    "term": "Financial consolidation",
-    "aka": [
-      "consolidation",
-      "group reporting",
-      "close and consolidation"
-    ],
-    "category": "Planning and FP&A",
-    "technical": "Combining the financial results of multiple legal entities into group statements, including currency translation, intercompany eliminations, ownership and minority interest calculations, and top-side adjustments.",
-    "sales": "Rolling up all the subsidiaries into one set of group numbers that auditors accept. No data platform reviewed offers it natively, while Vena's advanced consolidation went GA on August 26, 2026.",
-    "related": [
-      "Intercompany eliminations",
-      "Currency translation",
-      "Period locking",
-      "Audit trail"
-    ],
-    "src": "https://www.venasolutions.com/newsroom/vena-launches-advanced-financial-consolidation-solution"
-  },
-  {
-    "term": "Fine-tuning",
-    "aka": [
-      "model tuning",
-      "custom model training"
-    ],
-    "category": "AI and agents",
-    "technical": "Further training a pre-trained model on a smaller, task-specific data set to change its behavior or style, which is different from supplying context at question time through retrieval or a semantic layer.",
-    "sales": "Teaching an AI model with extra examples so it behaves a certain way. The products in these deals mostly rely on supplying context instead, since charts of accounts and plans change every cycle and a tuned model would go stale.",
-    "related": [
-      "Large language model (LLM)",
-      "Context layer",
-      "Retrieval-augmented generation (RAG)"
-    ],
-    "src": ""
-  },
-  {
-    "term": "Forward deployed engineering (FDE)",
-    "aka": [
-      "FDE",
-      "forward deployed engineers",
-      "Forward Deployed Finance Specialists"
-    ],
-    "category": "Planning and FP&A",
-    "technical": "A delivery model in which vendor engineers embed with a customer to build and adapt solutions on the vendor's platform. Snowflake points finance customers to Forward Deployed Finance Specialists, and Palantir is known for this approach.",
-    "sales": "Vendor engineers who come in to build a custom solution. It signals that the platform has no packaged planning product, so the customer ends up owning a custom application.",
-    "related": [
-      "Snowplan",
-      "Palantir Foundry",
-      "CPM and EPM"
-    ],
-    "src": "https://www.snowflake.com/en/blog/fpa-ai-modernization-snowplan-v2/"
-  },
-  {
-    "term": "Gemini Enterprise",
-    "aka": [
-      "Agentspace",
-      "Google Agentspace"
-    ],
-    "category": "Google",
-    "technical": "Google's enterprise agent workspace, formerly Agentspace, where users reach Google and partner agents, build no-code agents with Agent Designer and use agents built with ADK. Gemini Enterprise for Financial Services, in preview since August 25, 2026, targets banking use cases rather than FP&A.",
-    "sales": "Google's front door for company-wide AI assistants. Its finance edition targets banks and investment research, not corporate budgeting.",
-    "related": [
-      "Agent Development Kit (ADK)",
-      "Agent Runtime and Memory Bank",
-      "Conversational Analytics API"
-    ],
-    "src": "https://cloud.google.com/blog/topics/google-cloud-next/google-cloud-next-2026-wrap-up"
-  },
-  {
-    "term": "Genie",
-    "aka": [
-      "Genie Agents",
-      "Genie One",
-      "Genie spaces",
-      "Databricks One",
-      "AI/BI Genie"
-    ],
-    "category": "Databricks",
-    "technical": "Databricks' natural-language analytics family. Genie Agents (renamed from Genie spaces in July 2026) answer questions over curated tables with read-only queries under each user's permissions, and Genie One (renamed from Databricks One) is the business-user agent app, both GA, with usage by people free through January 31, 2027.",
-    "sales": "Databricks' ask-your-data assistant for business users. Its generated queries are always read-only, so it can explain the numbers but cannot update a plan.",
-    "related": [
-      "Genie Ontology",
-      "Knowledge store",
-      "Text-to-SQL",
-      "Databricks Unit (DBU)"
-    ],
-    "src": "https://learn.microsoft.com/en-us/azure/databricks/genie-agents/concepts"
-  },
-  {
-    "term": "Genie Ontology",
-    "aka": [
-      "Databricks ontology",
-      "OntoRank"
-    ],
-    "category": "Databricks",
-    "technical": "A Databricks context layer in public preview that combines Unity Catalog semantics with snippets inferred from dashboards, SQL queries and Genie Agents, each ranked by an authority score based on source, usage and freshness.",
-    "sales": "The Databricks feature closest to context that grows with use. It learns from analytics activity like dashboards and queries rather than from planning events like approvals and overrides.",
-    "related": [
-      "Ontology",
-      "Genie",
-      "Context engineering",
-      "Cumulative context"
-    ],
-    "src": "https://docs.databricks.com/aws/en/genie/genie-ontology"
-  },
-  {
-    "term": "Grounding",
-    "aka": [
-      "grounded answers",
-      "citations"
-    ],
-    "category": "Data and AI",
-    "technical": "Constraining an AI model's response to specific, retrievable sources such as governed tables, semantic definitions or documents, often with citations, so outputs can be traced back to data.",
-    "sales": "Making the AI answer from the company's actual numbers and show its sources. In finance, grounding in governed planning data is what makes an answer usable in a review meeting.",
-    "related": [
-      "Retrieval-augmented generation (RAG)",
-      "Hallucination",
-      "Semantic layer"
-    ],
-    "src": ""
-  },
-  {
-    "term": "Guardrails",
-    "aka": [
-      "AI policy",
-      "human in the loop",
-      "prompt injection defense"
-    ],
-    "category": "AI and agents",
-    "technical": "Controls that limit what an AI system can see, say or do, such as permission inheritance, content filters, prompt-injection defenses, spending limits and policies that block actions above a threshold. AgentCore Policy is one example.",
-    "sales": "Safety rails that stop an AI from showing the wrong data or making a change it should not. For plan updates, the strongest guardrail is routing AI changes through the same approvals and audit trail people use.",
-    "related": [
-      "AI gateway",
-      "Workflow and approvals",
-      "Amazon Bedrock AgentCore",
-      "Audit trail"
-    ],
-    "src": ""
-  },
-  {
-    "term": "Hallucination",
-    "aka": [
-      "confabulation",
-      "made-up answer"
-    ],
-    "category": "Data and AI",
-    "technical": "Output from a language model that is fluent but factually wrong or unsupported by its sources, such as an invented number, field name or policy.",
-    "sales": "When an AI confidently states something untrue. BARC puts the finance stakes well, noting that finance teams need explainable recommendations tied to planning logic and governed data, not confident guesses.",
-    "related": [
-      "Grounding",
-      "Evaluations and benchmarks",
-      "Retrieval-augmented generation (RAG)"
-    ],
-    "src": ""
-  },
-  {
-    "term": "Hybrid Tables",
-    "aka": [
-      "Unistore",
-      "Snowflake Hybrid Tables"
-    ],
-    "category": "Snowflake",
-    "technical": "Snowflake tables, part of Unistore, that add a row store with row-level locking and enforced primary, foreign and unique keys for transactional workloads next to analytics. Snowflake declared them GA in November 2024, though one third party still calls them preview.",
-    "sales": "Snowflake's way of handling many small, fast updates, which planning input requires. A secondary source reports they lack time travel, which would push plan history into custom tables.",
-    "related": [
-      "OLTP vs OLAP",
-      "Write-back",
-      "Snowflake Postgres"
-    ],
-    "src": "https://www.snowflake.com/en/blog/unistore-general-availability/"
-  },
-  {
-    "term": "Intercompany eliminations",
-    "aka": [
-      "eliminations",
-      "intercompany matching",
-      "IC eliminations"
-    ],
-    "category": "Planning and FP&A",
-    "technical": "Consolidation entries that remove balances and transactions between entities in the same group, such as intercompany sales, receivables and payables, so group results reflect only external activity, usually after intercompany matching.",
-    "sales": "Removing sales and balances between a company's own subsidiaries so revenue is not counted twice. It is a core reason finance teams buy a CPM product rather than build one.",
-    "related": [
-      "Financial consolidation",
-      "Currency translation"
-    ],
-    "src": ""
-  },
-  {
-    "term": "Joule",
-    "aka": [
-      "SAP Joule",
-      "Joule Agents",
-      "Joule Studio",
-      "Financial Planning Assistant"
-    ],
-    "category": "SAP",
-    "technical": "SAP's AI assistant and agent front end that orchestrates workflows, data and more than 200 specialized agents through over 50 domain assistants. The Financial Planning Assistant and Joule Agents in SAP Enterprise Planning were scheduled for GA in Q3 2026, delivery was not verified, and Joule Studio MCP and A2A support is described as future.",
-    "sales": "SAP's AI copilot across its applications. Its planning agents were due in Q3 2026, while Vena's Planning Agent has been GA since May 2026.",
-    "related": [
-      "SAP Analytics Cloud planning",
-      "SAP Knowledge Graph",
-      "Agent2Agent protocol (A2A)"
-    ],
-    "src": "https://news.sap.com/2026/05/sap-sapphire-sap-unveils-autonomous-enterprise/"
-  },
-  {
-    "term": "Knowledge Catalog",
-    "aka": [
-      "Dataplex",
-      "Dataplex Universal Catalog"
-    ],
-    "category": "Google",
-    "technical": "Google Cloud's metadata and governance catalog, renamed from Dataplex Universal Catalog on April 10, 2026, which brings BigQuery measures and LookML together. Automated context curation of descriptions, glossaries and verified SQL is in preview.",
-    "sales": "Google's catalog of what data means and who owns it, previously called Dataplex. One analyst firm calls it more of a metadata aggregator than a true business context layer.",
-    "related": [
-      "Data catalog",
-      "Business glossary",
-      "BigQuery",
-      "LookML"
-    ],
-    "src": "https://docs.cloud.google.com/dataplex/docs/catalog-overview"
-  },
-  {
-    "term": "Knowledge graph",
-    "aka": [
-      "graph",
-      "semantic graph"
-    ],
-    "category": "Data and AI",
-    "technical": "A graph data structure of entities as nodes and relationships as edges, with attached metadata, that supports traversal queries and gives AI structured context. SAP Knowledge Graph and BigQuery Graph are examples.",
-    "sales": "A connected web of business facts, like which entities roll up to which region and which contracts drive which revenue. SAP now positions its Knowledge Graph as the foundation for its AI agents.",
-    "related": [
-      "Ontology",
-      "SAP Knowledge Graph",
-      "Context layer"
-    ],
-    "src": ""
-  },
-  {
-    "term": "Knowledge store",
-    "aka": [
-      "Genie knowledge store",
-      "Genie instructions"
-    ],
-    "category": "Databricks",
-    "technical": "The author-curated set of semantic definitions attached to a Genie Agent, including table descriptions, joins, SQL expressions, example SQL and instructions. Feedback generates suggestions, but Databricks states agent behavior does not change from user feedback alone.",
-    "sales": "The hand-maintained notes that teach a Genie assistant how the data works. Someone on the data team has to keep them current.",
-    "related": [
-      "Genie",
-      "Verified queries",
-      "Context engineering"
-    ],
-    "src": "https://docs.databricks.com/aws/en/genie-agents/tune-quality"
-  },
-  {
-    "term": "Lakebase",
-    "aka": [
-      "Databricks Lakebase",
-      "serverless Postgres"
-    ],
-    "category": "Databricks",
-    "technical": "Databricks' managed serverless PostgreSQL service for transactional workloads, with autoscaling, zero-copy branching, point-in-time recovery and sync to Delta tables. GA on AWS in February 2026, with Azure in beta at that time.",
-    "sales": "A transactional database inside Databricks that custom apps can save data to. Its branching copies a database, which is not the same as managing budget and forecast versions.",
-    "related": [
-      "Databricks Apps",
-      "OLTP vs OLAP",
-      "Versions",
-      "Snowflake Postgres"
-    ],
-    "src": "https://databricks.com/blog/databricks-lakebase-generally-available"
-  },
-  {
-    "term": "Lakeflow",
-    "aka": [
-      "Lakeflow Connect",
-      "Lakeflow Jobs",
-      "Lakeflow Designer"
-    ],
-    "category": "Databricks",
-    "technical": "Databricks' data engineering suite, including Lakeflow Connect managed connectors (for example NetSuite, Workday and Dynamics 365), Lakeflow Designer for no-code pipelines and Lakeflow Jobs for orchestration.",
-    "sales": "Databricks' tools for bringing in and moving data. Lakeflow Jobs schedules data pipelines and is not a budget approval workflow.",
-    "related": [
-      "ETL and ELT",
-      "Openflow",
-      "Workflow and approvals"
-    ],
-    "src": "https://docs.databricks.com/aws/en/ingestion/lakeflow-connect/saas-overview"
-  },
-  {
-    "term": "Lakehouse",
-    "aka": [
-      "data lakehouse"
-    ],
-    "category": "General data",
-    "technical": "An architecture that adds warehouse features such as ACID transactions, schemas and governance on top of data lake storage, using open table formats like Delta Lake or Apache Iceberg.",
-    "sales": "The modern blend of a data lake and a warehouse, popularized by Databricks and now offered by most platforms. It is a strong foundation for data, but budgets, approvals and versions still have to come from a planning application on top.",
-    "related": [
-      "Data lake",
-      "Data warehouse",
-      "Delta Lake",
-      "Apache Iceberg"
-    ],
-    "src": ""
-  },
-  {
-    "term": "Large language model (LLM)",
-    "aka": [
-      "LLM",
-      "foundation model",
-      "GPT",
-      "Claude",
-      "Gemini"
-    ],
-    "category": "AI and agents",
-    "technical": "A neural network trained on very large text collections to predict tokens, which can follow instructions, summarize, reason and generate code or SQL. Examples include OpenAI GPT, Anthropic Claude and Google Gemini models.",
-    "sales": "The general-purpose AI engine behind chat assistants. On its own it knows nothing about a company's chart of accounts, which is why context and semantics matter so much.",
-    "related": [
-      "Tokens and token pricing",
-      "Fine-tuning",
-      "Grounding"
-    ],
-    "src": ""
-  },
-  {
-    "term": "Looker",
-    "aka": [
-      "Google Looker",
-      "Conversational Analytics in Looker"
-    ],
-    "category": "Google",
-    "technical": "Google's BI platform built on the LookML semantic model, with Conversational Analytics in Looker (GA) and newer agentic features such as dashboard agents and a managed Looker MCP server in preview.",
-    "sales": "Google's reporting tool, known for consistent metric definitions. Its only documented write-back to BigQuery is a reference pattern that only appends rows, which is far from planning input.",
-    "related": [
-      "LookML",
-      "BigQuery",
-      "Conversational Analytics API"
-    ],
-    "src": "https://docs.cloud.google.com/looker/docs/conversational-analytics-overview"
-  },
-  {
-    "term": "LookML",
-    "aka": [
-      "Looker modeling language"
-    ],
-    "category": "Google",
-    "technical": "Looker's code-based modeling language that defines dimensions, measures, joins and Explores over SQL databases, maintained by developers with Git version control and continuous integration.",
-    "sales": "The language Looker uses to define business metrics, maintained by developers in code. It is a strong reporting semantic layer, but it has no concept of plan input, versions or scenarios.",
-    "related": [
-      "Looker",
-      "Semantic layer",
-      "Metrics layer"
-    ],
-    "src": "https://cloud.google.com/blog/products/business-intelligence/how-lookers-semantic-layer-enhances-gen-ai-trustworthiness"
-  },
-  {
-    "term": "MCP server",
-    "aka": [
-      "managed MCP server",
-      "remote MCP server"
-    ],
-    "category": "AI and agents",
-    "technical": "A service that exposes a system's capabilities as MCP tools and resources and handles authentication and permissions, so external AI clients can query or act on that system. Servers can be vendor-managed remote endpoints or self-hosted.",
-    "sales": "The specific connector a vendor publishes so AI assistants can reach its data. Check the tool list, since many are read-only, including Microsoft's Fabric IQ MCP server, and Vena's developer docs currently list read tools only.",
-    "related": [
-      "Model Context Protocol (MCP)",
-      "Vena MCP server",
-      "MCP Toolbox for Databases"
-    ],
-    "src": ""
-  },
-  {
-    "term": "MCP Toolbox for Databases",
-    "aka": [
-      "MCP Toolbox",
-      "Google MCP Toolbox"
-    ],
-    "category": "Google",
-    "technical": "Google's open-source MCP server framework, version 1.0 GA, that exposes database and analytics tools, including BigQuery conversational analytics and TimesFM forecasting, to MCP clients and ADK agents as a self-managed alternative to Google's managed MCP servers.",
-    "sales": "A free Google toolkit that lets AI assistants query company databases. It speeds up building agents but does not add planning features.",
-    "related": [
-      "MCP server",
-      "Agent Development Kit (ADK)",
-      "BigQuery"
-    ],
-    "src": "https://cloud.google.com/blog/products/data-analytics/new-data-agents-across-the-agentic-data-cloud"
-  },
-  {
-    "term": "Measure",
-    "aka": [
-      "metric",
-      "KPI",
-      "fact"
-    ],
-    "category": "General data",
-    "technical": "A numeric value or aggregation defined over facts, such as revenue, headcount or margin percent, calculated by summing or applying a formula across the selected dimension members.",
-    "sales": "The actual number being reported or planned, like revenue or headcount. Defining each measure once, in one place, is the main promise of a semantic layer.",
-    "related": [
-      "Dimension",
-      "Metrics layer",
-      "Semantic layer"
-    ],
-    "src": ""
-  },
-  {
-    "term": "Metric views",
-    "aka": [
-      "UC metric views",
-      "Unity Catalog Metrics",
-      "UC Metrics"
-    ],
-    "category": "Databricks",
-    "technical": "Unity Catalog objects, defined in YAML, SQL or a low-code editor, that separate measures from dimensions so metrics are defined once and queried by any grouping, with star and snowflake joins, window measures and materialization. GA per Databricks, though one third-party recap lists them as preview.",
-    "sales": "Databricks' semantic layer for KPIs, feeding dashboards, Genie and outside BI tools. Data engineers usually maintain them, not finance.",
-    "related": [
-      "Semantic layer",
-      "Metrics layer",
-      "Unity Catalog",
-      "Genie"
-    ],
-    "src": "https://docs.databricks.com/aws/en/metric-views"
-  },
-  {
-    "term": "Metrics layer",
-    "aka": [
-      "metric layer",
-      "metrics store",
-      "MetricFlow",
-      "BigQuery measures"
-    ],
-    "category": "Data and AI",
-    "technical": "A semantic layer component focused on defining business metrics as reusable calculations that tools request by name instead of writing SQL, such as dbt MetricFlow, Databricks metric views or BigQuery measures (preview).",
-    "sales": "One place where KPIs are defined so the board deck and the AI assistant agree. It covers reporting definitions, not plan inputs, versions or approvals.",
-    "related": [
-      "Semantic layer",
-      "Metric views",
-      "Semantic views",
-      "Open Semantic Interchange (OSI)"
-    ],
-    "src": ""
-  },
-  {
-    "term": "Microsoft Copilot",
-    "aka": [
-      "Copilot",
-      "Microsoft 365 Copilot",
-      "Copilot in Fabric",
-      "Copilot in Power BI"
-    ],
-    "category": "Microsoft",
-    "technical": "Microsoft's family of AI assistants, including Microsoft 365 Copilot and Copilot in Fabric and Power BI, which consumes Fabric capacity units. Copilot in Fabric processes data in the US and EU data boundaries, so Canadian data is processed cross-geo.",
-    "sales": "Microsoft's AI assistant across Office, Teams and Power BI. Vena works inside it, since the Vena MCP server supports Microsoft Copilot as a client and Vena Copilot runs in Teams.",
-    "related": [
-      "Copilot Studio",
-      "Vena MCP server",
-      "Vena Copilot"
-    ],
-    "src": "https://learn.microsoft.com/en-us/fabric/fundamentals/copilot-fabric-overview"
-  },
-  {
-    "term": "Microsoft Purview",
-    "aka": [
-      "Purview",
-      "Purview DLP",
-      "eDiscovery"
-    ],
-    "category": "Microsoft",
-    "technical": "Microsoft's data governance, security and compliance suite, providing data loss prevention, access restriction policies, audit and eDiscovery that apply to Fabric data agents and Copilot interactions.",
-    "sales": "Microsoft's compliance toolset that protects and logs AI conversations about company data. It is a genuine governance strength for Microsoft and a standard expectation for any AI tool in finance.",
-    "related": [
-      "Fabric data agents",
-      "Guardrails",
-      "Audit trail"
-    ],
-    "src": "https://learn.microsoft.com/en-us/fabric/data-science/concept-data-agent"
-  },
-  {
-    "term": "MLflow",
-    "aka": [
-      "MLflow 3",
-      "Agent Evaluation"
-    ],
-    "category": "Databricks",
-    "technical": "An open-source platform, deeply integrated in Databricks, for tracking, evaluating and monitoring machine learning and generative AI applications. MLflow 3 attaches scorers such as LLM judges and code checks to traces before release and on production traffic.",
-    "sales": "The quality-control system Databricks teams use to test AI before and after launch. Using it well is part of the ongoing engineering cost of building your own agents.",
-    "related": [
-      "Evaluations and benchmarks",
-      "Agent Bricks"
-    ],
-    "src": "https://docs.databricks.com/aws/en/mlflow3/genai/eval-monitor"
-  },
-  {
-    "term": "Model Context Protocol (MCP)",
-    "aka": [
-      "MCP"
-    ],
-    "category": "AI and agents",
-    "technical": "An open protocol, introduced by Anthropic, that standardizes how AI applications discover and call external tools, data and prompts through MCP servers, so one integration works across clients such as Claude, ChatGPT and Microsoft Copilot.",
-    "sales": "A universal plug that lets any AI assistant connect to a business system. Almost every vendor in these deals now has one, so the useful questions are what it can read, whether it can write, and whose permissions it uses.",
-    "related": [
-      "MCP server",
-      "Tool calling",
-      "Vena MCP server",
-      "Agent2Agent protocol (A2A)"
-    ],
-    "src": ""
-  },
-  {
-    "term": "Morpheo",
-    "aka": [
-      "Morpheo AI",
-      "Morpheo Omega"
-    ],
-    "category": "Vena",
-    "technical": "Morpheo AI Inc., a seven-person Toronto agentic data platform company whose Morpheo Omega product launched in preview in November 2025. Vena announced the acquisition July 28, 2026 and closed it August 18, 2026 to strengthen Vena Omega.",
-    "sales": "The startup Vena bought to accelerate Vena Omega, bringing data preparation and context technology. Avoid enterprise-maturity claims for its technology until Vena publishes controls and timelines.",
-    "related": [
-      "Vena Omega",
-      "SOC 2"
-    ],
-    "src": "https://www.venasolutions.com/newsroom/vena-completes-acquisition-of-morpheo-ai"
-  },
-  {
-    "term": "Mosaic AI",
-    "aka": [
-      "Mosaic AI Agent Framework",
-      "Databricks Mosaic AI"
-    ],
-    "category": "Databricks",
-    "technical": "Databricks' brand for its generative AI tooling, whose Mosaic AI Agent Framework is now marketed under the Agent Bricks umbrella as Custom Agents on Apps.",
-    "sales": "An older Databricks name reps will still see in decks and documents. Treat it as part of Agent Bricks.",
-    "related": [
-      "Agent Bricks",
-      "MLflow"
-    ],
-    "src": "https://www.databricks.com/blog/agent-bricks-governed-enterprise-agent-platform"
-  },
-  {
-    "term": "Multi-agent system",
-    "aka": [
-      "multi-agent",
-      "supervisor agent",
-      "sub-agents"
-    ],
-    "category": "AI and agents",
-    "technical": "An architecture in which specialized agents handle sub-tasks while a supervisor or router agent delegates work and combines results. Databricks' Supervisor Agent, GA February 10, 2026, is one example.",
-    "sales": "A team of specialist AI helpers with a coordinator, for example one for actuals, one for documents and one for forecasting. It is powerful, but each specialist still needs a reliable data and planning foundation.",
-    "related": [
-      "Agent orchestration",
-      "Agent Bricks",
-      "Agent2Agent protocol (A2A)"
-    ],
-    "src": ""
-  },
-  {
-    "term": "OLAP cube",
-    "aka": [
-      "cube",
-      "multidimensional model",
-      "planning cube"
-    ],
-    "category": "General data",
-    "technical": "A multidimensional data structure that stores measures at the intersections of dimensions such as account, entity, time and version, with hierarchies that roll values up for fast slicing and aggregation.",
-    "sales": "The engine behind most planning tools, where every number sits at a point like Revenue, Ontario, March, Budget. Vena's CubeFLEX is a cube, while data platform semantic layers are mostly read-only views over tables.",
-    "related": [
-      "Dimension",
-      "Measure",
-      "CubeFLEX",
-      "Star schema"
-    ],
-    "src": ""
-  },
-  {
-    "term": "OLTP vs OLAP",
-    "aka": [
-      "OLTP",
-      "OLAP",
-      "transactional vs analytical"
-    ],
-    "category": "General data",
-    "technical": "Online transaction processing systems handle many small concurrent reads and writes such as order entry, while online analytical processing systems handle large aggregations across dimensions. Planning needs both, fast cell-level writes and fast rollups.",
-    "sales": "One kind of database is built for recording transactions, the other for summarizing them. Planning is unusual because users type numbers and expect instant totals, which is why platforms bolt on Postgres or hybrid tables when teams try to build it.",
-    "related": [
-      "OLAP cube",
-      "Hybrid Tables",
-      "Lakebase",
-      "Snowflake Postgres"
-    ],
-    "src": ""
-  },
-  {
-    "term": "OneLake",
-    "aka": [
-      "Fabric OneLake",
-      "shortcuts",
-      "mirroring"
-    ],
-    "category": "Microsoft",
-    "technical": "The single, tenant-wide data lake under Microsoft Fabric, storing data in open Delta format and exposing outside data in place through shortcuts or as managed replicas through mirroring.",
-    "sales": "Microsoft Fabric's one data lake for the whole company. Fabric Planning reads from it, and Vena's six Microsoft Fabric data integrations connect to the same Microsoft data estate.",
-    "related": [
-      "Direct Lake",
-      "Zero-copy",
-      "Fabric IQ",
-      "Delta Lake"
-    ],
-    "src": "https://azure.microsoft.com/en-us/blog/fabcon-and-sqlcon-2026-unifying-databases-and-fabric-on-a-single-data-platform/"
-  },
-  {
-    "term": "Ontology",
-    "aka": [
-      "business ontology",
-      "entity model"
-    ],
-    "category": "Data and AI",
-    "technical": "A formal model of business entities, their properties, relationships and rules, such as customer, contract or cost center, that people and agents can reason over. Palantir, Microsoft Fabric IQ and Databricks Genie Ontology each use the word differently.",
-    "sales": "A map of the business that explains how things relate, not just what columns mean. Ask whether a vendor's ontology is hand-built by engineers or learned from use, and whether it can change data or only describe it.",
-    "related": [
-      "Knowledge graph",
-      "Palantir Ontology",
-      "Genie Ontology",
-      "Fabric IQ",
-      "Semantic layer"
-    ],
-    "src": ""
-  },
-  {
-    "term": "Ontology actions",
-    "aka": [
-      "action types",
-      "Palantir actions"
-    ],
-    "category": "Palantir",
-    "technical": "Palantir action types define a single transaction that changes one or more Ontology objects using user-defined logic, with rules, submission criteria, per-action permissions, side effects to external systems and action logs with full audit history.",
-    "sales": "Palantir's governed way to change data, with permissions and a full audit log. It is a generic building block, so budget submission and approval would need to be designed on top.",
-    "related": [
-      "Palantir Ontology",
-      "Audit trail",
-      "Workflow and approvals"
-    ],
-    "src": "https://www.palantir.com/docs/foundry/action-types/overview"
-  },
-  {
-    "term": "Open Semantic Interchange (OSI)",
-    "aka": [
-      "OSI",
-      "Apache Ossie"
-    ],
-    "category": "Snowflake",
-    "technical": "A vendor-neutral, Apache 2.0 specification for exchanging semantic definitions (data sets, metrics, dimensions, relationships and contexts) across tools. Snowflake published the first version January 27, 2026, recaps describe it as finalized at Summit 2026 with 54 vendors, and a secondary source reports it entered the Apache Incubator as Apache Ossie.",
-    "sales": "An industry standard so metric definitions can move between tools instead of being rebuilt in each one. Databricks, dbt Labs and Salesforce are members, but no planning vendor appears on the published member list.",
-    "related": [
-      "Semantic layer",
-      "Metrics layer",
-      "Semantic views"
-    ],
-    "src": "https://www.snowflake.com/en/blog/open-semantic-interchanges-specs-finalized/"
-  },
-  {
-    "term": "Openflow",
-    "aka": [
-      "Snowflake Openflow"
-    ],
-    "category": "Snowflake",
-    "technical": "Snowflake's managed data ingestion service based on Apache NiFi for batch and streaming pipelines, GA since May 2025, with second-generation deployments and runtimes GA September 8, 2026 and gen-2 connectors such as PostgreSQL and MySQL CDC still in public preview.",
-    "sales": "Snowflake's tool for bringing data in from other systems. It moves actuals into Snowflake, which is the first step of any build on Snowflake.",
-    "related": [
-      "ETL and ELT",
-      "Change data capture (CDC)",
-      "Lakeflow"
-    ],
-    "src": "https://docs.snowflake.com/en/release-notes/2026/other/2026-09-08-openflow-gen2-deployment-runtime-ga"
-  },
-  {
-    "term": "OpenSharing",
-    "aka": [
-      "Delta Sharing"
-    ],
-    "category": "Databricks",
-    "technical": "Databricks' open protocol for live, cross-platform table sharing without copying, renamed from Delta Sharing in June 2026 and hosted by the Linux Foundation.",
-    "sales": "The way Databricks lets other tools read its tables directly. Planning vendors such as Pigment use it only to import data, with no write-back.",
-    "related": [
-      "Data sharing",
-      "Zero-copy",
-      "Delta Lake"
-    ],
-    "src": "https://www.databricks.com/company/newsroom/press-releases/databricks-announces-opensharing"
-  },
-  {
-    "term": "Operational Tables",
-    "aka": [
-      "Vena Operational Tables"
-    ],
-    "category": "Vena",
-    "technical": "A Vena feature in open beta from the Spring 2026 release for creating, managing and using relational data directly within Excel, with the option to push that data into Power BI Desktop.",
-    "sales": "A way to keep operational detail, such as headcount records or project lists, alongside financial plans in Vena. It is in open beta, so confirm availability before promising it.",
-    "related": [
-      "CubeFLEX",
-      "Vena MCP server"
-    ],
-    "src": "https://www.venasolutions.com/product-release/fy27/spring/partner"
-  },
-  {
-    "term": "Palantir AIP",
-    "aka": [
-      "AIP",
-      "Artificial Intelligence Platform",
-      "Chatbot Studio",
-      "AIP Agent Studio"
-    ],
-    "category": "Palantir",
-    "technical": "Palantir's AI platform on Foundry, including AIP Logic, Chatbot Studio (formerly AIP Agent Studio), Threads, Assist, Evals and pro-code agents built with the Claude, OpenAI or Google agent SDKs and bound to the Ontology.",
-    "sales": "Palantir's AI layer for building assistants and AI workflows on the Ontology. It is powerful, and any finance agents would be custom-built.",
-    "related": [
-      "AIP Logic",
-      "Palantir Ontology",
-      "AI agent"
-    ],
-    "src": "https://www.palantir.com/docs/foundry/aip/overview"
-  },
-  {
-    "term": "Palantir Foundry",
-    "aka": [
-      "Foundry",
-      "Workshop"
-    ],
-    "category": "Palantir",
-    "technical": "Palantir's data integration and application platform centered on the Ontology, with pipelines, Workshop applications and AIP for AI workflows, sold under enterprise contracts with AIP usage priced in compute-seconds.",
-    "sales": "Palantir's platform for building bespoke operational and decision apps on company data. It can power a custom planning app, but the planning model, calculations, approvals and Excel experience would all be built.",
-    "related": [
-      "Palantir Ontology",
-      "Palantir AIP",
-      "Forward deployed engineering (FDE)"
-    ],
-    "src": "https://www.palantir.com/docs/foundry/aip/overview"
-  },
-  {
-    "term": "Palantir Ontology",
-    "aka": [
-      "Ontology (Palantir)",
-      "Ontology MCP"
-    ],
-    "category": "Palantir",
-    "technical": "Foundry's semantic and operational layer of object types, properties, links, actions and functions that serves as both the business model and the governed write-back layer, exposed to outside agents through Ontology MCP with controlled writes.",
-    "sales": "Palantir's model of the business, which also controls how data gets changed. Architecturally it is the closest match to context plus actions, but every finance concept must be modeled by the customer.",
-    "related": [
-      "Ontology actions",
-      "Ontology",
-      "Model Context Protocol (MCP)"
-    ],
-    "src": "https://www.palantir.com/docs/foundry/ontology-mcp/overview"
-  },
-  {
-    "term": "Parquet",
-    "aka": [
-      "Apache Parquet",
-      "columnar file format"
-    ],
-    "category": "General data",
-    "technical": "An open-source columnar file format that compresses well and lets query engines read only the columns they need, used as the storage layer under Delta Lake and Iceberg.",
-    "sales": "The standard file type behind most modern data platforms. Buyers rarely need to think about it, but it is why large data sets can be queried quickly and cheaply.",
-    "related": [
-      "Delta Lake",
-      "Apache Iceberg",
-      "Data lake"
-    ],
-    "src": ""
-  },
-  {
-    "term": "Period locking",
-    "aka": [
-      "data locking",
-      "version locking",
-      "close lock"
-    ],
-    "category": "Planning and FP&A",
-    "technical": "Controls that freeze data for closed periods, submitted entities or approved versions so values cannot change without an authorized unlock, sometimes delegated to data owners. SAP Analytics Cloud calls this data locking.",
-    "sales": "Freezing last month or an approved budget so nobody changes it after the fact. It protects the numbers that went to the board.",
-    "related": [
-      "Versions",
-      "Workflow and approvals",
-      "Audit trail"
-    ],
-    "src": ""
-  },
-  {
-    "term": "Planning in Fabric",
-    "aka": [
-      "Fabric Planning",
-      "Lumel",
-      "Inforiver",
-      "PowerTable"
-    ],
-    "category": "Microsoft",
-    "technical": "Microsoft's first-party EPM and CPM workload in Fabric IQ, built by Lumel, for budgets, forecasts, scenarios and variance analysis, writing back to Fabric SQL databases. GA by mid-2026 with billing on Fabric capacity from August 1, 2026, and documented limits include one semantic model per plan item and 1.2 million cells per write-back.",
-    "sales": "Microsoft's own budgeting and forecasting tool inside Fabric, and the most direct competitor in Microsoft-centric accounts. Probe consolidation, native Excel use and what its AI does today, since Microsoft lists agentic planning as roadmap.",
-    "related": [
-      "Fabric IQ",
-      "Acterys",
-      "Fabric capacity units",
-      "CPM and EPM"
-    ],
-    "src": "https://learn.microsoft.com/en-us/fabric/iq/plan/overview"
-  },
-  {
-    "term": "Power BI semantic model",
-    "aka": [
-      "semantic model",
-      "Power BI dataset",
-      "Prep data for AI"
-    ],
-    "category": "Microsoft",
-    "technical": "The governed tabular model in Power BI and Fabric, formerly called a dataset, holding tables, relationships, DAX measures, hierarchies and row-level security, now enriched with AI instructions and verified answers for Copilot (preview).",
-    "sales": "The model most Power BI finance reports already run on. Microsoft now reuses it as AI context and as the base for Fabric Planning, which is a strong advantage in Power BI shops.",
-    "related": [
-      "Semantic layer",
-      "Fabric IQ",
-      "Planning in Fabric",
-      "Direct Lake"
-    ],
-    "src": "https://learn.microsoft.com/en-us/power-bi/create-reports/copilot-prepare-data-ai"
-  },
-  {
-    "term": "RBAC",
-    "aka": [
-      "role-based access control",
-      "roles"
-    ],
-    "category": "General data",
-    "technical": "An access model that assigns permissions to roles and roles to users, so access follows job function. Snowflake and most SaaS applications are built around it.",
-    "sales": "Access based on job role, such as planner, reviewer or admin. Planning tools combine roles with workflow so the right people submit and approve, which data platforms leave to the builder.",
-    "related": [
-      "ABAC",
-      "Workflow and approvals",
-      "Cell-level security"
-    ],
-    "src": ""
-  },
-  {
-    "term": "Retrieval-augmented generation (RAG)",
-    "aka": [
-      "RAG",
-      "retrieval"
-    ],
-    "category": "Data and AI",
-    "technical": "A pattern in which a system retrieves relevant documents or records at question time and passes them to an LLM as context, so answers draw on the organization's data rather than the model's training alone.",
-    "sales": "Looking things up before answering, the way an analyst checks the source file. It reduces made-up answers, but quality still depends on what gets retrieved and whether it is current.",
-    "related": [
-      "Grounding",
-      "Embeddings and vector database",
-      "Hallucination"
-    ],
-    "src": ""
-  },
-  {
-    "term": "Rolling forecast",
-    "aka": [
-      "continuous forecast",
-      "12-month rolling forecast"
-    ],
-    "category": "Planning and FP&A",
-    "technical": "A forecast updated on a regular cadence that always extends a fixed number of periods ahead, such as 12 or 18 months, adding a new period as each one closes instead of stopping at fiscal year end.",
-    "sales": "A forecast that always looks a year or more ahead instead of ending in December. It means refreshing data and revisiting assumptions more often, which raises the value of automation and of remembering past assumptions.",
-    "related": [
-      "Driver-based planning",
-      "Versions",
-      "Variance analysis"
-    ],
-    "src": ""
-  },
-  {
-    "term": "Row-level security",
-    "aka": [
-      "RLS",
-      "row access policy",
-      "row filter"
-    ],
-    "category": "General data",
-    "technical": "A policy that filters which rows a user can see based on identity or attributes, enforced by the database or semantic model at query time. AI agents on most platforms inherit these filters.",
-    "sales": "Making sure a regional manager only sees their own region's data. On data platforms it mainly controls what people read, not which plan numbers they are allowed to change.",
-    "related": [
-      "Column masking",
-      "Cell-level security",
-      "ABAC"
-    ],
-    "src": ""
-  },
-  {
-    "term": "SageMaker Unified Studio",
-    "aka": [
-      "Amazon SageMaker Unified Studio",
-      "SageMaker Catalog",
-      "SageMaker Lakehouse"
-    ],
-    "category": "AWS",
-    "technical": "AWS's unified data and AI workspace, GA March 13, 2025, that brings together EMR, Glue, Athena and Redshift tools with lakehouse data access and governance through SageMaker Catalog, which can enforce business glossary terms.",
-    "sales": "Amazon's one-stop workspace for data and AI teams. It governs and prepares data well, but it is a toolset for engineers, not an application for planners.",
-    "related": [
-      "Data catalog",
-      "Business glossary",
-      "Amazon Redshift"
-    ],
-    "src": "https://aws.amazon.com/about-aws/whats-new/2025/03/amazon-sagemaker-unified-studio-generally-available/"
-  },
-  {
-    "term": "SAP Analytics Cloud planning",
-    "aka": [
-      "SAC",
-      "SAC planning",
-      "SAP Analytics Cloud"
-    ],
-    "category": "SAP",
-    "technical": "The planning capabilities of SAP Analytics Cloud, including cell-level data entry with rolldown, private and published versions, data locking, data actions, structured allocations, validation rules, value driver trees and an Excel add-in with write-back.",
-    "sales": "SAP's real planning tool and the most direct full-stack competitor in SAP ERP accounts. Ask what is shipped versus scheduled for its AI agents, and how it handles entities that run on other ERPs.",
-    "related": [
-      "Joule",
-      "SAP Business Data Cloud",
-      "Allocations",
-      "Period locking"
-    ],
-    "src": "https://learning.sap.com/courses/exploring-sap-analytics-cloud/describing-planning-features_c4054dc5-c8af-4c7b-8f74-54d03b0bc413"
-  },
-  {
-    "term": "SAP Business Data Cloud",
-    "aka": [
-      "BDC",
-      "SAP BDC",
-      "BDC Connect",
-      "SAP Business AI Platform"
-    ],
-    "category": "SAP",
-    "technical": "SAP's business data fabric combining Datasphere, SAP Analytics Cloud, HANA Cloud, BW and SAP Databricks with curated SAP data products, sold in Capacity Units and required to be bought with at least one Intelligent Application. BDC Connect shares data zero-copy with Databricks, Snowflake, BigQuery and Fabric.",
-    "sales": "SAP's data platform for SAP and partner data, bundled with its analytics and planning tools. It is strongest where the business runs on SAP and it carries commercial lock-in signals.",
-    "related": [
-      "SAP Datasphere",
-      "SAP Analytics Cloud planning",
-      "SAP Knowledge Graph",
-      "Zero-copy"
-    ],
-    "src": "https://news.sap.com/2026/05/sap-bdc-accelerate-autonomous-enterprise/"
-  },
-  {
-    "term": "SAP Datasphere",
-    "aka": [
-      "Datasphere",
-      "seamless planning"
-    ],
-    "category": "SAP",
-    "technical": "SAP's data warehousing and modeling service inside Business Data Cloud that federates SAP and non-SAP data. With seamless planning, SAP Analytics Cloud planning models store their data in Datasphere spaces.",
-    "sales": "SAP's data warehouse layer under its planning and analytics tools. Seamless planning requires SAC on HANA Cloud, one-to-one SAC and Datasphere tenants and the same data center.",
-    "related": [
-      "SAP Business Data Cloud",
-      "SAP Analytics Cloud planning"
-    ],
-    "src": "https://www.sap.com/events/sapphire/innovation-guide/data-cloud.html"
-  },
-  {
-    "term": "SAP Knowledge Graph",
-    "aka": [
-      "Knowledge Graph (SAP)"
-    ],
-    "category": "SAP",
-    "technical": "A structured map of business entities, processes and relationships that SAP announced at Sapphire in May 2026 as the foundation of the SAP Business AI Platform, building on the knowledge graph component SAP added to Datasphere in 2025.",
-    "sales": "SAP's map of how its business objects connect, used to give Joule agents context. It is strongest on SAP master data and processes.",
-    "related": [
-      "Knowledge graph",
-      "Joule",
-      "SAP Business Data Cloud"
-    ],
-    "src": "https://news.sap.com/2026/05/sap-sapphire-sap-unveils-autonomous-enterprise/"
-  },
-  {
-    "term": "Scenarios",
-    "aka": [
-      "what-if",
-      "scenario planning",
-      "scenario modeling"
-    ],
-    "category": "Planning and FP&A",
-    "technical": "Alternative sets of assumptions and their calculated outcomes, such as base, upside and downside, stored and compared alongside versions. A persisted scenario differs from a one-off what-if question answered by an AI agent.",
-    "sales": "Modeling what happens if growth slows or a price increase lands, and keeping those cases to compare. Many data platform agents can answer a what-if question, but they do not save the scenario into a governed plan.",
-    "related": [
-      "Versions",
-      "Driver-based planning",
-      "Vena Planning, Query and Reporting agents"
-    ],
-    "src": ""
-  },
-  {
-    "term": "Semantic layer",
-    "aka": [
-      "semantic model",
-      "business layer",
-      "universal semantic layer"
-    ],
-    "category": "Data and AI",
-    "technical": "A governed model that maps physical tables to business concepts, defining measures, dimensions, relationships, hierarchies and synonyms once so BI tools and AI agents generate consistent queries.",
-    "sales": "A shared dictionary that tells every report and AI assistant what revenue or gross margin actually means. Every major data platform now ships one, so a semantic layer alone no longer sets a planning vendor apart.",
-    "related": [
-      "Metrics layer",
-      "Semantic views",
-      "Metric views",
-      "LookML",
-      "Power BI semantic model"
-    ],
-    "src": ""
-  },
-  {
-    "term": "Semantic View Autopilot",
-    "aka": [
-      "SVA",
-      "Autopilot"
-    ],
-    "category": "Snowflake",
-    "technical": "A Snowflake feature, GA February 3, 2026, that generates and updates semantic views from query history, BI dashboards such as Tableau and Power BI, and trusted SQL, proposing changes that data teams review and certify. One third-party recap lists it as preview, possibly reflecting newer sub-features.",
-    "sales": "Snowflake software that learns business definitions by watching how people already query data. It is a real, shipping example of context that improves with use, though it learns from analytics rather than from planning cycles.",
-    "related": [
-      "Semantic views",
-      "Context engineering",
-      "Verified queries",
-      "Cortex Sense"
-    ],
-    "src": "https://www.snowflake.com/en/blog/semantic-view-autopilot/"
-  },
-  {
-    "term": "Semantic views",
-    "aka": [
-      "Snowflake semantic views",
-      "semantic model (Snowflake)"
-    ],
-    "category": "Snowflake",
-    "technical": "Schema-level Snowflake database objects that define tables, relationships, facts, dimensions and metrics for BI tools and Cortex Analyst, replacing YAML semantic models. GA for querying since August 26, 2025.",
-    "sales": "Snowflake's semantic layer, where business definitions of metrics live. They describe reporting data and do not include plan versions, input or approval logic.",
-    "related": [
-      "Semantic layer",
-      "Semantic View Autopilot",
-      "Cortex Analyst",
-      "Open Semantic Interchange (OSI)"
-    ],
-    "src": "https://docs.snowflake.com/en/release-notes/2025/9_25"
-  },
-  {
-    "term": "Service principal",
-    "aka": [
-      "service account",
-      "machine identity",
-      "app identity"
-    ],
-    "category": "General data",
-    "technical": "A non-human identity, such as an application or automation account, that authenticates with its own credentials and permissions rather than acting on behalf of a signed-in user.",
-    "sales": "A system account that software uses to log in. It matters for cost and governance, for example Databricks bills Genie usage by service principals while usage by people is free through January 31, 2027.",
-    "related": [
-      "Single sign-on (SSO)",
-      "RBAC",
-      "Genie"
-    ],
-    "src": ""
-  },
-  {
-    "term": "Single sign-on (SSO)",
-    "aka": [
-      "SSO",
-      "SAML",
-      "OpenID Connect",
-      "Entra ID",
-      "Okta"
-    ],
-    "category": "General data",
-    "technical": "An authentication setup in which users sign in once with a central identity provider such as Microsoft Entra ID or Okta, and applications trust that identity through standards like SAML or OpenID Connect.",
-    "sales": "One company login for every tool. Buyers expect it from any vendor, and it also decides whether AI assistants act as the individual user with that user's permissions.",
-    "related": [
-      "Service principal",
-      "RBAC"
-    ],
-    "src": ""
-  },
-  {
-    "term": "Snowflake CoWork",
-    "aka": [
-      "CoWork",
-      "Snowflake Intelligence"
-    ],
-    "category": "Snowflake",
-    "technical": "Snowflake's packaged agent application for business users, with charts, artifacts, automations, skills, Deep Research and per-user memory, inheriting row-access and column-level policies. Renamed from Snowflake Intelligence at Summit 2026 in June, and the preview status of features such as User Memory is reported inconsistently.",
-    "sales": "Snowflake's ready-made AI assistant for business users, previously called Snowflake Intelligence. Its memory is personal to each user, not shared memory of the finance team's planning decisions.",
-    "related": [
-      "Cortex Agents",
-      "Agent memory",
-      "Cortex Sense"
-    ],
-    "src": "https://docs.snowflake.com/en/user-guide/snowflake-cortex/snowflake-cowork"
-  },
-  {
-    "term": "Snowflake Horizon",
-    "aka": [
-      "Horizon",
-      "Horizon Catalog",
-      "Horizon Context"
-    ],
-    "category": "Snowflake",
-    "technical": "Snowflake's built-in governance and discovery capabilities, covering access policies, classification, lineage and AI guardrails. Horizon Context, announced at Summit 2026 and reported in private preview, collects and enriches metadata from outside sources through five connectors.",
-    "sales": "The governance layer inside Snowflake that controls who sees what and documents data. It helps prove data is trusted, but it is not a planning or approval workflow.",
-    "related": [
-      "Data catalog",
-      "Cortex Sense",
-      "Row-level security"
-    ],
-    "src": ""
-  },
-  {
-    "term": "Snowflake Native Apps",
-    "aka": [
-      "Native App Framework",
-      "Native Apps"
-    ],
-    "category": "Snowflake",
-    "technical": "Applications packaged with the Snowflake Native App Framework that install and run inside a customer's Snowflake account. Support for Cortex Agents and Snowflake-managed MCP servers inside Native Apps went GA August 7, 2026.",
-    "sales": "A way for software vendors to ship an app that runs inside the customer's own Snowflake account. It is the route any third party, including a CPM vendor, could use to deliver an AI planning agent in Snowflake.",
-    "related": [
-      "Cortex Agents",
-      "MCP server",
-      "Streamlit in Snowflake"
-    ],
-    "src": "https://docs.snowflake.com/en/release-notes/2026/other/2026-08-07-native-apps-agents-mcp-ga"
-  },
-  {
-    "term": "Snowflake Postgres",
-    "aka": [
-      "Postgres in Snowflake"
-    ],
-    "category": "Snowflake",
-    "technical": "Managed PostgreSQL instances that run inside Snowflake, GA February 24, 2026 in selected AWS and Azure regions, suited to transactional application state and write-back.",
-    "sales": "A standard transactional database now available inside Snowflake. It gives builders a place to save plan inputs, but versions, workflow and calculations still have to be built around it.",
-    "related": [
-      "Hybrid Tables",
-      "OLTP vs OLAP",
-      "Lakebase"
-    ],
-    "src": "https://docs.snowflake.com/en/release-notes/2026/other/2026-02-24-snowflake-postgres-ga"
-  },
-  {
-    "term": "Snowplan",
-    "aka": [
-      "Snowplan v2"
-    ],
-    "category": "Snowflake",
-    "technical": "Snowflake's internal long-range planning application for 40+ entities, built by its finance team on Snowflake, Streamlit and the CoCo coding agent, with write-back, versioned scenarios, role-based review and row-level controls. Described in a July 8, 2026 blog that discloses no team size or cost.",
-    "sales": "Proof that a data platform company had to build its own planning app, with its own engineers, on its own platform. It shows planning on Snowflake is possible, and also that it is a custom software project.",
-    "related": [
-      "Streamlit in Snowflake",
-      "Forward deployed engineering (FDE)",
-      "Write-back"
-    ],
-    "src": "https://www.snowflake.com/en/blog/fpa-ai-modernization-snowplan-v2/"
-  },
-  {
-    "term": "SOC 2",
-    "aka": [
-      "SOC 2 Type II",
-      "SOC2"
-    ],
-    "category": "General data",
-    "technical": "An AICPA attestation framework in which an independent auditor reports on a service provider's controls for security, availability, processing integrity, confidentiality and privacy. A Type II report covers how those controls operated over a period.",
-    "sales": "The security audit report enterprise buyers request from every SaaS vendor, and a homegrown build needs its own controls and evidence. Buyers will also ask which attestation covers Vena Omega, so confirm internally before answering, since Morpheo listed SOC2 as initiated before the acquisition.",
-    "related": [
-      "Morpheo",
-      "Audit trail"
-    ],
-    "src": ""
-  },
-  {
-    "term": "Spreading and breakback",
-    "aka": [
-      "spreading",
-      "breakback",
-      "top-down allocation",
-      "rolldown"
-    ],
-    "category": "Planning and FP&A",
-    "technical": "Spreading pushes a value entered at a summary level down to lower-level members or periods by a method such as even, seasonal or prior-year pattern, while breakback adjusts the detail proportionally when a parent total is changed.",
-    "sales": "Entering an annual number and having it fall into months, or changing a total and having the detail adjust automatically. Finance users expect this in any planning grid, and it is a significant build item on a data platform.",
-    "related": [
-      "Allocations",
-      "Driver-based planning",
-      "Write-back"
-    ],
-    "src": ""
-  },
-  {
-    "term": "Star schema",
-    "aka": [
-      "fact and dimension tables",
-      "snowflake schema"
-    ],
-    "category": "General data",
-    "technical": "A relational modeling pattern with a central fact table of numeric events joined to surrounding dimension tables, used by warehouses and by semantic layers such as semantic views and metric views.",
-    "sales": "The standard layout for reporting data, with transactions in the middle and lookups like account and department around them. It works well for reporting actuals but does not handle versions, input or sign logic on its own.",
-    "related": [
-      "Dimension",
-      "Measure",
-      "Semantic layer",
-      "OLAP cube"
-    ],
-    "src": ""
-  },
-  {
-    "term": "Streamlit in Snowflake",
-    "aka": [
-      "Streamlit",
-      "SiS"
-    ],
-    "category": "Snowflake",
-    "technical": "Snowflake's hosted Streamlit environment for building Python data apps with interactive inputs that run against Snowflake data. Cortex Agents APIs require its container runtime rather than the warehouse runtime.",
-    "sales": "A quick way for developers to build simple web apps on Snowflake. Snowflake's own finance team used it as the input screen for its internal planning app, Snowplan.",
-    "related": [
-      "Snowplan",
-      "Hybrid Tables",
-      "Databricks Apps"
-    ],
-    "src": "https://www.snowflake.com/en/blog/fpa-ai-modernization-snowplan-v2/"
-  },
-  {
-    "term": "Text-to-SQL",
-    "aka": [
-      "NL2SQL",
-      "natural language query",
-      "NLQ",
-      "NL to MQL"
-    ],
-    "category": "Data and AI",
-    "technical": "Translating a natural-language question into a SQL query, usually guided by a semantic layer and verified examples, then running it and summarizing the result. Vena's Query Agent does the equivalent for Vena's MQL.",
-    "sales": "Asking a question in plain English and getting the answer from the database. Accuracy figures come from vendors' own tests, such as Snowflake's 90%+ from 2024, so ask how it holds up on a full finance model with versions and hierarchies.",
-    "related": [
-      "Cortex Analyst",
-      "Genie",
-      "Verified queries",
-      "Semantic layer",
-      "Vena Planning, Query and Reporting agents"
-    ],
-    "src": ""
-  },
-  {
-    "term": "Tokens and token pricing",
-    "aka": [
-      "tokens",
-      "per-token pricing",
-      "consumption pricing"
-    ],
-    "category": "AI and agents",
-    "technical": "Tokens are the chunks of text that models read and write, and many AI services bill per million input and output tokens. For example, Google's data agents cost $3 per million input and $20 per million output tokens once a free trial ends on December 31, 2026.",
-    "sales": "The meter AI usage is billed on, similar to a utility bill. Pilot costs can look small, especially during free promotions, so model the run-rate cost of a full finance team using it every day.",
-    "related": [
-      "AI Credits",
-      "Databricks Unit (DBU)",
-      "Fabric capacity units",
-      "Large language model (LLM)"
-    ],
-    "src": ""
-  },
-  {
-    "term": "Tool calling",
-    "aka": [
-      "function calling",
-      "tool use"
-    ],
-    "category": "AI and agents",
-    "technical": "The ability of an LLM to output a structured request to invoke a defined function, API or query with arguments, receive the result and continue reasoning.",
-    "sales": "How an AI assistant takes action, such as running a report or saving a number, instead of only talking. The tools that are exposed define what the AI can and cannot change.",
-    "related": [
-      "Model Context Protocol (MCP)",
-      "AI agent",
-      "Guardrails"
-    ],
-    "src": ""
-  },
-  {
-    "term": "Translytical task flows",
-    "aka": [
-      "Power BI write-back",
-      "translytical"
-    ],
-    "category": "Microsoft",
-    "technical": "A GA Power BI capability that lets report users add, edit or delete data and call external APIs from a report, executed by Fabric user data functions against Fabric SQL databases, warehouses or lakehouse files.",
-    "sales": "Buttons in a Power BI report that save changes back to the database. It is a general-purpose write-back building block, not a planning process with versions and approvals.",
-    "related": [
-      "User data functions",
-      "Write-back",
-      "Acterys"
-    ],
-    "src": "https://learn.microsoft.com/en-us/power-bi/create-reports/translytical-task-flow-overview"
-  },
-  {
-    "term": "Unity Catalog",
-    "aka": [
-      "UC",
-      "Databricks Unity Catalog"
-    ],
-    "category": "Databricks",
-    "technical": "Databricks' unified governance layer for data and AI assets, providing access control including ABAC, lineage, auditing, metric views and business semantics. At Data + AI Summit 2026 its Glossary was listed as preview coming soon and Domains as public preview.",
-    "sales": "Databricks' central catalog and permission system. It governs who can read data and what it means, while plan input, approval and versioning sit outside its scope.",
-    "related": [
-      "Metric views",
-      "ABAC",
-      "Data catalog",
-      "Genie Ontology"
-    ],
-    "src": "https://www.databricks.com/blog/whats-new-unity-catalog-data-ai-summit-2026"
-  },
-  {
-    "term": "User data functions",
-    "aka": [
-      "UDF",
-      "Fabric user data functions"
-    ],
-    "category": "Microsoft",
-    "technical": "Serverless Python functions in Fabric that read and write Fabric SQL databases, warehouses and lakehouse files and can be called from reports, pipelines, notebooks, Activator rules or REST.",
-    "sales": "Small pieces of custom code that handle saving and logic behind Fabric apps. They are how a builder would let an AI agent write to Fabric, which is custom work.",
-    "related": [
-      "Translytical task flows",
-      "Copilot Studio",
-      "Write-back"
-    ],
-    "src": "https://learn.microsoft.com/en-us/fabric/data-engineering/user-data-functions/user-data-functions-overview"
-  },
-  {
-    "term": "Variance analysis",
-    "aka": [
-      "budget vs actual",
-      "BvA",
-      "plan vs actual"
-    ],
-    "category": "Planning and FP&A",
-    "technical": "Comparing actuals with budget, forecast or prior periods across dimensions, quantifying the differences and attributing them to drivers such as price, volume or mix, usually with written commentary.",
-    "sales": "Explaining why results differ from plan, the core monthly conversation in FP&A. AI can draft the analysis, but the commentary and decisions are exactly the history a cumulative context engine aims to keep.",
-    "related": [
-      "Versions",
-      "Rolling forecast",
-      "Cumulative context"
-    ],
-    "src": ""
-  },
-  {
-    "term": "Vena Copilot",
-    "aka": [
-      "Vena AI",
-      "Vena Copilot for Teams"
-    ],
-    "category": "Vena",
-    "technical": "Vena's AI assistant built on Microsoft Azure OpenAI and the CubeFLEX model, introduced in beta April 3, 2024, which inherits Vena data, application and individual permissions and hosts Vena's named agents. Vena Copilot for Microsoft Teams has been GA since May 15, 2025.",
-    "sales": "Vena's built-in AI assistant for finance users, available inside Vena and Microsoft Teams. It respects existing permissions, and Vena states customer data is never used to train public AI models.",
-    "related": [
-      "Vena Planning, Query and Reporting agents",
-      "CubeFLEX",
-      "Microsoft Copilot"
-    ],
-    "src": "https://www.venasolutions.com/vena-ai"
-  },
-  {
-    "term": "Vena MCP server",
-    "aka": [
-      "Vena MCP",
-      "Vena Model Context Protocol server"
-    ],
-    "category": "Vena",
-    "technical": "Vena's MCP server, GA May 13, 2026, connects Claude, ChatGPT and Microsoft Copilot to live Vena data under each user's existing data and application permissions. Developer docs list read tools only, while release materials announce plan updates and write-back.",
-    "sales": "Lets a customer's preferred AI assistant work with live Vena data. Say read access is documented and write-back is announced until the developer docs change.",
-    "related": [
-      "Model Context Protocol (MCP)",
-      "MCP server",
-      "Microsoft Copilot"
-    ],
-    "src": "https://developers.venasolutions.com/docs/mcp-overview"
-  },
-  {
-    "term": "Vena Omega",
-    "aka": [
-      "Omega",
-      "cumulative context engine"
-    ],
-    "category": "Vena",
-    "technical": "Vena's announced cumulative context engine for finance, intended to combine governed data with definitions, assumptions, drivers, calculations, approvals, relationships and historical decisions so AI context compounds across planning cycles. Vena has published no GA date, pricing or architecture.",
-    "sales": "Vena's direction for AI that remembers how a specific finance team plans and decides. Present it as announced roadmap and lead with Vena's GA agents, MCP server and planning platform.",
-    "related": [
-      "Cumulative context",
-      "Morpheo",
-      "Vena Copilot",
-      "Context layer"
-    ],
-    "src": "https://www.venasolutions.com/newsroom/vena-to-acquire-morpheo-ai"
-  },
-  {
-    "term": "Vena Planning, Query and Reporting agents",
-    "aka": [
-      "Planning Agent",
-      "Query Agent",
-      "Reporting Agent",
-      "Analytics Agent",
-      "Scenario Agent"
-    ],
-    "category": "Vena",
-    "technical": "Named Vena Copilot agents, with the Planning Agent (GA May 13, 2026) generating forecasts, updating plans and applying scenario logic in natural language, the Query Agent (GA, Spring 2026) turning plain English into MQL, and the Reporting Agent (GA) working in the Ad Hoc tool. A Scenario Agent is listed as coming soon.",
-    "sales": "Vena's shipped AI agents that answer questions and, in the Planning Agent's case, update plans inside governed workflows. That is a key contrast with data platform agents, which are read-only.",
-    "related": [
-      "Vena Copilot",
-      "Text-to-SQL",
-      "Scenarios",
-      "AI agent"
-    ],
-    "src": "https://www.venasolutions.com/product-release/fy27/spring/partner"
-  },
-  {
-    "term": "Verified queries",
-    "aka": [
-      "golden queries",
-      "verified answers",
-      "example queries"
-    ],
-    "category": "Data and AI",
-    "technical": "Human-approved question and SQL pairs stored with a semantic model and reused when a matching question arrives, either executed directly or supplied to the model as examples. Snowflake and BigQuery call them verified queries, Looker calls them golden queries.",
-    "sales": "Pre-approved answers to common questions, like EBITDA by quarter, that the AI reuses instead of improvising. They raise trust, but someone has to review and maintain them.",
-    "related": [
-      "Text-to-SQL",
-      "Cortex Analyst",
-      "Conversational Analytics API",
-      "Grounding"
-    ],
-    "src": ""
-  },
-  {
-    "term": "Versions",
-    "aka": [
-      "plan versions",
-      "version dimension",
-      "Budget v1",
-      "Forecast 3+9"
-    ],
-    "category": "Planning and FP&A",
-    "technical": "Distinct, persistent copies of plan data such as Budget, Forecast 3+9 or Actuals, held in a version dimension with lifecycle states like open, locked and archived so they can be compared and promoted.",
-    "sales": "Keeping Budget, each forecast and actuals side by side without overwriting each other. Database branching, such as Lakebase's, is not the same thing, because finance versions need business rules, locking and comparison.",
-    "related": [
-      "Scenarios",
-      "Period locking",
-      "Variance analysis",
-      "Lakebase"
-    ],
-    "src": ""
-  },
-  {
-    "term": "Workflow and approvals",
-    "aka": [
-      "planning workflow",
-      "budget calendar",
-      "submission and approval"
-    ],
-    "category": "Planning and FP&A",
-    "technical": "Process orchestration for planning cycles, including a budget calendar, task assignment, submission, review, rejection and approval routing, notifications and status tracking for each contributor.",
-    "sales": "Making sure every department submits on time and the right people sign off. Snowflake's Multi-Party Approval and Databricks' Lakeflow Jobs sound similar but are admin and data controls, not budget workflows.",
-    "related": [
-      "Period locking",
-      "Audit trail",
-      "Agentic workflow"
-    ],
-    "src": ""
-  },
-  {
-    "term": "Write-back",
-    "aka": [
-      "writeback",
-      "data entry",
-      "plan input"
-    ],
-    "category": "Planning and FP&A",
-    "technical": "Saving user- or system-entered values, such as budget inputs or forecast changes, back into the model's storage so they are immediately available to calculations, reports and other users.",
-    "sales": "Typing a number into the plan and having it saved where everyone can use it. On data platforms this usually means custom development, for example Databricks' Excel add-in only overwrites whole tables, while Vena writes back natively from Excel.",
-    "related": [
-      "Versions",
-      "Cell-level security",
-      "Translytical task flows",
-      "Hybrid Tables"
-    ],
-    "src": ""
-  },
-  {
-    "term": "Zero-copy",
-    "aka": [
-      "zero-copy integration",
-      "data in place",
-      "no-copy access"
-    ],
-    "category": "General data",
-    "technical": "An integration approach where a consuming system queries data in place through sharing protocols, shortcuts or federation instead of physically replicating it, so one governed copy remains. Some features sold as zero-copy, such as Fabric mirroring, still maintain a managed replica.",
-    "sales": "Using data where it already lives instead of copying it into another system. Vendors use the term loosely, so ask whether a tool truly reads in place or quietly copies data behind the scenes.",
-    "related": [
-      "Data sharing",
-      "OpenSharing",
-      "OneLake",
-      "SAP Business Data Cloud"
-    ],
-    "src": "https://www.snowflake.com/en/product/features/zero-copy-integrations/"
-  }
+ {
+  "term": "Acterys",
+  "aka": [
+   "Acterys planning",
+   "Managility"
+  ],
+  "category": "Vena",
+  "technical": "A Power BI and Fabric planning, analytics and app-building platform with proprietary write-back and multidimensional modeling, acquired by Vena (closed March 26, 2026) and still branded Acterys.",
+  "sales": "Vena's planning option for teams that work in Power BI rather than Excel. It overlaps directly with Microsoft's Fabric Planning, so be ready to position the two.",
+  "related": [
+   "Planning in Fabric",
+   "Translytical task flows",
+   "Write-back"
+  ],
+  "src": "https://www.venasolutions.com/newsroom/vena-completes-acterys-acquisition"
+ },
+ {
+  "term": "Agent Bricks",
+  "aka": [
+   "Supervisor Agent",
+   "Knowledge Assistant",
+   "Databricks agents"
+  ],
+  "category": "Databricks",
+  "technical": "Databricks' governed platform for building and running enterprise agents, which now includes the former Mosaic AI Agent Framework, with components such as Supervisor Agent (GA February 10, 2026), Knowledge Assistant and Document Intelligence.",
+  "sales": "Databricks' toolkit for building AI agents and multi-agent teams. It suits custom agents, which is the point, since a buyer would be building the finance agents themselves.",
+  "related": [
+   "Mosaic AI",
+   "Multi-agent system",
+   "MLflow",
+   "Agent orchestration"
+  ],
+  "src": "https://www.databricks.com/blog/agent-bricks-governed-enterprise-agent-platform"
+ },
+ {
+  "term": "Agent Development Kit (ADK)",
+  "aka": [
+   "ADK",
+   "Google ADK"
+  ],
+  "category": "Google",
+  "technical": "Google's open-source framework for building single and multi-agent systems as graphs of sub-agents, with MCP and A2A support and deployment to Agent Runtime.",
+  "sales": "Google's developer toolkit for coding AI agents. It is a building block for teams who plan to write their own finance agents.",
+  "related": [
+   "Agent Runtime and Memory Bank",
+   "Agent2Agent protocol (A2A)",
+   "MCP Toolbox for Databases"
+  ],
+  "src": "https://cloud.google.com/blog/topics/google-cloud-next/google-cloud-next-2026-wrap-up"
+ },
+ {
+  "term": "Agent Runtime and Memory Bank",
+  "aka": [
+   "Agent Engine",
+   "Vertex AI Agent Engine",
+   "Memory Bank",
+   "Gemini Enterprise Agent Platform"
+  ],
+  "category": "Google",
+  "technical": "Agent Runtime, formerly Vertex AI Agent Engine, hosts agents on Gemini Enterprise Agent Platform, and Memory Bank stores long-term user preferences and facts across sessions with revision tracking and IAM-based access control. Sessions and Memory Bank billing began September 1, 2026.",
+  "sales": "Google's hosting and memory service for custom agents. Its memory is scoped to individual users rather than shared knowledge of how finance plans.",
+  "related": [
+   "Agent memory",
+   "Agent Development Kit (ADK)",
+   "AgentCore Memory"
+  ],
+  "src": "https://docs.cloud.google.com/agent-builder/agent-engine/memory-bank/overview?hl=en"
+ },
+ {
+  "term": "AgentCore Memory",
+  "aka": [
+   "Amazon Bedrock AgentCore Memory"
+  ],
+  "category": "AWS",
+  "technical": "The AgentCore memory service that keeps short-term session events for up to 365 days and extracts long-term semantic, summary, preference and episodic memories, with namespaces that scope memories by organization, team or user. Episodic memory went GA December 2, 2025.",
+  "sales": "Amazon's well-engineered memory store for AI agents. It knows nothing about finance, so someone has to decide what an assumption or planning decision memory looks like.",
+  "related": [
+   "Agent memory",
+   "Amazon Bedrock AgentCore",
+   "Cumulative context"
+  ],
+  "src": "https://aws.amazon.com/blogs/machine-learning/amazon-bedrock-agentcore-memory-building-context-aware-agents/"
+ },
+ {
+  "term": "AI Credits",
+  "aka": [
+   "Snowflake AI Credits"
+  ],
+  "category": "Snowflake",
+  "technical": "Snowflake's separate billing currency for AI services such as Cortex Agents, CoWork and AI Functions, priced at $2.00 with global cross-region routing or $2.20 with regional routing, separate from platform credits, with costs adding up across every service an agent calls.",
+  "sales": "The meter Snowflake uses to bill AI usage, on top of normal compute. Because an agent's costs stack across several services, the monthly bill is harder to predict than a subscription.",
+  "related": [
+   "Tokens and token pricing",
+   "Cortex Agents",
+   "Snowflake CoWork"
+  ],
+  "src": "https://docs.snowflake.com/en/user-guide/snowflake-cortex/pricing"
+ },
+ {
+  "term": "AI.FORECAST and TimesFM",
+  "aka": [
+   "AI.FORECAST",
+   "TimesFM",
+   "AI.KEY_DRIVERS"
+  ],
+  "category": "Google",
+  "technical": "AI.FORECAST is a BigQuery SQL function that produces time-series forecasts using Google's pretrained TimesFM model, GA since September 30, 2025, and TimesFM in Connected Sheets went GA July 1, 2026. AI.KEY_DRIVERS for contribution analysis went GA September 29, 2026.",
+  "sales": "Google's built-in forecasting that works without training a model. It produces a useful statistical baseline, but turning a baseline into an approved plan still needs a planning process.",
+  "related": [
+   "BigQuery",
+   "Connected Sheets",
+   "Rolling forecast",
+   "Driver-based planning"
+  ],
+  "src": "https://cloud.google.com/blog/products/data-analytics/ai-based-forecasting-and-analytics-in-bigquery-via-mcp-and-adk"
+ },
+ {
+  "term": "AIP Logic",
+  "aka": [
+   "Palantir AIP Logic"
+  ],
+  "category": "Palantir",
+  "technical": "A no-code environment in Palantir AIP for creating, testing and deploying AI-powered functions that read and act on Ontology data and can be triggered from applications or automations.",
+  "sales": "Palantir's point-and-click builder for AI steps. Planning calculations like allocations or spreading would still need to be engineered in it or in code.",
+  "related": [
+   "Palantir AIP",
+   "Ontology actions"
+  ],
+  "src": "https://www.palantir.com/docs/foundry/aip/aip-features"
+ },
+ {
+  "term": "Allocations",
+  "aka": [
+   "cost allocation",
+   "allocation rules",
+   "chargebacks"
+  ],
+  "category": "Planning and FP&A",
+  "technical": "Rules that distribute amounts, such as shared costs or targets, from a source across entities, departments or products using bases like headcount, revenue or square footage.",
+  "sales": "Spreading shared costs like IT or rent across departments fairly. Ask every vendor to show this live, since it is complex to build and not consistently documented in public material.",
+  "related": [
+   "Spreading and breakback",
+   "Driver-based planning",
+   "SAP Analytics Cloud planning"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Amazon Bedrock AgentCore",
+  "aka": [
+   "AgentCore",
+   "Bedrock AgentCore",
+   "AgentCore Policy",
+   "AgentCore Gateway"
+  ],
+  "category": "AWS",
+  "technical": "AWS's managed services for running agents at scale, GA October 13, 2025, including Runtime, Memory, Gateway (which connects to MCP servers), Identity, Observability, Policy guardrails and Evaluations, billed on consumption.",
+  "sales": "Amazon's industrial-strength plumbing for building AI agents. It is a platform for builders, so every finance-specific piece would be custom.",
+  "related": [
+   "AgentCore Memory",
+   "Agent orchestration",
+   "Guardrails"
+  ],
+  "src": "https://aws.amazon.com/about-aws/whats-new/2025/10/amazon-bedrock-agentcore-available"
+ },
+ {
+  "term": "Amazon Quick",
+  "aka": [
+   "Amazon Quick Suite",
+   "QuickSight",
+   "Quick Sight",
+   "Quick Flows"
+  ],
+  "category": "AWS",
+  "technical": "AWS's agentic business suite, launched as Amazon Quick Suite in October 2025 and later shortened to Amazon Quick, bundling chat, research, automation flows and BI, with semantic datasets added July 7, 2026. It documents no write-back or planning, and it replaces Amazon Q Business, which is closed to new customers.",
+  "sales": "Amazon's AI assistant and reporting suite, with enterprise plans at $20 or $40 per user plus $250 per account per month. The realistic overlap with Vena is reporting and Q&A, not planning.",
+  "related": [
+   "Amazon Bedrock AgentCore",
+   "Semantic layer",
+   "Amazon Redshift"
+  ],
+  "src": "https://aws.amazon.com/blogs/machine-learning/your-complete-guide-to-amazon-quick-suite-at-aws-reinvent-2025/"
+ },
+ {
+  "term": "Amazon Redshift",
+  "aka": [
+   "Redshift"
+  ],
+  "category": "AWS",
+  "technical": "AWS's managed cloud data warehouse for SQL analytics, accessible through SageMaker Unified Studio and SageMaker Catalog. Its AI features were not separately researched for this comparison.",
+  "sales": "Amazon's data warehouse, often where AWS customers keep actuals. Like other warehouses, it stores data for reporting but does not include planning workflow, versions or input.",
+  "related": [
+   "Data warehouse",
+   "SageMaker Unified Studio",
+   "Amazon Quick"
+  ],
+  "src": "https://aws.amazon.com/about-aws/whats-new/2025/03/amazon-sagemaker-unified-studio-generally-available/"
+ },
+ {
+  "term": "Audit trail",
+  "aka": [
+   "change history",
+   "audit log",
+   "provenance"
+  ],
+  "category": "Planning and FP&A",
+  "technical": "An immutable log recording who changed which value or object, when, from what to what, and ideally why through comments, covering user, system and AI-initiated changes.",
+  "sales": "The record auditors and controllers use to answer who changed this number and why. Platform logs track queries and agent actions, but plan-level change history with comments usually has to be built.",
+  "related": [
+   "Data lineage",
+   "Period locking",
+   "Ontology actions"
+  ],
+  "src": ""
+ },
+ {
+  "term": "BigQuery",
+  "aka": [
+   "Google BigQuery",
+   "BigQuery conversational analytics",
+   "BigQuery data agents"
+  ],
+  "category": "Google",
+  "technical": "Google Cloud's serverless data warehouse, now with conversational analytics (GA June 23, 2026), built-in AI functions such as AI.FORECAST and AI.KEY_DRIVERS, a managed MCP server (GA April 20, 2026) and Iceberg table support.",
+  "sales": "Google's main data warehouse. It is strong for analysis and forecasting, but its data agents are read-only and there is no native planning application.",
+  "related": [
+   "Looker",
+   "AI.FORECAST and TimesFM",
+   "Knowledge Catalog",
+   "Data warehouse"
+  ],
+  "src": "https://docs.cloud.google.com/bigquery/docs/release-notes"
+ },
+ {
+  "term": "Cell-level security",
+  "aka": [
+   "intersection-level security",
+   "entity-level security",
+   "write security"
+  ],
+  "category": "Planning and FP&A",
+  "technical": "Permissions that control read or write access at the level of individual intersections of dimensions, such as letting a manager edit only their own cost center's opex in the current forecast. Vena publicly documents entity-level security, so confirm cell-level detail internally.",
+  "sales": "Controlling exactly which numbers each person can see and edit in the plan. Data platform row and column policies mainly govern reading, so write permissions by intersection are custom work.",
+  "related": [
+   "Row-level security",
+   "Write-back",
+   "ABAC"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Connected Sheets",
+  "aka": [
+   "Google Connected Sheets"
+  ],
+  "category": "Google",
+  "technical": "A Google Sheets feature for analyzing BigQuery data through pivots, charts, extracts and scheduled refresh without moving the data into the sheet. Its documentation describes analysis and refresh but not write-back.",
+  "sales": "Google Sheets connected live to BigQuery for analysis. It does not save planning inputs back to the warehouse, unlike Excel-native planning in Vena.",
+  "related": [
+   "BigQuery",
+   "AI.FORECAST and TimesFM",
+   "Write-back"
+  ],
+  "src": "https://support.google.com/docs/answer/9703214?hl=en"
+ },
+ {
+  "term": "Conversational Analytics API",
+  "aka": [
+   "CA API",
+   "Data Agent API"
+  ],
+  "category": "Google",
+  "technical": "Google's API for building data agents over BigQuery and Looker, offering text-to-SQL, Looker query generation, a Python code interpreter, context retrieval and charts through stateful and stateless chat. GA June 23, 2026 per its release notes, though one Google blog says August 2026.",
+  "sales": "Google's developer service for embedding ask-your-data assistants into apps. Like Google's other data agents, it reads data and does not update plans.",
+  "related": [
+   "BigQuery",
+   "Looker",
+   "Verified queries",
+   "Text-to-SQL"
+  ],
+  "src": "https://docs.cloud.google.com/gemini/data-agents/conversational-analytics-api/release-notes"
+ },
+ {
+  "term": "Copilot Studio",
+  "aka": [
+   "Microsoft Copilot Studio"
+  ],
+  "category": "Microsoft",
+  "technical": "Microsoft's low-code platform for building custom agents that publish to Teams and Microsoft 365 Copilot. Fabric data agents now plug in as a tool through the Fabric IQ Data MCP, an integration Microsoft announced as GA around September 2026.",
+  "sales": "Microsoft's builder for custom AI assistants. It is where a Microsoft shop might assemble its own planning agent, which would still need a planning backend to write to.",
+  "related": [
+   "Fabric data agents",
+   "Microsoft Copilot",
+   "Agent orchestration"
+  ],
+  "src": "https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/fabric-data-agents-in-microsoft-copilot-studio-generally-available/5362882"
+ },
+ {
+  "term": "Cortex Agents",
+  "aka": [
+   "Snowflake Cortex Agents"
+  ],
+  "category": "Snowflake",
+  "technical": "Snowflake's fully managed agent platform (GA) that runs a plan, tool-use and reflect loop over tools such as Cortex Analyst, Cortex Search, stored procedures, sandboxed code and MCP connectors, with persisted threads and feedback capture.",
+  "sales": "Snowflake's toolkit for building AI agents on Snowflake data. Agents can only change data through procedures a developer writes, so plan updates are a custom build.",
+  "related": [
+   "Cortex Analyst",
+   "Cortex Search",
+   "Snowflake CoWork",
+   "AI Credits"
+  ],
+  "src": "https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents"
+ },
+ {
+  "term": "Cortex Analyst",
+  "aka": [
+   "Snowflake Cortex Analyst"
+  ],
+  "category": "Snowflake",
+  "technical": "Snowflake's text-to-SQL service that answers natural-language questions over semantic views or legacy YAML semantic models, billed per 1,000 messages through its API or by tokens when called from Cortex Agents.",
+  "sales": "Snowflake's ask-a-question feature for data in Snowflake. Its 90%+ accuracy claim comes from Snowflake's own 2024 test on simple pre-joined data, and it reads data rather than updating plans.",
+  "related": [
+   "Semantic views",
+   "Verified queries",
+   "Text-to-SQL",
+   "Cortex Agents"
+  ],
+  "src": "https://www.snowflake.com/en/engineering-blog/cortex-analyst-text-to-sql-accuracy-bi/"
+ },
+ {
+  "term": "Cortex Search",
+  "aka": [
+   "Snowflake Cortex Search"
+  ],
+  "category": "Snowflake",
+  "technical": "Snowflake's managed search service over text and unstructured data, used as a retrieval tool by Cortex Agents and billed on serving compute per GB per month plus embedding tokens.",
+  "sales": "Snowflake's search engine that lets AI agents find relevant documents and text. It supports the document side of an AI assistant rather than planning calculations.",
+  "related": [
+   "Cortex Agents",
+   "Embeddings and vector database",
+   "Retrieval-augmented generation (RAG)"
+  ],
+  "src": "https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents"
+ },
+ {
+  "term": "Cortex Sense",
+  "aka": [
+   "Snowflake Cortex Sense"
+  ],
+  "category": "Snowflake",
+  "technical": "A Snowflake runtime context layer that assembles context from query history, object metadata, BI definitions and semantic views, with self-correcting evaluation loops. Snowflake's June 30, 2026 blog says private preview from mid-July 2026, while other sources say GA soon or GA, so status is disputed.",
+  "sales": "Snowflake's newest attempt at an AI layer that learns the business from signals it already has. Treat it as preview, and note that it learns from data usage rather than from budget approvals or overrides.",
+  "related": [
+   "Context layer",
+   "Semantic View Autopilot",
+   "Snowflake Horizon",
+   "Cumulative context"
+  ],
+  "src": "https://www.snowflake.com/en/blog/enterprise-ai-agents-grounded-context/"
+ },
+ {
+  "term": "CPM and EPM",
+  "aka": [
+   "CPM",
+   "EPM",
+   "corporate performance management",
+   "enterprise performance management",
+   "FP&A software"
+  ],
+  "category": "Planning and FP&A",
+  "technical": "Corporate and enterprise performance management are software categories covering budgeting, planning, forecasting, consolidation, close, reporting and analytics with finance-owned models, workflow and controls.",
+  "sales": "The category of software Vena, Anaplan, OneStream and others sell for running planning and close. The real build versus buy question is whether to configure one of these products or build one from data platform parts.",
+  "related": [
+   "Financial consolidation",
+   "Workflow and approvals",
+   "Planning in Fabric",
+   "SAP Analytics Cloud planning"
+  ],
+  "src": ""
+ },
+ {
+  "term": "CubeFLEX",
+  "aka": [
+   "Vena cube",
+   "CubeFLEX engine"
+  ],
+  "category": "Vena",
+  "technical": "Vena's in-memory multidimensional engine of dimensions, hierarchies and members, paired with relational storage for high transaction volumes, which serves as the governed model Vena AI operates on.",
+  "sales": "The finance cube at the heart of Vena where plans, actuals and versions live. It plays the role a semantic layer plays on data platforms, and it also supports input, versions and workflow.",
+  "related": [
+   "OLAP cube",
+   "Semantic layer",
+   "Vena Copilot"
+  ],
+  "src": "https://www.venasolutions.com/vena-ai"
+ },
+ {
+  "term": "Currency translation",
+  "aka": [
+   "FX translation",
+   "multi-currency",
+   "foreign exchange"
+  ],
+  "category": "Planning and FP&A",
+  "technical": "Converting entity results from their functional currency into the reporting currency using rules such as average rates for income statement items, closing rates for balance sheet items and historical rates for equity, with differences booked to a translation reserve.",
+  "sales": "Turning results in euros or pesos into the group's reporting currency at the right rates. Getting the rate rules right is accounting logic that a homegrown build must design, test and maintain.",
+  "related": [
+   "Financial consolidation",
+   "Intercompany eliminations"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Databricks Apps",
+  "aka": [
+   "Apps on Databricks"
+  ],
+  "category": "Databricks",
+  "technical": "A Databricks service for hosting custom web applications built with frameworks such as Dash, Flask and Streamlit, with a managed service principal and native Lakebase connection, billed in DBUs per hour by compute size.",
+  "sales": "A place to run custom-built apps on Databricks. Databricks documents its write-back pattern with a simple to-do app template, which shows that a planning interface would be custom development.",
+  "related": [
+   "Lakebase",
+   "Streamlit in Snowflake",
+   "Databricks Unit (DBU)"
+  ],
+  "src": "https://docs.databricks.com/gcp/en/oltp/projects/databricks-apps"
+ },
+ {
+  "term": "Databricks Unit (DBU)",
+  "aka": [
+   "DBU",
+   "DBUs"
+  ],
+  "category": "Databricks",
+  "technical": "The Databricks Unit, a normalized unit of compute consumption billed at rates that vary by product, tier and cloud. Genie, Databricks Apps and model serving are billed in DBUs.",
+  "sales": "The meter Databricks bills on. Genie is free for people using it through January 31, 2027, so pilot costs understate long-run cost.",
+  "related": [
+   "Tokens and token pricing",
+   "Genie",
+   "Databricks Apps"
+  ],
+  "src": "https://learn.microsoft.com/en-us/azure/databricks/genie/monitor-cost"
+ },
+ {
+  "term": "Direct Lake",
+  "aka": [
+   "Direct Lake on OneLake"
+  ],
+  "category": "Microsoft",
+  "technical": "A Power BI storage mode that reads Delta tables directly from OneLake into memory without import, announced GA on OneLake at FabCon 2026.",
+  "sales": "A way for Power BI reports to read Fabric data live without copying it in. Note that Fabric Planning needs a gateway with fixed credentials, not single sign-on, when connected to these models.",
+  "related": [
+   "OneLake",
+   "Power BI semantic model",
+   "Zero-copy"
+  ],
+  "src": "https://azure.microsoft.com/en-us/blog/fabcon-and-sqlcon-2026-unifying-databases-and-fabric-on-a-single-data-platform/"
+ },
+ {
+  "term": "Driver-based planning",
+  "aka": [
+   "driver-based models",
+   "value driver trees",
+   "measure trees"
+  ],
+  "category": "Planning and FP&A",
+  "technical": "A modeling approach in which plan values are calculated from operational drivers, such as headcount times salary rate or units times price, with dependent values recalculated when a driver changes.",
+  "sales": "Planning from the business levers people understand, like volume and price, instead of typing every line. It needs a calculation engine that recalculates on save, which data platforms do not provide out of the box.",
+  "related": [
+   "Scenarios",
+   "Spreading and breakback",
+   "Rolling forecast"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Fabric capacity units",
+  "aka": [
+   "CU",
+   "capacity units",
+   "F SKU",
+   "Fabric capacity"
+  ],
+  "category": "Microsoft",
+  "technical": "The unit of shared compute in Microsoft Fabric, sold as F SKUs from F2 to F8192, with one or three year reservations saving about 41% over pay-as-you-go, and consumed by workloads including Copilot, data agents and Planning.",
+  "sales": "The prepaid pool of computing power a company buys for Fabric. Because Planning and AI draw from the same pool, Microsoft can position them as already paid for, so ask about real consumption at full use.",
+  "related": [
+   "Planning in Fabric",
+   "Tokens and token pricing",
+   "Microsoft Copilot"
+  ],
+  "src": "https://azure.microsoft.com/en-us/pricing/details/microsoft-fabric/"
+ },
+ {
+  "term": "Fabric data agents",
+  "aka": [
+   "data agents",
+   "AI skills"
+  ],
+  "category": "Microsoft",
+  "technical": "Conversational agents in Fabric, GA since FabCon in March 2026, that generate read-only SQL, DAX and KQL over up to five sources such as lakehouses, warehouses and semantic models, with answers capped at 25 rows by 25 columns and English-only support.",
+  "sales": "Microsoft's ask-your-data assistants on Fabric. They cannot change data and only work in English, which matters for bilingual Canadian finance teams.",
+  "related": [
+   "Fabric IQ",
+   "Copilot Studio",
+   "Text-to-SQL"
+  ],
+  "src": "https://learn.microsoft.com/en-us/fabric/data-science/concept-data-agent"
+ },
+ {
+  "term": "Fabric IQ",
+  "aka": [
+   "Microsoft Fabric IQ",
+   "Microsoft IQ",
+   "Fabric IQ Ontology"
+  ],
+  "category": "Microsoft",
+  "technical": "Microsoft's enterprise intelligence layer in Fabric that grounds data in business language for people and agents, with Power BI semantic models (GA) and Ontology (preview) as core items and Graph (preview), data agents, operations agents and Planning (GA) as supporting items.",
+  "sales": "Microsoft's umbrella for business context, AI and planning on Fabric. It is the closest platform match to a context layer with planning, and it bills on capacity many prospects already own.",
+  "related": [
+   "Planning in Fabric",
+   "Fabric data agents",
+   "Power BI semantic model",
+   "Ontology"
+  ],
+  "src": "https://learn.microsoft.com/en-us/fabric/iq/overview"
+ },
+ {
+  "term": "Financial consolidation",
+  "aka": [
+   "consolidation",
+   "group reporting",
+   "close and consolidation"
+  ],
+  "category": "Planning and FP&A",
+  "technical": "Combining the financial results of multiple legal entities into group statements, including currency translation, intercompany eliminations, ownership and minority interest calculations, and top-side adjustments.",
+  "sales": "Rolling up all the subsidiaries into one set of group numbers that auditors accept. No data platform reviewed offers it natively, while Vena's advanced consolidation went GA on August 26, 2026.",
+  "related": [
+   "Intercompany eliminations",
+   "Currency translation",
+   "Period locking",
+   "Audit trail"
+  ],
+  "src": "https://www.venasolutions.com/newsroom/vena-launches-advanced-financial-consolidation-solution"
+ },
+ {
+  "term": "Forward deployed engineering (FDE)",
+  "aka": [
+   "FDE",
+   "forward deployed engineers",
+   "Forward Deployed Finance Specialists"
+  ],
+  "category": "Planning and FP&A",
+  "technical": "A delivery model in which vendor engineers embed with a customer to build and adapt solutions on the vendor's platform. Snowflake points finance customers to Forward Deployed Finance Specialists, and Palantir is known for this approach.",
+  "sales": "Vendor engineers who come in to build a custom solution. It signals that the platform has no packaged planning product, so the customer ends up owning a custom application.",
+  "related": [
+   "Snowplan",
+   "Palantir Foundry",
+   "CPM and EPM"
+  ],
+  "src": "https://www.snowflake.com/en/blog/fpa-ai-modernization-snowplan-v2/"
+ },
+ {
+  "term": "Gemini Enterprise",
+  "aka": [
+   "Agentspace",
+   "Google Agentspace"
+  ],
+  "category": "Google",
+  "technical": "Google's enterprise agent workspace, formerly Agentspace, where users reach Google and partner agents, build no-code agents with Agent Designer and use agents built with ADK. Gemini Enterprise for Financial Services, in preview since August 25, 2026, targets banking use cases rather than FP&A.",
+  "sales": "Google's front door for company-wide AI assistants. Its finance edition targets banks and investment research, not corporate budgeting.",
+  "related": [
+   "Agent Development Kit (ADK)",
+   "Agent Runtime and Memory Bank",
+   "Conversational Analytics API"
+  ],
+  "src": "https://cloud.google.com/blog/topics/google-cloud-next/google-cloud-next-2026-wrap-up"
+ },
+ {
+  "term": "Genie",
+  "aka": [
+   "Genie Agents",
+   "Genie One",
+   "Genie spaces",
+   "Databricks One",
+   "AI/BI Genie"
+  ],
+  "category": "Databricks",
+  "technical": "Databricks' natural-language analytics family. Genie Agents (renamed from Genie spaces in July 2026) answer questions over curated tables with read-only queries under each user's permissions, and Genie One (renamed from Databricks One) is the business-user agent app, both GA, with usage by people free through January 31, 2027.",
+  "sales": "Databricks' ask-your-data assistant for business users. Its generated queries are always read-only, so it can explain the numbers but cannot update a plan.",
+  "related": [
+   "Genie Ontology",
+   "Knowledge store",
+   "Text-to-SQL",
+   "Databricks Unit (DBU)"
+  ],
+  "src": "https://learn.microsoft.com/en-us/azure/databricks/genie-agents/concepts"
+ },
+ {
+  "term": "Genie Ontology",
+  "aka": [
+   "Databricks ontology",
+   "OntoRank"
+  ],
+  "category": "Databricks",
+  "technical": "A Databricks context layer in public preview that combines Unity Catalog semantics with snippets inferred from dashboards, SQL queries and Genie Agents, each ranked by an authority score based on source, usage and freshness.",
+  "sales": "The Databricks feature closest to context that grows with use. It learns from analytics activity like dashboards and queries rather than from planning events like approvals and overrides.",
+  "related": [
+   "Ontology",
+   "Genie",
+   "Context engineering",
+   "Cumulative context"
+  ],
+  "src": "https://docs.databricks.com/aws/en/genie/genie-ontology"
+ },
+ {
+  "term": "Hybrid Tables",
+  "aka": [
+   "Unistore",
+   "Snowflake Hybrid Tables"
+  ],
+  "category": "Snowflake",
+  "technical": "Snowflake tables, part of Unistore, that add a row store with row-level locking and enforced primary, foreign and unique keys for transactional workloads next to analytics. Snowflake declared them GA in November 2024, though one third party still calls them preview.",
+  "sales": "Snowflake's way of handling many small, fast updates, which planning input requires. A secondary source reports they lack time travel, which would push plan history into custom tables.",
+  "related": [
+   "OLTP vs OLAP",
+   "Write-back",
+   "Snowflake Postgres"
+  ],
+  "src": "https://www.snowflake.com/en/blog/unistore-general-availability/"
+ },
+ {
+  "term": "Intercompany eliminations",
+  "aka": [
+   "eliminations",
+   "intercompany matching",
+   "IC eliminations"
+  ],
+  "category": "Planning and FP&A",
+  "technical": "Consolidation entries that remove balances and transactions between entities in the same group, such as intercompany sales, receivables and payables, so group results reflect only external activity, usually after intercompany matching.",
+  "sales": "Removing sales and balances between a company's own subsidiaries so revenue is not counted twice. It is a core reason finance teams buy a CPM product rather than build one.",
+  "related": [
+   "Financial consolidation",
+   "Currency translation"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Joule",
+  "aka": [
+   "SAP Joule",
+   "Joule Agents",
+   "Joule Studio",
+   "Financial Planning Assistant"
+  ],
+  "category": "SAP",
+  "technical": "SAP's AI assistant and agent front end that orchestrates workflows, data and more than 200 specialized agents through over 50 domain assistants. The Financial Planning Assistant and Joule Agents in SAP Enterprise Planning were scheduled for GA in Q3 2026, delivery was not verified, and Joule Studio MCP and A2A support is described as future.",
+  "sales": "SAP's AI copilot across its applications. Its planning agents were due in Q3 2026, while Vena's Planning Agent has been GA since May 2026.",
+  "related": [
+   "SAP Analytics Cloud planning",
+   "SAP Knowledge Graph",
+   "Agent2Agent protocol (A2A)"
+  ],
+  "src": "https://news.sap.com/2026/05/sap-sapphire-sap-unveils-autonomous-enterprise/"
+ },
+ {
+  "term": "Knowledge Catalog",
+  "aka": [
+   "Dataplex",
+   "Dataplex Universal Catalog"
+  ],
+  "category": "Google",
+  "technical": "Google Cloud's metadata and governance catalog, renamed from Dataplex Universal Catalog on April 10, 2026, which brings BigQuery measures and LookML together. Automated context curation of descriptions, glossaries and verified SQL is in preview.",
+  "sales": "Google's catalog of what data means and who owns it, previously called Dataplex. One analyst firm calls it more of a metadata aggregator than a true business context layer.",
+  "related": [
+   "Data catalog",
+   "Business glossary",
+   "BigQuery",
+   "LookML"
+  ],
+  "src": "https://docs.cloud.google.com/dataplex/docs/catalog-overview"
+ },
+ {
+  "term": "Knowledge store",
+  "aka": [
+   "Genie knowledge store",
+   "Genie instructions"
+  ],
+  "category": "Databricks",
+  "technical": "The author-curated set of semantic definitions attached to a Genie Agent, including table descriptions, joins, SQL expressions, example SQL and instructions. Feedback generates suggestions, but Databricks states agent behavior does not change from user feedback alone.",
+  "sales": "The hand-maintained notes that teach a Genie assistant how the data works. Someone on the data team has to keep them current.",
+  "related": [
+   "Genie",
+   "Verified queries",
+   "Context engineering"
+  ],
+  "src": "https://docs.databricks.com/aws/en/genie-agents/tune-quality"
+ },
+ {
+  "term": "Lakebase",
+  "aka": [
+   "Databricks Lakebase",
+   "serverless Postgres"
+  ],
+  "category": "Databricks",
+  "technical": "Databricks' managed serverless PostgreSQL service for transactional workloads, with autoscaling, zero-copy branching, point-in-time recovery and sync to Delta tables. GA on AWS in February 2026, with Azure in beta at that time.",
+  "sales": "A transactional database inside Databricks that custom apps can save data to. Its branching copies a database, which is not the same as managing budget and forecast versions.",
+  "related": [
+   "Databricks Apps",
+   "OLTP vs OLAP",
+   "Versions",
+   "Snowflake Postgres"
+  ],
+  "src": "https://databricks.com/blog/databricks-lakebase-generally-available"
+ },
+ {
+  "term": "Lakeflow",
+  "aka": [
+   "Lakeflow Connect",
+   "Lakeflow Jobs",
+   "Lakeflow Designer"
+  ],
+  "category": "Databricks",
+  "technical": "Databricks' data engineering suite, including Lakeflow Connect managed connectors (for example NetSuite, Workday and Dynamics 365), Lakeflow Designer for no-code pipelines and Lakeflow Jobs for orchestration.",
+  "sales": "Databricks' tools for bringing in and moving data. Lakeflow Jobs schedules data pipelines and is not a budget approval workflow.",
+  "related": [
+   "ETL and ELT",
+   "Openflow",
+   "Workflow and approvals"
+  ],
+  "src": "https://docs.databricks.com/aws/en/ingestion/lakeflow-connect/saas-overview"
+ },
+ {
+  "term": "Looker",
+  "aka": [
+   "Google Looker",
+   "Conversational Analytics in Looker"
+  ],
+  "category": "Google",
+  "technical": "Google's BI platform built on the LookML semantic model, with Conversational Analytics in Looker (GA) and newer agentic features such as dashboard agents and a managed Looker MCP server in preview.",
+  "sales": "Google's reporting tool, known for consistent metric definitions. Its only documented write-back to BigQuery is a reference pattern that only appends rows, which is far from planning input.",
+  "related": [
+   "LookML",
+   "BigQuery",
+   "Conversational Analytics API"
+  ],
+  "src": "https://docs.cloud.google.com/looker/docs/conversational-analytics-overview"
+ },
+ {
+  "term": "LookML",
+  "aka": [
+   "Looker modeling language"
+  ],
+  "category": "Google",
+  "technical": "Looker's code-based modeling language that defines dimensions, measures, joins and Explores over SQL databases, maintained by developers with Git version control and continuous integration.",
+  "sales": "The language Looker uses to define business metrics, maintained by developers in code. It is a strong reporting semantic layer, but it has no concept of plan input, versions or scenarios.",
+  "related": [
+   "Looker",
+   "Semantic layer",
+   "Metrics layer"
+  ],
+  "src": "https://cloud.google.com/blog/products/business-intelligence/how-lookers-semantic-layer-enhances-gen-ai-trustworthiness"
+ },
+ {
+  "term": "MCP Toolbox for Databases",
+  "aka": [
+   "MCP Toolbox",
+   "Google MCP Toolbox"
+  ],
+  "category": "Google",
+  "technical": "Google's open-source MCP server framework, version 1.0 GA, that exposes database and analytics tools, including BigQuery conversational analytics and TimesFM forecasting, to MCP clients and ADK agents as a self-managed alternative to Google's managed MCP servers.",
+  "sales": "A free Google toolkit that lets AI assistants query company databases. It speeds up building agents but does not add planning features.",
+  "related": [
+   "MCP server",
+   "Agent Development Kit (ADK)",
+   "BigQuery"
+  ],
+  "src": "https://cloud.google.com/blog/products/data-analytics/new-data-agents-across-the-agentic-data-cloud"
+ },
+ {
+  "term": "Metric views",
+  "aka": [
+   "UC metric views",
+   "Unity Catalog Metrics",
+   "UC Metrics"
+  ],
+  "category": "Databricks",
+  "technical": "Unity Catalog objects, defined in YAML, SQL or a low-code editor, that separate measures from dimensions so metrics are defined once and queried by any grouping, with star and snowflake joins, window measures and materialization. GA per Databricks, though one third-party recap lists them as preview.",
+  "sales": "Databricks' semantic layer for KPIs, feeding dashboards, Genie and outside BI tools. Data engineers usually maintain them, not finance.",
+  "related": [
+   "Semantic layer",
+   "Metrics layer",
+   "Unity Catalog",
+   "Genie"
+  ],
+  "src": "https://docs.databricks.com/aws/en/metric-views"
+ },
+ {
+  "term": "Microsoft Copilot",
+  "aka": [
+   "Copilot",
+   "Microsoft 365 Copilot",
+   "Copilot in Fabric",
+   "Copilot in Power BI"
+  ],
+  "category": "Microsoft",
+  "technical": "Microsoft's family of AI assistants, including Microsoft 365 Copilot and Copilot in Fabric and Power BI, which consumes Fabric capacity units. Copilot in Fabric processes data in the US and EU data boundaries, so Canadian data is processed cross-geo.",
+  "sales": "Microsoft's AI assistant across Office, Teams and Power BI. Vena works inside it, since the Vena MCP server supports Microsoft Copilot as a client and Vena Copilot runs in Teams.",
+  "related": [
+   "Copilot Studio",
+   "Vena MCP server",
+   "Vena Copilot"
+  ],
+  "src": "https://learn.microsoft.com/en-us/fabric/fundamentals/copilot-fabric-overview"
+ },
+ {
+  "term": "Microsoft Purview",
+  "aka": [
+   "Purview",
+   "Purview DLP",
+   "eDiscovery"
+  ],
+  "category": "Microsoft",
+  "technical": "Microsoft's data governance, security and compliance suite, providing data loss prevention, access restriction policies, audit and eDiscovery that apply to Fabric data agents and Copilot interactions.",
+  "sales": "Microsoft's compliance toolset that protects and logs AI conversations about company data. It is a genuine governance strength for Microsoft and a standard expectation for any AI tool in finance.",
+  "related": [
+   "Fabric data agents",
+   "Guardrails",
+   "Audit trail"
+  ],
+  "src": "https://learn.microsoft.com/en-us/fabric/data-science/concept-data-agent"
+ },
+ {
+  "term": "MLflow",
+  "aka": [
+   "MLflow 3",
+   "Agent Evaluation"
+  ],
+  "category": "Databricks",
+  "technical": "An open-source platform, deeply integrated in Databricks, for tracking, evaluating and monitoring machine learning and generative AI applications. MLflow 3 attaches scorers such as LLM judges and code checks to traces before release and on production traffic.",
+  "sales": "The quality-control system Databricks teams use to test AI before and after launch. Using it well is part of the ongoing engineering cost of building your own agents.",
+  "related": [
+   "Evaluations and benchmarks",
+   "Agent Bricks"
+  ],
+  "src": "https://docs.databricks.com/aws/en/mlflow3/genai/eval-monitor"
+ },
+ {
+  "term": "Morpheo",
+  "aka": [
+   "Morpheo AI",
+   "Morpheo Omega"
+  ],
+  "category": "Vena",
+  "technical": "Morpheo AI Inc., a Toronto agentic data platform company acquired by Vena (announced July 28, closed August 18, 2026). Its Morpheo Omega data-product technology and connectors became the foundation of Vena Omega, GA November 17, 2026.",
+  "sales": "The AI data company Vena bought to build Omega. It brings the connectors that pull in data from anywhere in the business and the technology that turns it into context.",
+  "related": [
+   "Vena Omega",
+   "SOC 2"
+  ],
+  "src": "https://www.venasolutions.com/newsroom/vena-completes-acquisition-of-morpheo-ai"
+ },
+ {
+  "term": "Mosaic AI",
+  "aka": [
+   "Mosaic AI Agent Framework",
+   "Databricks Mosaic AI"
+  ],
+  "category": "Databricks",
+  "technical": "Databricks' brand for its generative AI tooling, whose Mosaic AI Agent Framework is now marketed under the Agent Bricks umbrella as Custom Agents on Apps.",
+  "sales": "An older Databricks name reps will still see in decks and documents. Treat it as part of Agent Bricks.",
+  "related": [
+   "Agent Bricks",
+   "MLflow"
+  ],
+  "src": "https://www.databricks.com/blog/agent-bricks-governed-enterprise-agent-platform"
+ },
+ {
+  "term": "OneLake",
+  "aka": [
+   "Fabric OneLake",
+   "shortcuts",
+   "mirroring"
+  ],
+  "category": "Microsoft",
+  "technical": "The single, tenant-wide data lake under Microsoft Fabric, storing data in open Delta format and exposing outside data in place through shortcuts or as managed replicas through mirroring.",
+  "sales": "Microsoft Fabric's one data lake for the whole company. Fabric Planning reads from it, and Vena's six Microsoft Fabric data integrations connect to the same Microsoft data estate.",
+  "related": [
+   "Direct Lake",
+   "Zero-copy",
+   "Fabric IQ",
+   "Delta Lake"
+  ],
+  "src": "https://azure.microsoft.com/en-us/blog/fabcon-and-sqlcon-2026-unifying-databases-and-fabric-on-a-single-data-platform/"
+ },
+ {
+  "term": "Ontology actions",
+  "aka": [
+   "action types",
+   "Palantir actions"
+  ],
+  "category": "Palantir",
+  "technical": "Palantir action types define a single transaction that changes one or more Ontology objects using user-defined logic, with rules, submission criteria, per-action permissions, side effects to external systems and action logs with full audit history.",
+  "sales": "Palantir's governed way to change data, with permissions and a full audit log. It is a generic building block, so budget submission and approval would need to be designed on top.",
+  "related": [
+   "Palantir Ontology",
+   "Audit trail",
+   "Workflow and approvals"
+  ],
+  "src": "https://www.palantir.com/docs/foundry/action-types/overview"
+ },
+ {
+  "term": "Open Semantic Interchange (OSI)",
+  "aka": [
+   "OSI",
+   "Apache Ossie"
+  ],
+  "category": "Snowflake",
+  "technical": "A vendor-neutral, Apache 2.0 specification for exchanging semantic definitions (data sets, metrics, dimensions, relationships and contexts) across tools. Snowflake published the first version January 27, 2026, recaps describe it as finalized at Summit 2026 with 54 vendors, and a secondary source reports it entered the Apache Incubator as Apache Ossie.",
+  "sales": "An industry standard so metric definitions can move between tools instead of being rebuilt in each one. Databricks, dbt Labs and Salesforce are members, but no planning vendor appears on the published member list.",
+  "related": [
+   "Semantic layer",
+   "Metrics layer",
+   "Semantic views"
+  ],
+  "src": "https://www.snowflake.com/en/blog/open-semantic-interchanges-specs-finalized/"
+ },
+ {
+  "term": "Openflow",
+  "aka": [
+   "Snowflake Openflow"
+  ],
+  "category": "Snowflake",
+  "technical": "Snowflake's managed data ingestion service based on Apache NiFi for batch and streaming pipelines, GA since May 2025, with second-generation deployments and runtimes GA September 8, 2026 and gen-2 connectors such as PostgreSQL and MySQL CDC still in public preview.",
+  "sales": "Snowflake's tool for bringing data in from other systems. It moves actuals into Snowflake, which is the first step of any build on Snowflake.",
+  "related": [
+   "ETL and ELT",
+   "Change data capture (CDC)",
+   "Lakeflow"
+  ],
+  "src": "https://docs.snowflake.com/en/release-notes/2026/other/2026-09-08-openflow-gen2-deployment-runtime-ga"
+ },
+ {
+  "term": "OpenSharing",
+  "aka": [
+   "Delta Sharing"
+  ],
+  "category": "Databricks",
+  "technical": "Databricks' open protocol for live, cross-platform table sharing without copying, renamed from Delta Sharing in June 2026 and hosted by the Linux Foundation.",
+  "sales": "The way Databricks lets other tools read its tables directly. Planning vendors such as Pigment use it only to import data, with no write-back.",
+  "related": [
+   "Data sharing",
+   "Zero-copy",
+   "Delta Lake"
+  ],
+  "src": "https://www.databricks.com/company/newsroom/press-releases/databricks-announces-opensharing"
+ },
+ {
+  "term": "Operational Tables",
+  "aka": [
+   "Vena Operational Tables"
+  ],
+  "category": "Vena",
+  "technical": "A Vena feature in open beta from the Spring 2026 release for creating, managing and using relational data directly within Excel, with the option to push that data into Power BI Desktop.",
+  "sales": "A way to keep operational detail, such as headcount records or project lists, alongside financial plans in Vena. It is in open beta, so confirm availability before promising it.",
+  "related": [
+   "CubeFLEX",
+   "Vena MCP server"
+  ],
+  "src": "https://www.venasolutions.com/product-release/fy27/spring/partner"
+ },
+ {
+  "term": "Palantir AIP",
+  "aka": [
+   "AIP",
+   "Artificial Intelligence Platform",
+   "Chatbot Studio",
+   "AIP Agent Studio"
+  ],
+  "category": "Palantir",
+  "technical": "Palantir's AI platform on Foundry, including AIP Logic, Chatbot Studio (formerly AIP Agent Studio), Threads, Assist, Evals and pro-code agents built with the Claude, OpenAI or Google agent SDKs and bound to the Ontology.",
+  "sales": "Palantir's AI layer for building assistants and AI workflows on the Ontology. It is powerful, and any finance agents would be custom-built.",
+  "related": [
+   "AIP Logic",
+   "Palantir Ontology",
+   "AI agent"
+  ],
+  "src": "https://www.palantir.com/docs/foundry/aip/overview"
+ },
+ {
+  "term": "Palantir Foundry",
+  "aka": [
+   "Foundry",
+   "Workshop"
+  ],
+  "category": "Palantir",
+  "technical": "Palantir's data integration and application platform centered on the Ontology, with pipelines, Workshop applications and AIP for AI workflows, sold under enterprise contracts with AIP usage priced in compute-seconds.",
+  "sales": "Palantir's platform for building bespoke operational and decision apps on company data. It can power a custom planning app, but the planning model, calculations, approvals and Excel experience would all be built.",
+  "related": [
+   "Palantir Ontology",
+   "Palantir AIP",
+   "Forward deployed engineering (FDE)"
+  ],
+  "src": "https://www.palantir.com/docs/foundry/aip/overview"
+ },
+ {
+  "term": "Palantir Ontology",
+  "aka": [
+   "Ontology (Palantir)",
+   "Ontology MCP"
+  ],
+  "category": "Palantir",
+  "technical": "Foundry's semantic and operational layer of object types, properties, links, actions and functions that serves as both the business model and the governed write-back layer, exposed to outside agents through Ontology MCP with controlled writes.",
+  "sales": "Palantir's model of the business, which also controls how data gets changed. Architecturally it is the closest match to context plus actions, but every finance concept must be modeled by the customer.",
+  "related": [
+   "Ontology actions",
+   "Ontology",
+   "Model Context Protocol (MCP)"
+  ],
+  "src": "https://www.palantir.com/docs/foundry/ontology-mcp/overview"
+ },
+ {
+  "term": "Period locking",
+  "aka": [
+   "data locking",
+   "version locking",
+   "close lock"
+  ],
+  "category": "Planning and FP&A",
+  "technical": "Controls that freeze data for closed periods, submitted entities or approved versions so values cannot change without an authorized unlock, sometimes delegated to data owners. SAP Analytics Cloud calls this data locking.",
+  "sales": "Freezing last month or an approved budget so nobody changes it after the fact. It protects the numbers that went to the board.",
+  "related": [
+   "Versions",
+   "Workflow and approvals",
+   "Audit trail"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Planning in Fabric",
+  "aka": [
+   "Fabric Planning",
+   "Lumel",
+   "Inforiver",
+   "PowerTable"
+  ],
+  "category": "Microsoft",
+  "technical": "Microsoft's first-party EPM and CPM workload in Fabric IQ, built by Lumel, for budgets, forecasts, scenarios and variance analysis, writing back to Fabric SQL databases. GA by mid-2026 with billing on Fabric capacity from August 1, 2026, and documented limits include one semantic model per plan item and 1.2 million cells per write-back.",
+  "sales": "Microsoft's own budgeting and forecasting tool inside Fabric, and the most direct competitor in Microsoft-centric accounts. Probe consolidation, native Excel use and what its AI does today, since Microsoft lists agentic planning as roadmap.",
+  "related": [
+   "Fabric IQ",
+   "Acterys",
+   "Fabric capacity units",
+   "CPM and EPM"
+  ],
+  "src": "https://learn.microsoft.com/en-us/fabric/iq/plan/overview"
+ },
+ {
+  "term": "Power BI semantic model",
+  "aka": [
+   "semantic model",
+   "Power BI dataset",
+   "Prep data for AI"
+  ],
+  "category": "Microsoft",
+  "technical": "The governed tabular model in Power BI and Fabric, formerly called a dataset, holding tables, relationships, DAX measures, hierarchies and row-level security, now enriched with AI instructions and verified answers for Copilot (preview).",
+  "sales": "The model most Power BI finance reports already run on. Microsoft now reuses it as AI context and as the base for Fabric Planning, which is a strong advantage in Power BI shops.",
+  "related": [
+   "Semantic layer",
+   "Fabric IQ",
+   "Planning in Fabric",
+   "Direct Lake"
+  ],
+  "src": "https://learn.microsoft.com/en-us/power-bi/create-reports/copilot-prepare-data-ai"
+ },
+ {
+  "term": "Rolling forecast",
+  "aka": [
+   "continuous forecast",
+   "12-month rolling forecast"
+  ],
+  "category": "Planning and FP&A",
+  "technical": "A forecast updated on a regular cadence that always extends a fixed number of periods ahead, such as 12 or 18 months, adding a new period as each one closes instead of stopping at fiscal year end.",
+  "sales": "A forecast that always looks a year or more ahead instead of ending in December. It means refreshing data and revisiting assumptions more often, which raises the value of automation and of remembering past assumptions.",
+  "related": [
+   "Driver-based planning",
+   "Versions",
+   "Variance analysis"
+  ],
+  "src": ""
+ },
+ {
+  "term": "SageMaker Unified Studio",
+  "aka": [
+   "Amazon SageMaker Unified Studio",
+   "SageMaker Catalog",
+   "SageMaker Lakehouse"
+  ],
+  "category": "AWS",
+  "technical": "AWS's unified data and AI workspace, GA March 13, 2025, that brings together EMR, Glue, Athena and Redshift tools with lakehouse data access and governance through SageMaker Catalog, which can enforce business glossary terms.",
+  "sales": "Amazon's one-stop workspace for data and AI teams. It governs and prepares data well, but it is a toolset for engineers, not an application for planners.",
+  "related": [
+   "Data catalog",
+   "Business glossary",
+   "Amazon Redshift"
+  ],
+  "src": "https://aws.amazon.com/about-aws/whats-new/2025/03/amazon-sagemaker-unified-studio-generally-available/"
+ },
+ {
+  "term": "SAP Analytics Cloud planning",
+  "aka": [
+   "SAC",
+   "SAC planning",
+   "SAP Analytics Cloud"
+  ],
+  "category": "SAP",
+  "technical": "The planning capabilities of SAP Analytics Cloud, including cell-level data entry with rolldown, private and published versions, data locking, data actions, structured allocations, validation rules, value driver trees and an Excel add-in with write-back.",
+  "sales": "SAP's real planning tool and the most direct full-stack competitor in SAP ERP accounts. Ask what is shipped versus scheduled for its AI agents, and how it handles entities that run on other ERPs.",
+  "related": [
+   "Joule",
+   "SAP Business Data Cloud",
+   "Allocations",
+   "Period locking"
+  ],
+  "src": "https://learning.sap.com/courses/exploring-sap-analytics-cloud/describing-planning-features_c4054dc5-c8af-4c7b-8f74-54d03b0bc413"
+ },
+ {
+  "term": "SAP Business Data Cloud",
+  "aka": [
+   "BDC",
+   "SAP BDC",
+   "BDC Connect",
+   "SAP Business AI Platform"
+  ],
+  "category": "SAP",
+  "technical": "SAP's business data fabric combining Datasphere, SAP Analytics Cloud, HANA Cloud, BW and SAP Databricks with curated SAP data products, sold in Capacity Units and required to be bought with at least one Intelligent Application. BDC Connect shares data zero-copy with Databricks, Snowflake, BigQuery and Fabric.",
+  "sales": "SAP's data platform for SAP and partner data, bundled with its analytics and planning tools. It is strongest where the business runs on SAP and it carries commercial lock-in signals.",
+  "related": [
+   "SAP Datasphere",
+   "SAP Analytics Cloud planning",
+   "SAP Knowledge Graph",
+   "Zero-copy"
+  ],
+  "src": "https://news.sap.com/2026/05/sap-bdc-accelerate-autonomous-enterprise/"
+ },
+ {
+  "term": "SAP Datasphere",
+  "aka": [
+   "Datasphere",
+   "seamless planning"
+  ],
+  "category": "SAP",
+  "technical": "SAP's data warehousing and modeling service inside Business Data Cloud that federates SAP and non-SAP data. With seamless planning, SAP Analytics Cloud planning models store their data in Datasphere spaces.",
+  "sales": "SAP's data warehouse layer under its planning and analytics tools. Seamless planning requires SAC on HANA Cloud, one-to-one SAC and Datasphere tenants and the same data center.",
+  "related": [
+   "SAP Business Data Cloud",
+   "SAP Analytics Cloud planning"
+  ],
+  "src": "https://www.sap.com/events/sapphire/innovation-guide/data-cloud.html"
+ },
+ {
+  "term": "SAP Knowledge Graph",
+  "aka": [
+   "Knowledge Graph (SAP)"
+  ],
+  "category": "SAP",
+  "technical": "A structured map of business entities, processes and relationships that SAP announced at Sapphire in May 2026 as the foundation of the SAP Business AI Platform, building on the knowledge graph component SAP added to Datasphere in 2025.",
+  "sales": "SAP's map of how its business objects connect, used to give Joule agents context. It is strongest on SAP master data and processes.",
+  "related": [
+   "Knowledge graph",
+   "Joule",
+   "SAP Business Data Cloud"
+  ],
+  "src": "https://news.sap.com/2026/05/sap-sapphire-sap-unveils-autonomous-enterprise/"
+ },
+ {
+  "term": "Scenarios",
+  "aka": [
+   "what-if",
+   "scenario planning",
+   "scenario modeling"
+  ],
+  "category": "Planning and FP&A",
+  "technical": "Alternative sets of assumptions and their calculated outcomes, such as base, upside and downside, stored and compared alongside versions. A persisted scenario differs from a one-off what-if question answered by an AI agent.",
+  "sales": "Modeling what happens if growth slows or a price increase lands, and keeping those cases to compare. Many data platform agents can answer a what-if question, but they do not save the scenario into a governed plan.",
+  "related": [
+   "Versions",
+   "Driver-based planning",
+   "Vena Planning, Query and Reporting agents"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Semantic View Autopilot",
+  "aka": [
+   "SVA",
+   "Autopilot"
+  ],
+  "category": "Snowflake",
+  "technical": "A Snowflake feature, GA February 3, 2026, that generates and updates semantic views from query history, BI dashboards such as Tableau and Power BI, and trusted SQL, proposing changes that data teams review and certify. One third-party recap lists it as preview, possibly reflecting newer sub-features.",
+  "sales": "Snowflake software that learns business definitions by watching how people already query data. It is a real, shipping example of context that improves with use, though it learns from analytics rather than from planning cycles.",
+  "related": [
+   "Semantic views",
+   "Context engineering",
+   "Verified queries",
+   "Cortex Sense"
+  ],
+  "src": "https://www.snowflake.com/en/blog/semantic-view-autopilot/"
+ },
+ {
+  "term": "Semantic views",
+  "aka": [
+   "Snowflake semantic views",
+   "semantic model (Snowflake)"
+  ],
+  "category": "Snowflake",
+  "technical": "Schema-level Snowflake database objects that define tables, relationships, facts, dimensions and metrics for BI tools and Cortex Analyst, replacing YAML semantic models. GA for querying since August 26, 2025.",
+  "sales": "Snowflake's semantic layer, where business definitions of metrics live. They describe reporting data and do not include plan versions, input or approval logic.",
+  "related": [
+   "Semantic layer",
+   "Semantic View Autopilot",
+   "Cortex Analyst",
+   "Open Semantic Interchange (OSI)"
+  ],
+  "src": "https://docs.snowflake.com/en/release-notes/2025/9_25"
+ },
+ {
+  "term": "Snowflake CoWork",
+  "aka": [
+   "CoWork",
+   "Snowflake Intelligence"
+  ],
+  "category": "Snowflake",
+  "technical": "Snowflake's packaged agent application for business users, with charts, artifacts, automations, skills, Deep Research and per-user memory, inheriting row-access and column-level policies. Renamed from Snowflake Intelligence at Summit 2026 in June, and the preview status of features such as User Memory is reported inconsistently.",
+  "sales": "Snowflake's ready-made AI assistant for business users, previously called Snowflake Intelligence. Its memory is personal to each user, not shared memory of the finance team's planning decisions.",
+  "related": [
+   "Cortex Agents",
+   "Agent memory",
+   "Cortex Sense"
+  ],
+  "src": "https://docs.snowflake.com/en/user-guide/snowflake-cortex/snowflake-cowork"
+ },
+ {
+  "term": "Snowflake Horizon",
+  "aka": [
+   "Horizon",
+   "Horizon Catalog",
+   "Horizon Context"
+  ],
+  "category": "Snowflake",
+  "technical": "Snowflake's built-in governance and discovery capabilities, covering access policies, classification, lineage and AI guardrails. Horizon Context, announced at Summit 2026 and reported in private preview, collects and enriches metadata from outside sources through five connectors.",
+  "sales": "The governance layer inside Snowflake that controls who sees what and documents data. It helps prove data is trusted, but it is not a planning or approval workflow.",
+  "related": [
+   "Data catalog",
+   "Cortex Sense",
+   "Row-level security"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Snowflake Native Apps",
+  "aka": [
+   "Native App Framework",
+   "Native Apps"
+  ],
+  "category": "Snowflake",
+  "technical": "Applications packaged with the Snowflake Native App Framework that install and run inside a customer's Snowflake account. Support for Cortex Agents and Snowflake-managed MCP servers inside Native Apps went GA August 7, 2026.",
+  "sales": "A way for software vendors to ship an app that runs inside the customer's own Snowflake account. It is the route any third party, including a CPM vendor, could use to deliver an AI planning agent in Snowflake.",
+  "related": [
+   "Cortex Agents",
+   "MCP server",
+   "Streamlit in Snowflake"
+  ],
+  "src": "https://docs.snowflake.com/en/release-notes/2026/other/2026-08-07-native-apps-agents-mcp-ga"
+ },
+ {
+  "term": "Snowflake Postgres",
+  "aka": [
+   "Postgres in Snowflake"
+  ],
+  "category": "Snowflake",
+  "technical": "Managed PostgreSQL instances that run inside Snowflake, GA February 24, 2026 in selected AWS and Azure regions, suited to transactional application state and write-back.",
+  "sales": "A standard transactional database now available inside Snowflake. It gives builders a place to save plan inputs, but versions, workflow and calculations still have to be built around it.",
+  "related": [
+   "Hybrid Tables",
+   "OLTP vs OLAP",
+   "Lakebase"
+  ],
+  "src": "https://docs.snowflake.com/en/release-notes/2026/other/2026-02-24-snowflake-postgres-ga"
+ },
+ {
+  "term": "Snowplan",
+  "aka": [
+   "Snowplan v2"
+  ],
+  "category": "Snowflake",
+  "technical": "Snowflake's internal long-range planning application for 40+ entities, built by its finance team on Snowflake, Streamlit and the CoCo coding agent, with write-back, versioned scenarios, role-based review and row-level controls. Described in a July 8, 2026 blog that discloses no team size or cost.",
+  "sales": "Proof that a data platform company had to build its own planning app, with its own engineers, on its own platform. It shows planning on Snowflake is possible, and also that it is a custom software project.",
+  "related": [
+   "Streamlit in Snowflake",
+   "Forward deployed engineering (FDE)",
+   "Write-back"
+  ],
+  "src": "https://www.snowflake.com/en/blog/fpa-ai-modernization-snowplan-v2/"
+ },
+ {
+  "term": "Spreading and breakback",
+  "aka": [
+   "spreading",
+   "breakback",
+   "top-down allocation",
+   "rolldown"
+  ],
+  "category": "Planning and FP&A",
+  "technical": "Spreading pushes a value entered at a summary level down to lower-level members or periods by a method such as even, seasonal or prior-year pattern, while breakback adjusts the detail proportionally when a parent total is changed.",
+  "sales": "Entering an annual number and having it fall into months, or changing a total and having the detail adjust automatically. Finance users expect this in any planning grid, and it is a significant build item on a data platform.",
+  "related": [
+   "Allocations",
+   "Driver-based planning",
+   "Write-back"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Streamlit in Snowflake",
+  "aka": [
+   "Streamlit",
+   "SiS"
+  ],
+  "category": "Snowflake",
+  "technical": "Snowflake's hosted Streamlit environment for building Python data apps with interactive inputs that run against Snowflake data. Cortex Agents APIs require its container runtime rather than the warehouse runtime.",
+  "sales": "A quick way for developers to build simple web apps on Snowflake. Snowflake's own finance team used it as the input screen for its internal planning app, Snowplan.",
+  "related": [
+   "Snowplan",
+   "Hybrid Tables",
+   "Databricks Apps"
+  ],
+  "src": "https://www.snowflake.com/en/blog/fpa-ai-modernization-snowplan-v2/"
+ },
+ {
+  "term": "Translytical task flows",
+  "aka": [
+   "Power BI write-back",
+   "translytical"
+  ],
+  "category": "Microsoft",
+  "technical": "A GA Power BI capability that lets report users add, edit or delete data and call external APIs from a report, executed by Fabric user data functions against Fabric SQL databases, warehouses or lakehouse files.",
+  "sales": "Buttons in a Power BI report that save changes back to the database. It is a general-purpose write-back building block, not a planning process with versions and approvals.",
+  "related": [
+   "User data functions",
+   "Write-back",
+   "Acterys"
+  ],
+  "src": "https://learn.microsoft.com/en-us/power-bi/create-reports/translytical-task-flow-overview"
+ },
+ {
+  "term": "Unity Catalog",
+  "aka": [
+   "UC",
+   "Databricks Unity Catalog"
+  ],
+  "category": "Databricks",
+  "technical": "Databricks' unified governance layer for data and AI assets, providing access control including ABAC, lineage, auditing, metric views and business semantics. At Data + AI Summit 2026 its Glossary was listed as preview coming soon and Domains as public preview.",
+  "sales": "Databricks' central catalog and permission system. It governs who can read data and what it means, while plan input, approval and versioning sit outside its scope.",
+  "related": [
+   "Metric views",
+   "ABAC",
+   "Data catalog",
+   "Genie Ontology"
+  ],
+  "src": "https://www.databricks.com/blog/whats-new-unity-catalog-data-ai-summit-2026"
+ },
+ {
+  "term": "User data functions",
+  "aka": [
+   "UDF",
+   "Fabric user data functions"
+  ],
+  "category": "Microsoft",
+  "technical": "Serverless Python functions in Fabric that read and write Fabric SQL databases, warehouses and lakehouse files and can be called from reports, pipelines, notebooks, Activator rules or REST.",
+  "sales": "Small pieces of custom code that handle saving and logic behind Fabric apps. They are how a builder would let an AI agent write to Fabric, which is custom work.",
+  "related": [
+   "Translytical task flows",
+   "Copilot Studio",
+   "Write-back"
+  ],
+  "src": "https://learn.microsoft.com/en-us/fabric/data-engineering/user-data-functions/user-data-functions-overview"
+ },
+ {
+  "term": "Variance analysis",
+  "aka": [
+   "budget vs actual",
+   "BvA",
+   "plan vs actual"
+  ],
+  "category": "Planning and FP&A",
+  "technical": "Comparing actuals with budget, forecast or prior periods across dimensions, quantifying the differences and attributing them to drivers such as price, volume or mix, usually with written commentary.",
+  "sales": "Explaining why results differ from plan, the core monthly conversation in FP&A. AI can draft the analysis, but the commentary and decisions are exactly the history a cumulative context engine aims to keep.",
+  "related": [
+   "Versions",
+   "Rolling forecast",
+   "Cumulative context"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Vena Copilot",
+  "aka": [
+   "Vena AI",
+   "Vena Copilot for Teams"
+  ],
+  "category": "Vena",
+  "technical": "Vena's AI assistant built on Microsoft Azure OpenAI and the CubeFLEX model, introduced in beta April 3, 2024, which inherits Vena data, application and individual permissions and hosts Vena's named agents. Vena Copilot for Microsoft Teams has been GA since May 15, 2025.",
+  "sales": "Vena's built-in AI assistant for finance users, available inside Vena and Microsoft Teams. It respects existing permissions, and Vena states customer data is never used to train public AI models.",
+  "related": [
+   "Vena Planning, Query and Reporting agents",
+   "CubeFLEX",
+   "Microsoft Copilot"
+  ],
+  "src": "https://www.venasolutions.com/vena-ai"
+ },
+ {
+  "term": "Vena MCP server",
+  "aka": [
+   "Vena MCP",
+   "Vena Model Context Protocol server"
+  ],
+  "category": "Vena",
+  "technical": "Vena's MCP server, GA May 13, 2026, connects Claude, ChatGPT and Microsoft Copilot to live Vena data under each user's existing data and application permissions. Developer docs list read tools only, while release materials announce plan updates and write-back.",
+  "sales": "Lets a customer's preferred AI assistant work with live Vena data. Say read access is documented and write-back is announced until the developer docs change.",
+  "related": [
+   "Model Context Protocol (MCP)",
+   "MCP server",
+   "Microsoft Copilot"
+  ],
+  "src": "https://developers.venasolutions.com/docs/mcp-overview"
+ },
+ {
+  "term": "Vena Omega",
+  "aka": [
+   "Omega",
+   "cumulative context engine"
+  ],
+  "category": "Vena",
+  "technical": "Vena's cumulative context engine for finance, GA November 17, 2026. It combines governed data from across the business with definitions, assumptions, drivers, approvals and past decisions in user, industry, business and planning layers, and serves that context to Vena agents, Excel, PowerPoint, Power BI and MCP clients. Built on technology from the Morpheo acquisition.",
+  "sales": "The brain under all of Vena's tools. It learns how your finance team plans and decides, keeps that knowledge, and makes every answer and forecast better the more you use it.",
+  "related": [
+   "Cumulative context",
+   "Morpheo",
+   "Vena Copilot",
+   "Context layer"
+  ],
+  "src": "https://www.venasolutions.com/newsroom/vena-to-acquire-morpheo-ai"
+ },
+ {
+  "term": "Vena Planning, Query and Reporting agents",
+  "aka": [
+   "Planning Agent",
+   "Query Agent",
+   "Reporting Agent",
+   "Analytics Agent",
+   "Scenario Agent"
+  ],
+  "category": "Vena",
+  "technical": "Named Vena Copilot agents, with the Planning Agent (GA May 13, 2026) generating forecasts, updating plans and applying scenario logic in natural language, the Query Agent (GA, Spring 2026) turning plain English into MQL, and the Reporting Agent (GA) working in the Ad Hoc tool. A Scenario Agent is listed as coming soon.",
+  "sales": "Vena's shipped AI agents that answer questions and, in the Planning Agent's case, update plans inside governed workflows. That is a key contrast with data platform agents, which are read-only.",
+  "related": [
+   "Vena Copilot",
+   "Text-to-SQL",
+   "Scenarios",
+   "AI agent"
+  ],
+  "src": "https://www.venasolutions.com/product-release/fy27/spring/partner"
+ },
+ {
+  "term": "Versions",
+  "aka": [
+   "plan versions",
+   "version dimension",
+   "Budget v1",
+   "Forecast 3+9"
+  ],
+  "category": "Planning and FP&A",
+  "technical": "Distinct, persistent copies of plan data such as Budget, Forecast 3+9 or Actuals, held in a version dimension with lifecycle states like open, locked and archived so they can be compared and promoted.",
+  "sales": "Keeping Budget, each forecast and actuals side by side without overwriting each other. Database branching, such as Lakebase's, is not the same thing, because finance versions need business rules, locking and comparison.",
+  "related": [
+   "Scenarios",
+   "Period locking",
+   "Variance analysis",
+   "Lakebase"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Workflow and approvals",
+  "aka": [
+   "planning workflow",
+   "budget calendar",
+   "submission and approval"
+  ],
+  "category": "Planning and FP&A",
+  "technical": "Process orchestration for planning cycles, including a budget calendar, task assignment, submission, review, rejection and approval routing, notifications and status tracking for each contributor.",
+  "sales": "Making sure every department submits on time and the right people sign off. Snowflake's Multi-Party Approval and Databricks' Lakeflow Jobs sound similar but are admin and data controls, not budget workflows.",
+  "related": [
+   "Period locking",
+   "Audit trail",
+   "Agentic workflow"
+  ],
+  "src": ""
+ },
+ {
+  "term": "Write-back",
+  "aka": [
+   "writeback",
+   "data entry",
+   "plan input"
+  ],
+  "category": "Planning and FP&A",
+  "technical": "Saving user- or system-entered values, such as budget inputs or forecast changes, back into the model's storage so they are immediately available to calculations, reports and other users.",
+  "sales": "Typing a number into the plan and having it saved where everyone can use it. On data platforms this usually means custom development, for example Databricks' Excel add-in only overwrites whole tables, while Vena writes back natively from Excel.",
+  "related": [
+   "Versions",
+   "Cell-level security",
+   "Translytical task flows",
+   "Hybrid Tables"
+  ],
+  "src": ""
+ }
 ]
