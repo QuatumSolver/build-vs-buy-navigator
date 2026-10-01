@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Build vs Buy Navigator</title>
+<meta name="description" content="Guided build-vs-buy funnel for Vena reps: persona, questions, who to bring in, and the Omega path.">
+<style>html{color-scheme:light dark}body{margin:0;font:14px system-ui}img{max-width:100%}[hidden]{display:none!important}</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+/* Layout: one narrow rail of steps (guided funnel) that resolves into a result sheet; a second view is the full reference. Vena green as the single accent. */
+:root{
+  --bg:#F5F7F5; --surface:#FFFFFF; --surface2:#EDF3EE; --fg:#1E2B24; --muted:#6B746E; --line:#D8E0DA;
+  --accent:#4A9462; --accent-deep:#2F5E41; --accent-soft:#DDEDE1; --ink-on-accent:#FFFFFF;
+  --warn:#B8542F; --warn-soft:#F6E6DF; --info:#3A6EA5; --info-soft:#E3ECF6;
+  --display:"Manrope",system-ui,sans-serif; --body:"Public Sans",system-ui,sans-serif;
+  --r:14px; --shadow:0 1px 2px rgba(20,40,28,.06),0 8px 24px rgba(20,40,28,.06);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#121A15; --surface:#1A241E; --surface2:#213028; --fg:#E8EFEA; --muted:#98A59D; --line:#2E3D34;
+  --accent:#6FB886; --accent-deep:#A8DB8A; --accent-soft:#24402E; --ink-on-accent:#0F1A13;
+  --warn:#E48B66; --warn-soft:#3C271E; --info:#8FB4E0; --info-soft:#1F2E40; --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121A15; --surface:#1A241E; --surface2:#213028; --fg:#E8EFEA; --muted:#98A59D; --line:#2E3D34;
+  --accent:#6FB886; --accent-deep:#A8DB8A; --accent-soft:#24402E; --ink-on-accent:#0F1A13;
+  --warn:#E48B66; --warn-soft:#3C271E; --info:#8FB4E0; --info-soft:#1F2E40; --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35); color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.5;margin:0}
+.wrap{max-width:1040px;margin:0 auto;padding-inline:20px;padding-block:28px 64px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0}
+h1{font-size:clamp(26px,4vw,36px);font-weight:800;letter-spacing:-.02em;line-height:1.1}
+h2{font-size:20px;font-weight:700}
+h3{font-size:15px;font-weight:700}
+p{margin:0}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.muted{color:var(--muted)}
+header.top{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end;justify-content:space-between;margin-bottom:24px}
+header .lead{max-width:60ch;margin-top:8px;color:var(--muted)}
+.tabs{display:flex;gap:4px;background:var(--surface2);padding:4px;border-radius:999px}
+.tabs button{border:0;background:transparent;color:var(--muted);font:600 13px var(--display);padding:8px 16px;border-radius:999px;cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--surface);color:var(--fg);box-shadow:var(--shadow)}
+.tabs button:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* progress */
+.progress{display:flex;gap:6px;margin-bottom:20px}
+.progress span{flex:1;height:5px;border-radius:99px;background:var(--line)}
+.progress span.done{background:var(--accent)}
+.progress span.cur{background:var(--accent);opacity:.55}
+
+/* step card */
+.step{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:26px;box-shadow:var(--shadow)}
+.step .q{font-family:var(--display);font-size:22px;font-weight:700;margin:6px 0 4px;text-wrap:balance}
+.step .why{color:var(--muted);max-width:62ch;margin-bottom:18px}
+.opts{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;background:var(--bg);border:1.5px solid var(--line);border-radius:12px;padding:14px;cursor:pointer;color:var(--fg);font:inherit;transition:border-color .15s,background .15s}
+.opt:hover{border-color:var(--accent)}
+.opt[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
+.opt .ic{flex:none;width:36px;height:36px;border-radius:10px;background:var(--surface2);display:grid;place-items:center;color:var(--accent-deep)}
+.opt[aria-pressed="true"] .ic{background:var(--accent);color:var(--ink-on-accent)}
+.opt b{display:block;font-family:var(--display);font-weight:700}
+.opt small{display:block;color:var(--muted);font-size:13px;line-height:1.4;margin-top:2px}
+.ic svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.nav{display:flex;justify-content:space-between;gap:10px;margin-top:20px;align-items:center}
+.btn{border:0;border-radius:10px;padding:11px 18px;font:700 14px var(--display);cursor:pointer;background:var(--accent);color:var(--ink-on-accent)}
+.btn.ghost{background:transparent;color:var(--muted);border:1.5px solid var(--line)}
+.btn:disabled{opacity:.4;cursor:default}
+.hint{font-size:13px;color:var(--muted)}
+.tip{display:flex;gap:10px;background:var(--info-soft);color:var(--fg);border-radius:10px;padding:12px 14px;font-size:13.5px;margin-bottom:16px}
+.tip svg{flex:none;width:18px;height:18px;stroke:var(--info);fill:none;stroke-width:2;margin-top:2px}
+
+/* result */
+.result{display:grid;gap:18px}
+.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}
+@media(max-width:720px){.hero{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px;min-width:0}
+.card.accent{background:var(--accent-deep);color:#fff;border-color:transparent}
+:root[data-theme="dark"] .card.accent,:root:not([data-theme="light"]) .card.accent{color:var(--fg)}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]) .card.accent{color:#fff}}
+:root[data-theme="light"] .card.accent{color:#fff}
+.card.accent .eyebrow{color:inherit;opacity:.8}
+.pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:4px 10px;font:600 12px var(--display);background:var(--accent-soft);color:var(--accent-deep)}
+.pill.warn{background:var(--warn-soft);color:var(--warn)}
+.pill.info{background:var(--info-soft);color:var(--info)}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:14px}
+.kv dt{color:var(--muted);font-weight:500}
+.kv dd{margin:0}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:720px){.grid2{grid-template-columns:1fr}}
+.funnel{display:grid;gap:10px}
+.rung{display:grid;grid-template-columns:38px 1fr;gap:12px;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:14px}
+.rung .n{width:30px;height:30px;border-radius:9px;background:var(--accent);color:var(--ink-on-accent);display:grid;place-items:center;font:700 13px var(--display)}
+.rung h3{margin-bottom:6px}
+.rung ul{margin:0;padding-left:18px;font-size:14px}
+.rung li{margin:3px 0}
+.vof{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.vof span{font-size:12px;border-radius:6px;padding:3px 8px;background:var(--surface2)}
+.vof span b{color:var(--accent-deep);font-weight:700}
+.list{display:grid;gap:8px}
+.row{display:grid;grid-template-columns:1fr 1.4fr;gap:12px;padding:10px 0;border-top:1px solid var(--line);font-size:14px}
+.row:first-child{border-top:0}
+.row b{font-family:var(--display)}
+@media(max-width:560px){.row{grid-template-columns:1fr}}
+.people{display:grid;gap:10px}
+.person{display:flex;gap:12px;align-items:center}
+.person .av{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent-deep);font:800 13px var(--display);flex:none}
+.actions .row{grid-template-columns:120px 1fr}
+@media(max-width:560px){.actions .row{grid-template-columns:1fr}}
+.copybar{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+textarea#summary{width:100%;min-height:140px;border:1px solid var(--line);border-radius:10px;padding:12px;font:13px/1.5 ui-monospace,Menlo,monospace;background:var(--bg);color:var(--fg);resize:vertical}
+
+/* reference */
+.ref{display:grid;gap:22px}
+.ref section{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+.ref h2{margin-bottom:6px}
+.ref .sub{color:var(--muted);margin-bottom:14px;max-width:70ch}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{text-align:left;vertical-align:top;padding:9px 10px;border-top:1px solid var(--line)}
+th{font-family:var(--display);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border-top:0}
+td:first-child{font-weight:600}
+.flow{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media(max-width:720px){.flow{grid-template-columns:1fr}}
+.flow .f{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:16px;position:relative}
+.flow .f .n{font:800 28px var(--display);color:var(--accent);line-height:1}
+.flow .f h3{margin:6px 0 4px}
+.ladder{display:grid;gap:8px}
+.ladder .l{display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:start;padding:10px 12px;border-radius:10px;background:var(--bg);border:1px solid var(--line)}
+.ladder .l .n{width:26px;height:26px;border-radius:8px;background:var(--accent);color:var(--ink-on-accent);display:grid;place-items:center;font:700 12px var(--display)}
+.ladder .l small{display:block;color:var(--muted)}
+.pkgs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media(max-width:720px){.pkgs{grid-template-columns:1fr}}
+.pkg{border:1px solid var(--line);border-radius:12px;padding:16px;background:var(--bg)}
+.pkg.dark{background:var(--accent-deep);color:#fff;border-color:transparent}
+.pkg h3{font-size:17px}
+.pkg p{font-size:13.5px;margin-top:6px}
+.pkg .who{margin-top:10px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;opacity:.75}
+@media (prefers-reduced-motion:no-preference){.step,.card{animation:in .25s ease-out}}
+@keyframes in{from{opacity:.001;transform:translateY(6px)}to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <div class="eyebrow">Vena sales cheat sheet</div>
+      <h1>Build vs Buy Navigator</h1>
+      <p class="lead">When a prospect says they can build planning themselves, answer five questions and get the persona, the questions to ask, who to bring in, and the Omega path to lead them to.</p>
+    </div>
+    <div class="tabs" role="tablist">
+      <button role="tab" aria-selected="true" data-view="guide" id="tab-guide">Guided funnel</button>
+      <button role="tab" aria-selected="false" data-view="ref" id="tab-ref">Full reference</button>
+    </div>
+  </header>
+
+  <div id="view-guide">
+    <div class="progress" id="progress"></div>
+    <div id="stepHost"></div>
+  </div>
+
+  <div id="view-ref" class="ref" hidden></div>
+</div>
+
+<script>
+const ICONS={
+  fin:'<svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6"/></svg>',
+  it:'<svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="6" rx="2"/><rect x="3" y="14" width="18" height="6" rx="2"/><path d="M7 7h.01M7 17h.01"/></svg>',
+  q:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.4-1 1-1 1.7M12 17h.01"/></svg>',
+  chat:'<svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>',
+  flow:'<svg viewBox="0 0 24 24"><rect x="3" y="3" width="6" height="6" rx="1.5"/><rect x="15" y="15" width="6" height="6" rx="1.5"/><path d="M9 6h4a3 3 0 0 1 3 3v6"/></svg>',
+  code:'<svg viewBox="0 0 24 24"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M14 4l-4 16"/></svg>',
+  bi:'<svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>',
+  lake:'<svg viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg>',
+  bulb:'<svg viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.6 1 1.3 1 2.5h6c0-1.2.3-1.9 1-2.5A6 6 0 0 0 12 3z"/></svg>',
+  proto:'<svg viewBox="0 0 24 24"><path d="M14 3v6h6M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9l-6-6z"/><path d="M9 15l2 2 4-4"/></svg>',
+  live:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
+  broken:'<svg viewBox="0 0 24 24"><path d="M12 3l9 16H3z"/><path d="M12 10v4M12 17h.01"/></svg>',
+  check:'<svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>',
+  info:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>',
+  users:'<svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M21.5 20a6.5 6.5 0 0 0-4.5-6.2"/></svg>',
+  flag:'<svg viewBox="0 0 24 24"><path d="M5 21V4h11l-2 4 2 4H5"/></svg>',
+  key:'<svg viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M14 9l3 3"/></svg>',
+};
+
+const STEPS=[
+ {id:'owner',q:'Who owns the decision?',why:'Even with both on the call, one of them signs. Satisfy that person first.',
+  tip:'Ask: who kicked this off and why now, whose budget is it, who would own it a year from now. If Finance is on the call but IT holds the data and the budget, it is IT-led.',
+  opts:[
+   {v:'fin',ic:'fin',b:'Finance-led',s:'CFO, controller or FP&A lead. Their view of AI is the chat tools they have used'},
+   {v:'it',ic:'it',b:'IT-led',s:'CIO, CTO, VP Data or an innovation lead with a data platform and engineers'},
+  ]},
+ {id:'build',q:'Where are they building it?',why:'Prospects like talking about their build. Let them.',
+  opts:[
+   {v:'chat',ic:'chat',b:'Chat tools on a laptop',s:'Claude, ChatGPT, Copilot, Grok. One person, one model'},
+   {v:'lowcode',ic:'flow',b:'Low-code flows',s:'Power Query, Power Automate. A pipeline with no planning layer'},
+   {v:'vibe',ic:'code',b:'Vibe-coded app',s:'Lovable, Replit, Claude Code. A real prototype with one owner'},
+   {v:'pbi',ic:'bi',b:'Power BI with write-back',s:'Reporting first, planning bolted on. Usually a BI team'},
+   {v:'lake',ic:'lake',b:'Databricks, Snowflake, BigQuery, Fabric',s:'Serious data team. They can build the plumbing'},
+  ]},
+ {id:'stage',q:'How far along are they?',why:'Stage sets the tone and the timing of your follow-up.',
+  opts:[
+   {v:'idea',ic:'bulb',b:'Idea',s:'"We think we can do this ourselves"'},
+   {v:'proto',ic:'proto',b:'Prototype',s:'A model or app exists, one owner, not in the close yet'},
+   {v:'live',ic:'live',b:'In production',s:'They ran a cycle on it'},
+   {v:'failed',ic:'broken',b:'Failed or stalled',s:'Someone left, the auditor asked, the CFO lost trust'},
+  ]},
+ {id:'ladder',q:'Which rungs of the build ladder have they covered?',why:'Tick what they have actually thought through. Every unticked rung is a question to ask.',multi:true,onlyIf:s=>s.owner==='it',
+  opts:[
+   {v:'r1',ic:'check',b:'Data in a lake or warehouse',s:'All of it, or finance only?'},
+   {v:'r2',ic:'check',b:'Semantic model',s:'How does AI know what a cost centre or driver is?'},
+   {v:'r3',ic:'check',b:'Planning layer',s:'Write-back, versions, workflow, approvals'},
+   {v:'r4',ic:'check',b:'Cumulative context',s:'Are questions and decisions kept, and does the next answer improve?'},
+   {v:'r5',ic:'check',b:'Orchestration',s:'Agent flows, harnesses, routing question types'},
+   {v:'r6',ic:'check',b:'Context weighting',s:'Industry, company and user level, weighted over time'},
+   {v:'r7',ic:'check',b:'Interfaces',s:'How finance actually uses it. Excel, Power BI, chat'},
+  ]},
+ {id:'gaps',q:'Which gaps did they admit to?',why:'Tick what they said out loud. Every unticked gap is a question to ask.',multi:true,onlyIf:s=>s.owner==='fin',
+  opts:[
+   {v:'g1',ic:'check',b:'Budget owners entering numbers',s:'No clean way for others to input'},
+   {v:'g2',ic:'check',b:'Two people, one driver',s:'No versioning or locking'},
+   {v:'g3',ic:'check',b:'Audit trail',s:'Cannot show who changed what'},
+   {v:'g4',ic:'check',b:'Key person risk',s:'One builder, no plan if they leave'},
+   {v:'g5',ic:'check',b:'Business meaning',s:'The model does not know what gross margin means here'},
+   {v:'g6',ic:'check',b:'Memory',s:'Starts over each session, nothing compounds'},
+  ]},
+ {id:'signals',q:'What else did you hear?',why:'These signals move the deal between the three Omega packages.',multi:true,
+  opts:[
+   {v:'own',ic:'key',b:'"We want to own the data layer"',s:'They will build their own apps and agents on it'},
+   {v:'excel',ic:'fin',b:'Finance wants Excel back',s:'Planning and reporting in the tools they know'},
+   {v:'teams',ic:'users',b:'Teams beyond finance',s:'Sales, HR, ops or supply chain planning came up'},
+   {v:'mandate',ic:'flag',b:'AI mandate from the top',s:'Board or CEO told them to use AI'},
+   {v:'dbx',ic:'lake',b:'"Databricks already does this"',s:'Or Snowflake, Fabric. Platform-as-competitor objection'},
+  ]},
+];
+
+const RUNGS={r1:['Data','"Is the data already in a lake or warehouse? All of it, or finance only?"','Omega can run on what they have. Not a blocker.'],
+ r2:['Semantic model','"Have you built a semantic model? How does the AI know what a cost centre or a driver is?"','Where most builds stall. Omega builds it.'],
+ r3:['Planning layer','"How do budget owners enter and change numbers? How do versions, workflow and approvals work?"','The part EPM vendors spent 20 years on.'],
+ r4:['Cumulative context','"When someone asks a question or makes a decision, is that kept? Does the next answer get better?"','Omega\'s core. Most builds start over every session.'],
+ r5:['Orchestration','"How are you handling model orchestration? Agent flows, harnesses, routing different question types?"','Omega handles it. Bring Solution Architecture or Morpheo to go deep.'],
+ r6:['Context weighting','"How do you prioritize context? Industry, company, user level? How is it weighted over time?"','Almost nobody has. The strongest rung.'],
+ r7:['Interfaces','"Once it works, how does finance use it? Excel? Power BI? A chat window?"','Vena for Excel, PowerPoint and Power BI already sit on Omega.']};
+const GAPS={g1:['Budget owners','"How do budget owners enter their numbers?"'],g2:['Versions','"What happens when two people change the same driver?" "How do you lock a version?"'],g3:['Audit','"How would your auditor see who changed what?"'],g4:['Key person','"What\'s the plan if that person leaves?"'],g5:['Meaning','"How will the model know what gross margin means at your company?" "Where does that knowledge live today?"'],g6:['Memory','"Does it get smarter as people use it, or start over each time?"']};
+
+const PKG={
+ core:{n:'Omega Core',d:'The context layer, hosted by Vena or on their platform. MCP and API access. They build their own apps and agents on it.'},
+ fin:{n:'Omega for Finance',d:'Core plus Vena for Excel, PowerPoint and Vena AI. Finance gets a full planning and reporting tool with the context layer under it.'},
+ ent:{n:'Omega Enterprise',d:'Every interface, deployment on their platform, and a dedicated FDE pod. Planning and AI across more than one business domain.'},
+ wait:{n:'Wait and see',d:'They want to try. Leave the door open, set a dated check-in, and send one useful thing rather than a pitch.'}};
+
+function evaluate(s){
+  const fin=s.owner==='fin';
+  const sig=s.signals||[], gaps=s.gaps||[], lad=s.ladder||[];
+  let persona,believe,truth,play,tone;
+  if(fin){
+    persona=s.build==='lake'?'Finance with a data ally':'Finance DIY';
+    believe='"We can set this up ourselves with the AI tools we already use."';
+    truth='Works for one model with one owner. Breaks when a second person enters numbers, the auditor asks who changed what, or the builder leaves. AI speeds the build but gives the model no memory of the business.';
+    play='Gentle challenge, then wait and see. Ask the questions that let them find the gaps. Never say it won\'t work.';
+    tone='Curious and gentle';
+  } else {
+    persona=sig.includes('mandate')?'IT with an AI mandate':'IT platform builder';
+    believe='"EPM is a boxed app. We can build this on the platform we already run."';
+    truth='They can build the data layer. They underestimate planning semantics, write-back, security by intersection, and the ongoing work of keeping context current. They think of AI as a model to call, not a layer that learns the business.';
+    play='Partner, don\'t compete. Walk them up the build ladder one rung at a time. By the top they are describing Omega. Then say so and show it on their platform.';
+    tone='Respectful of the builder';
+  }
+  // package
+  let pkg, pkgWhy;
+  const unfinished=s.stage==='idea'||s.stage==='proto';
+  if(s.stage==='failed'){ pkg=fin?'fin':(sig.includes('teams')||sig.includes('mandate')?'ent':'core'); pkgWhy='The build broke. Skip the build questions, lead with what broke and the fix.'; }
+  else if(fin){
+    if(sig.includes('teams')||sig.includes('mandate')){pkg='ent';pkgWhy='Teams beyond finance or a mandate from the top. Sell Finance now if they are not ready, but log Enterprise as the path.';}
+    else if(gaps.length>=2){pkg='fin';pkgWhy='They named the gaps themselves. A finance-only start with the context layer underneath is the natural next step.';}
+    else if(s.stage==='live'){pkg='wait';pkgWhy='It is running and they have not admitted much. Check in the week after their next cycle.';}
+    else {pkg=gaps.length?'fin':'wait';pkgWhy=gaps.length?'One gap admitted. Push on the others, then offer a demo on their data.':'No gaps admitted yet. Run the funnel, then set a check-in tied to their next budget cycle.';}
+  } else {
+    if(sig.includes('mandate')||sig.includes('teams')){pkg='ent';pkgWhy='An AI mandate or several teams planning. This is a program, not a tool. Planning is the first use case.';}
+    else if(sig.includes('own')&&!sig.includes('excel')){pkg='core';pkgWhy='They want to own the data layer and build on it. Give them the context layer with MCP and API access.';}
+    else if(sig.includes('excel')){pkg='ent';pkgWhy='IT builds the platform, finance wants Excel on top. Omega on their platform with the finance interfaces.';}
+    else if(lad.length>=5&&unfinished){pkg='wait';pkgWhy='They have thought through most of the ladder and are still building. Offer an architecture review and check in when the semantic model is done.';}
+    else {pkg='core';pkgWhy='Lead with Omega running on their platform. The unticked rungs are your conversation.';}
+  }
+  // people
+  const people=[];
+  if(fin){ people.push(['PS','Standard presales','A planning demo on their own data. Presales does this every day.']);
+    if(s.build!=='chat'||gaps.includes('g5')||gaps.includes('g6')) people.push(['SA','Solution Architecture, one call','The AI questions need someone who has built with these tools.']); }
+  else { people.push(['SA','Solution Architecture','They need the ladder from someone who can go deep on semantic models, context and orchestration.']);
+    if(s.build==='lake'||sig.includes('dbx')) people.push(['MO','Morpheo team','Deployment on their platform is a technical conversation. Morpheo speaks it.']); }
+  if(pkg==='ent') people.push(['AD','Advisory team','This is a program. Advisory frames the roadmap and the FDE model.']);
+  if(s.stage==='failed') people.push(['RE','Whoever they spoke to before','Continuity matters. They already trust that person.']);
+  // funnel
+  const funnel=fin?[
+   ['Situation','Understand the build',['"Walk me through how you\'d set it up."','"What tool does the heavy lifting?"','"Who maintains it after go-live?"'],'Heard, not sold to'],
+   ['Last mile','Surface the gaps',Object.keys(GAPS).filter(g=>!gaps.includes(g)&&['g1','g2','g3'].includes(g)).map(g=>GAPS[g][1]),'Slight doubt they found on their own'],
+   ['Cost of the build','Put a price on it',['"Who\'s on this and for how long?"','"Which close will run on it first?"',...(gaps.includes('g4')?[]:[GAPS.g4[1]]),'"What are you not doing while you build this?"'],'The build isn\'t free'],
+   ['What AI needs','Move from tools to context',[...(gaps.includes('g5')?[]:[GAPS.g5[1]]),...(gaps.includes('g6')?[]:[GAPS.g6[1]])].concat(gaps.includes('g5')&&gaps.includes('g6')?['"Where would that business knowledge live so the model can use it?"']:[]),'The gap is context, not tools'],
+   ['Outcome','Agree the future state',['"If this worked perfectly in 12 months, what would be different?"','"Who else would benefit beyond finance?"'],'Ambition'],
+   ['Commit','Pick a path',['"Would it be a bad idea to keep your Excel and add the context layer under it?"','"Does it make sense to look at what a finance-only start costs?"'],'In control of the choice'],
+  ]:[
+   ['Situation','Respect the builder',['"What\'s driving this? A mandate, a cost, a failed tool?"','"Who\'s the sponsor?"'],'Respected as a builder'],
+   ['Build ladder','Ask the unticked rungs, in order',Object.keys(RUNGS).filter(r=>!lad.includes(r)).map(r=>RUNGS[r][1]),'They find the gaps themselves'],
+   ['Cost of the build','A timeline and a payroll',['"How many engineers, for how long?"','"What\'s their opportunity cost?"','"When does finance actually get to use it?"'],'The build has a price'],
+   ['Outcome','Bigger than a planning tool',['"What does the business get in year two that it didn\'t get in year one?"','"Which teams beyond finance would use this?"'],'Ambition beyond finance'],
+   ['The turn','Name it',['"Everything you just described is what Omega is. It sits on your platform, builds the semantic model, keeps the context, and finance gets it in Excel and Power BI."'],'Recognition, not defeat'],
+   ['Commit','A shortcut, not a pitch',['"Would it be a bad idea to see Omega on your lakehouse before you commit the engineering time?"'],'In control, with a shortcut'],
+  ];
+  if(s.stage==='failed'){ funnel.splice(1,fin?3:2,['What broke','Lead with the fix',['"What broke, and who felt it?"','"What did the auditor or the CFO ask that you couldn\'t answer?"','"What would need to be true for the team to trust it again?"'],'Relief that someone gets it']); }
+  // actions
+  const actions=[];
+  if(pkg==='wait'&&fin) actions.push(['Today','Calendar a check-in for the week after their next budget or forecast cycle. Open with "How did the cycle go on the new setup?" Nothing else.'],['This week','Send one useful thing (a template, a checklist), not a pitch.'],['Salesforce','Stage: Nurture. Log the build tool, the gaps and the check-in date as next step.']);
+  else if(pkg==='wait') actions.push(['Today','Ask to check in when the semantic model is done. Offer a free architecture review from Solution Architecture.'],['Salesforce','Stage: Nurture. Log the platform and the rungs they have built.']);
+  else if(s.stage==='failed') actions.push(['Today','Ask for a 30-minute call on what broke. Lead with the fix, skip the build questions.'],['Salesforce','Reopen the opp. Log what broke and who felt it.']);
+  else if(pkg==='fin') actions.push(['This week','Book a demo on their own data within two weeks.'],['Today','Send a two-line recap of the gaps they named, in their words.'],['Salesforce','Stage: Discovery to Demo. Log the build tool and the gaps.']);
+  else if(pkg==='core') actions.push(['This week','Offer an architecture session with Solution Architecture. Show Omega running on their platform.'],['Salesforce','Stage: Technical validation. Log the platform and which rungs they have built.']);
+  else if(pkg==='ent') actions.push(['This week','Ask for a joint call with finance leadership and the data lead. Bring Advisory.'],['Salesforce','Stage: Executive alignment. Log the sponsor and the mandate.']);
+  if(sig.includes('dbx')) actions.push(['Objection','Send the one-page Omega on Databricks positioning. Book Morpheo for the next call. Re-ask rungs 3, 4 and 6 about the platform specifically, then position Omega as the planning and context layer on top.']);
+  if(sig.includes('teams')&&pkg!=='ent') actions.push(['Expansion','They mentioned teams beyond finance. Log Enterprise as the expansion path.']);
+  const words=fin?[['"Have you thought about how the model learns what a driver means at your company?"','"AI can\'t do planning"'],['"You keep Excel. The context layer sits under it"','"You\'d replace your spreadsheets"'],['"What happens when that person leaves?"','"That\'s not sustainable"'],['"Would it be a bad idea to see it on your data first?"','"Can I book a demo?"']]
+   :[['"Everything you described is what Omega is"','"You\'d be rebuilding Vena"'],['"It runs on your Databricks. The data doesn\'t move"','"You\'d move your data to us"'],['"What does the second year look like?"','"What\'s your budget?"'],['"Would it be a bad idea to see it on your data first?"','"Can I book a demo?"']];
+  return {persona,believe,truth,play,tone,pkg,pkgWhy,people,funnel,actions,words};
+}
+
+// ---------- state & render ----------
+let state={}, idx=0;
+const host=document.getElementById('stepHost'), prog=document.getElementById('progress');
+const visible=()=>STEPS.filter(st=>!st.onlyIf||st.onlyIf(state));
+try{const saved=JSON.parse(localStorage.getItem('bvb-state')||'null');if(saved&&saved.state){state=saved.state;idx=saved.idx||0;}}catch(e){}
+function save(){try{localStorage.setItem('bvb-state',JSON.stringify({state,idx}))}catch(e){}}
+
+function renderProgress(){
+  const v=visible(); prog.innerHTML='';
+  v.forEach((st,i)=>{const s=document.createElement('span');if(i<idx)s.className='done';else if(i===idx)s.className='cur';prog.appendChild(s)});
+  const s=document.createElement('span');s.className=idx>=v.length?'done':'';prog.appendChild(s);
+}
+function render(){
+  renderProgress(); const v=visible();
+  if(idx>=v.length){renderResult();return;}
+  const st=v[idx]; const sel=state[st.id];
+  host.innerHTML=`<div class="step">
+    <div class="eyebrow">Step ${idx+1} of ${v.length}</div>
+    <div class="q">${st.q}</div>
+    <p class="why">${st.why}</p>
+    ${st.tip?`<div class="tip">${ICONS.info}<div>${st.tip}</div></div>`:''}
+    <div class="opts">${st.opts.map(o=>{const on=st.multi?(sel||[]).includes(o.v):sel===o.v;return `<button class="opt" type="button" aria-pressed="${on}" data-v="${o.v}"><span class="ic">${ICONS[o.ic]}</span><span><b>${o.b}</b><small>${o.s}</small></span></button>`}).join('')}</div>
+    <div class="nav">
+      <button class="btn ghost" id="back" ${idx===0?'disabled':''}>Back</button>
+      <span class="hint">${st.multi?'Pick all that apply, or none':'Pick one'}</span>
+      <button class="btn" id="next" ${(!st.multi&&!sel)?'disabled':''}>${idx===v.length-1?'Show the path':'Next'}</button>
+    </div></div>`;
+  host.querySelectorAll('.opt').forEach(b=>b.addEventListener('click',()=>{
+    const v=b.dataset.v;
+    if(st.multi){const a=new Set(state[st.id]||[]);a.has(v)?a.delete(v):a.add(v);state[st.id]=[...a];}
+    else state[st.id]=v;
+    if(st.id==='owner'){delete state.ladder;delete state.gaps;}
+    save(); render();
+  }));
+  host.querySelector('#back').addEventListener('click',()=>{idx--;save();render()});
+  host.querySelector('#next').addEventListener('click',()=>{idx++;save();render()});
+}
+const label=(id,v)=>{const st=STEPS.find(s=>s.id===id);const o=st&&st.opts.find(o=>o.v===v);return o?o.b:''};
+function renderResult(){
+  const r=evaluate(state), pk=PKG[r.pkg];
+  const summary=[`Build vs Buy summary`,`Decision maker: ${label('owner',state.owner)}`,`Building on: ${label('build',state.build)}`,`Stage: ${label('stage',state.stage)}`,`Persona: ${r.persona}`,`Recommended path: ${pk.n}`,`Why: ${r.pkgWhy}`,`Bring in: ${r.people.map(p=>p[1]).join('; ')}`,`Next actions:`,...r.actions.map(a=>`- ${a[0]}: ${a[1]}`),`Questions still to ask:`,...r.funnel.flatMap(f=>f[2].map(q=>`- ${q}`))].join('\n');
+  host.innerHTML=`<div class="result">
+   <div class="hero">
+    <div class="card accent">
+      <div class="eyebrow">Persona</div>
+      <h2 style="font-size:26px;margin:4px 0 10px">${r.persona}</h2>
+      <dl class="kv">
+        <dt>They believe</dt><dd>${r.believe}</dd>
+        <dt>Usually true</dt><dd>${r.truth}</dd>
+        <dt>Your play</dt><dd>${r.play}</dd>
+        <dt>Tone</dt><dd>${r.tone}</dd>
+      </dl>
+    </div>
+    <div class="card">
+      <div class="eyebrow">Recommended path</div>
+      <h2 style="font-size:24px;margin:4px 0 8px">${pk.n}</h2>
+      <p class="muted" style="font-size:14px">${pk.d}</p>
+      <p style="margin-top:12px;font-size:14px"><b>Why this one.</b> ${r.pkgWhy}</p>
+      <div class="vof" style="margin-top:14px"><span>${label('owner',state.owner)}</span><span>${label('build',state.build)}</span><span>${label('stage',state.stage)}</span></div>
+    </div>
+   </div>
+   <div class="card">
+    <div class="eyebrow">Question funnel</div>
+    <h2 style="margin:4px 0 4px">What to ask, in order</h2>
+    <p class="muted" style="margin-bottom:14px;font-size:14px">Each stage has a purpose for you and a feeling you want them to land on. Questions you already covered are left out.</p>
+    <div class="funnel">${r.funnel.map((f,i)=>`<div class="rung"><div class="n">${i+1}</div><div><h3>${f[0]}</h3><ul>${f[2].map(q=>`<li>${q}</li>`).join('')||'<li class="muted">Covered. Move on.</li>'}</ul><div class="vof"><span><b>Value</b> ${f[1]}</span><span><b>Feeling</b> ${f[3]}</span></div></div></div>`).join('')}</div>
+   </div>
+   <div class="grid2">
+    <div class="card"><div class="eyebrow">Bring in from Vena</div><h2 style="margin:4px 0 12px">Who joins the next call</h2>
+     <div class="people">${r.people.map(p=>`<div class="person"><div class="av">${p[0]}</div><div><b>${p[1]}</b><div class="muted" style="font-size:13.5px">${p[2]}</div></div></div>`).join('')}</div>
+     <p class="muted" style="font-size:13px;margin-top:14px">Don't bring Product into prospect calls. Route product questions through Solution Architecture.</p></div>
+    <div class="card actions"><div class="eyebrow">Deal actions</div><h2 style="margin:4px 0 8px">Do these today</h2>
+     <div class="list">${r.actions.map(a=>`<div class="row"><b>${a[0]}</b><span>${a[1]}</span></div>`).join('')}</div></div>
+   </div>
+   <div class="card"><div class="eyebrow">Language</div><h2 style="margin:4px 0 8px">Say this, not that</h2>
+     <div class="list">${r.words.map(w=>`<div class="row"><b style="color:var(--accent-deep)">${w[0]}</b><span class="muted">not ${w[1]}</span></div>`).join('')}</div></div>
+   <div class="card"><div class="eyebrow">Summary for Salesforce or Slack</div>
+     <textarea id="summary" readonly>${summary.replace(/</g,'&lt;')}</textarea>
+     <div class="copybar" style="margin-top:10px"><button class="btn" id="copy">Copy summary</button><button class="btn ghost" id="restart">Start another deal</button><button class="btn ghost" id="edit">Change answers</button><span class="hint" id="copied"></span></div></div>
+  </div>`;
+  host.querySelector('#copy').addEventListener('click',()=>{const ta=host.querySelector('#summary');const done=()=>host.querySelector('#copied').textContent='Copied';
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(ta.value).then(done).catch(()=>{ta.select();done()})}else{ta.select();done()}});
+  host.querySelector('#restart').addEventListener('click',()=>{state={};idx=0;save();render();window.scrollTo({top:0})});
+  host.querySelector('#edit').addEventListener('click',()=>{idx=0;save();render();window.scrollTo({top:0})});
+}
+
+// ---------- reference ----------
+const tbl=(h,rows)=>`<div class="tbl"><table><thead><tr>${h.map(x=>`<th>${x}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+document.getElementById('view-ref').innerHTML=`
+<section><div class="eyebrow">How to use this</div><h2>Three steps, in order. Don't pitch until step 3.</h2>
+ <p class="sub">The goal on every call is the same. Get them to say what the build costs and what AI needs to actually work. Then show that Omega already does that part, and they keep the interfaces they want.</p>
+ <div class="flow">
+  <div class="f"><div class="n">1</div><h3>Find the decision maker</h3><p class="muted" style="font-size:14px">Finance or IT. One of them signs. If Finance is on the call but IT holds the data and the budget, it is IT-led.</p></div>
+  <div class="f"><div class="n">2</div><h3>Place the deal</h3><p class="muted" style="font-size:14px">What are they building on, and how far along. This picks the flow and the tone.</p></div>
+  <div class="f"><div class="n">3</div><h3>Pick the path</h3><p class="muted" style="font-size:14px">Lead them to Omega Core, Omega for Finance or Omega Enterprise, and take the matching action.</p></div>
+ </div></section>
+<section><div class="eyebrow">Step 1</div><h2>Find the decision maker</h2><p class="sub">Ask early, in this order. Stop when you know who owns it.</p>
+ ${tbl(['Ask','Finance-led if they say','IT-led if they say'],[
+  ['Who kicked this off, and why now?','The CFO, the controller, a budget cycle that hurt','The CIO, CTO, a data or AI mandate from the top'],
+  ['Who signs, and whose budget is it?','Finance systems line, CFO approval','IT or data platform budget, CIO approval'],
+  ['Who would own it a year from now?','A finance analyst or manager','A data engineering team'],
+  ['Where does the data live today?','Excel, the ERP, maybe a BI extract','A warehouse or lakehouse they already run'],
+  ['What have you tried so far?','Claude, ChatGPT, a macro, a Power Query flow','A prototype on Databricks, Snowflake, BigQuery or Fabric']])}</section>
+<section><div class="eyebrow">Step 2</div><h2>Place the deal</h2><p class="sub">Where are they building, and how far along.</p>
+ ${tbl(['What they say','What it usually means','Tone to take'],[
+  ['Claude, ChatGPT, Copilot, Grok on a laptop','One person, one model, no shared data. Works until it has to be shared or audited','Curious and gentle. A Finance DIY deal'],
+  ['Power Query, Power Automate, low-code flows','A pipeline with no planning layer. No write-back, no workflow','Ask about the last mile'],
+  ['A vibe-coded app (Lovable, Replit, Claude Code)','A real prototype with an owner who may leave. No governance','Respect the effort, ask who maintains it'],
+  ['Power BI with a write-back add-in','Reporting first, planning bolted on. Usually a BI team','Lead with Vena for Power BI'],
+  ['Databricks, Snowflake, BigQuery, Fabric','Serious data team. They can build the plumbing','Partner. Lead with Omega on their platform']])}
+ <div style="height:14px"></div>
+ ${tbl(['Stage','Signals','Your posture'],[
+  ['Idea','"We think we can do this ourselves"','Shape the build with questions. Most open to Omega now'],
+  ['Prototype','A model or app exists, one owner, not in the close yet','Ask what happens at the first close. Time the follow-up to it'],
+  ['In production','They ran a cycle on it','If it hurt, go to a package. If it worked, check in at the next budget cycle'],
+  ['Failed or stalled','Someone left, the auditor asked, the CFO lost trust','Skip the build questions. Lead with what broke']])}</section>
+<section><div class="eyebrow">Flow A</div><h2>Finance-led</h2><p class="sub">A controller, FP&A lead or CFO who has seen what Claude or ChatGPT can do. They usually don't have the data platform or IT support a CIO would. Gentle challenge, then wait and see.</p>
+ ${tbl(['Stage','Purpose','Ask','You want them to feel'],[
+  ['Situation','Understand the build','"Walk me through how you\'d set it up." "Who maintains it after go-live?"','Heard, not sold to'],
+  ['Last mile','Surface the gaps','"How do budget owners enter their numbers?" "What happens when two people change the same driver?" "How would your auditor see who changed what?"','Slight doubt they found on their own'],
+  ['Cost of the build','Put a price on it','"Who\'s on this and for how long?" "Which close will run on it first?" "What\'s the plan if that person leaves?"','The build isn\'t free'],
+  ['What AI needs','Move from tools to context','"How will the model know what gross margin means at your company?" "Does it get smarter as people use it, or start over each time?"','The gap is context, not tools'],
+  ['Outcome','Agree the future state','"If this worked perfectly in 12 months, what would be different?" "Who else would benefit beyond finance?"','Ambition'],
+  ['Commit','Pick a path','"Would it be a bad idea to keep your Excel and add the context layer under it?"','In control of the choice']])}
+ <div style="height:14px"></div>
+ ${tbl(['If they say','Do this'],[
+  ['"You\'re right, we can\'t cover audit and workflow"','Omega for Finance. Book a demo on their own data. Standard presales'],
+  ['"We still want to try it ourselves"','Wait and see. Check-in tied to their next budget cycle or first close. Send one useful thing, not a pitch'],
+  ['"We tried it and it broke"','Re-entry. Ask what broke and who felt it. Straight to Omega for Finance'],
+  ['"IT is actually building this"','Switch to Flow B. Ask to bring the data lead in']])}</section>
+<section><div class="eyebrow">Flow B</div><h2>IT-led</h2><p class="sub">A CIO, CTO, VP Data or innovation lead with a lakehouse and engineers. Partner, don't compete. Never say "you can't build it." Walk them up the ladder one rung at a time. By the top, they are describing Omega.</p>
+ <div class="ladder">${Object.keys(RUNGS).map((k,i)=>`<div class="l"><div class="n">${i+1}</div><div><b>${RUNGS[k][0]}</b> <span class="muted">${RUNGS[k][1]}</span><small>${RUNGS[k][2]}</small></div></div>`).join('')}</div>
+ <p style="margin-top:14px;font-size:14px"><b>The turn.</b> "Everything you just described is what Omega is. It sits on your Databricks, builds the semantic model, keeps the context, and finance gets it in Excel and Power BI. Would it be worth seeing it running on your data?"</p>
+ <div style="height:14px"></div>
+ ${tbl(['If they say','Do this'],[
+  ['"We want to own the data layer and build our own apps"','Omega Core on their platform. MCP and API access. Solution Architecture'],
+  ['"Finance needs a real planning tool on top of what we have"','Omega Enterprise or Omega for Finance on their platform. Bring finance leadership'],
+  ['"We\'ve been told to use AI across the business"','Omega Enterprise with an FDE pod. Planning as the first use case'],
+  ['"Databricks already does this"','Re-ask rungs 3, 4 and 6 about Databricks specifically. Position Omega as the planning and context layer on top, not a replacement'],
+  ['"We\'ll build it anyway"','Wait and see. Check in when the semantic model is done. Offer an architecture review. Don\'t disappear']])}</section>
+<section><div class="eyebrow">Step 3</div><h2>Pick the path</h2><p class="sub">Three packages. Every deal lands on one.</p>
+ <div class="pkgs">
+  <div class="pkg"><h3>Omega Core</h3><p>${PKG.core.d}</p><p class="muted">Signals: data team in place, lakehouse running, "we don't need your UI"</p><div class="who">IT-led</div></div>
+  <div class="pkg"><h3>Omega for Finance</h3><p>${PKG.fin.d}</p><p class="muted">Signals: finance wants Excel back, limited IT, a budget cycle that hurt</p><div class="who">Finance-led</div></div>
+  <div class="pkg dark"><h3>Omega Enterprise</h3><p>${PKG.ent.d}</p><p style="opacity:.85">Signals: AI mandate, more than one team planning, data and finance both in the room</p><div class="who">IT-led, finance first user</div></div>
+ </div>
+ <p class="muted" style="font-size:14px;margin-top:12px">Upgrades are normal. A Finance deal that mentions sales or HR planning is an Enterprise deal in a year. Sell the package they're ready for and log the expansion path.</p></section>
+<section><div class="eyebrow">Internal</div><h2>Who to bring in from Vena</h2>
+ ${tbl(['Scenario','Bring in','Why'],[
+  ['Finance-led, Omega for Finance','Standard presales','A planning demo on their data'],
+  ['Finance-led, building with Claude or low-code','Presales, plus a Solution Architect for one call','The AI questions need someone who has built with these tools'],
+  ['IT-led, any rung of the ladder','Solution Architecture','They need the ladder from someone who can go deep'],
+  ['IT-led, Databricks or Snowflake specifically','Solution Architecture plus Morpheo','Deployment on their platform is a technical conversation'],
+  ['AI mandate, Omega Enterprise','Advisory plus Solution Architecture','A program, not a tool'],
+  ['Re-entry after a failed build','Presales, plus whoever they spoke to before','Continuity matters']])}
+ <p class="muted" style="font-size:13.5px;margin-top:10px">Don't bring Product into prospect calls. Route product questions through Solution Architecture.</p></section>
+<section><div class="eyebrow">After the call</div><h2>Deal actions</h2>
+ ${tbl(['Path','Stage','Next action','Salesforce'],[
+  ['Finance, Omega for Finance','Idea or prototype','Book a demo on their data within two weeks. Send a two-line recap of the gaps in their words','Discovery to Demo. Log the build tool and the gaps'],
+  ['Finance, wait and see','Any','Calendar a check-in the week after their next cycle. Send one useful thing','Nurture. Check-in date as next step'],
+  ['Finance, re-entry','Failed','30-minute call on what broke. Lead with the fix','Reopen. Log what broke'],
+  ['IT, Omega Core','Idea or prototype','Architecture session with Solution Architecture. Omega on their platform','Technical validation. Log platform and rungs'],
+  ['IT, Omega Enterprise','Any','Joint call with finance leadership and the data lead. Bring Advisory','Executive alignment. Log sponsor and mandate'],
+  ['IT, wait and see','Prototype','Check in when the semantic model is done. Free architecture review','Nurture. Log the rung'],
+  ['Any','"Databricks already does this"','Send the Omega on Databricks one-pager. Book Morpheo','Log the objection']])}</section>
+<section><div class="eyebrow">Language</div><h2>Words that work, words to avoid</h2>
+ ${tbl(['Say this','Not this','Why'],[
+  ['"Have you thought about how the model learns what a driver means at your company?"','"AI can\'t do planning"','It can do a lot. The gap is context'],
+  ['"Everything you described is what Omega is"','"You\'d be rebuilding Vena"','A compliment, not a put-down'],
+  ['"It runs on your Databricks. The data doesn\'t move"','"You\'d move your data to us"','Data movement kills IT deals'],
+  ['"You keep Excel. The context layer sits under it"','"You\'d replace your spreadsheets"','Finance wants to keep Excel'],
+  ['"What does the second year look like?"','"What\'s your budget?"','Second-year value sells context'],
+  ['"Would it be a bad idea to see it on your data first?"','"Can I book a demo?"','A no-oriented question feels safe'],
+  ['"What happens when that person leaves?"','"That\'s not sustainable"','Same point, but they say it']])}</section>`;
+
+// tabs
+document.querySelectorAll('.tabs button').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.tabs button').forEach(x=>x.setAttribute('aria-selected',x===b));
+  document.getElementById('view-guide').hidden=b.dataset.view!=='guide';
+  document.getElementById('view-ref').hidden=b.dataset.view!=='ref';
+}));
+if(location.hash==='#reference')document.getElementById('tab-ref').click();
+render();
+</script>
+</body>
+</html>
